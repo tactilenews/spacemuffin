@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const path = require('path')
 
 module.exports = {
   mode: 'spa',
@@ -62,6 +63,11 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+
+      config.resolve.alias['@@'] = path.resolve(
+        __dirname,
+        './styleguide/src/system'
+      )
     }
   }
 }
