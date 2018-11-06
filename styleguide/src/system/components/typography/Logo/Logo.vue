@@ -1,5 +1,5 @@
 <template>
-  <component 
+  <component
     :is="tag"
     class="ds-logo"
     :class="[
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import svgLogo from '@@/assets/img/logo_cion.svg'
+import svgLogo from '@@/assets/img/logo-TN.svg'
 /**
  * This component displays the brand's logo.
  * @version 1.0.0
