@@ -1,8 +1,6 @@
 <template>
   <ds-container>
-    <ds-card
-      id="editor-wrapper"
-      margin-top="xxx-large">
+    <ds-card>
       <editor>
         <div
           slot="content"
@@ -32,12 +30,8 @@ export default {
 </script>
 
 <style lang="scss">
-#editor-wrapper {
-  margin-top: -5px;
-
-  .ProseMirror {
-    padding: 1rem 1.5rem;
-    outline: none;
-  }
+.ProseMirror {
+  padding: 1rem 1.5rem;
+  // outline: none;
 }
 </style>

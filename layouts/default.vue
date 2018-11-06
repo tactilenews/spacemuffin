@@ -13,9 +13,9 @@
       :routes="routes"
       @navigate="$refs.page.closeDrawer()"/>
     <ds-container>
-      <ds-space margin-top="large">
+      <div style="padding: 3rem 2rem 5rem;">
         <nuxt/>
-      </ds-space>
+      </div>
     </ds-container>
   </ds-page>
 </template>

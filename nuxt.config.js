@@ -4,6 +4,11 @@ const path = require('path')
 module.exports = {
   mode: 'spa',
 
+  transition: {
+    name: 'slide-up',
+    mode: 'out-in'
+  },
+
   /*
   ** Headers of the page
   */
@@ -44,6 +49,10 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  router: {
+    linkActiveClass: 'router-active-link'
   },
 
   /*

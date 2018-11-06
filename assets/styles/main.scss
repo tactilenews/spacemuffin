@@ -1,2 +1,19 @@
 @import 'vue-cion-design-system/src/system/tokens/generated/tokens.scss';
 
+
+// Transition Easing
+$easeOut: cubic-bezier(0.19, 1, 0.22, 1);
+
+// slide up ease
+.slide-up-enter-active {
+  transition: all 500ms $easeOut;
+  transition-delay: 20ms;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+.slide-up-enter,
+.slide-up-leave-active {
+  opacity: 0;
+  box-shadow: none;
+  transform: translate3d(0, 15px, 0);
+}
