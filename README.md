@@ -1,7 +1,5 @@
-# editor
+# Tactile.News CMS
 
-> Tactile.News CMS
-> 
 > Get Audio from Text
 
 ## Build Setup
