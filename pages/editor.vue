@@ -1,6 +1,6 @@
 <template>
   <ds-container>
-    <ds-space
+    <ds-card
       id="editor-wrapper"
       margin-top="xxx-large">
       <editor>
@@ -13,7 +13,12 @@
           <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
         </div>
       </editor>
-    </ds-space>
+      <div style="text-align: right">
+        <ds-button 
+          icon-right="arrow-right"
+          primary>Weiter</ds-button>
+      </div>
+    </ds-card>
   </ds-container>
 </template>
 
@@ -28,8 +33,7 @@ export default {
 
 <style lang="scss">
 #editor-wrapper {
-  background-color: #fff;
-  border-color: #333;
+  margin-top: -5px;
 
   .ProseMirror {
     padding: 1rem 1.5rem;
