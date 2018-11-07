@@ -1,30 +1,31 @@
 <template>
   <div>
-    <nav>
-      <img
-        id="logo"
-        src="~assets/img/tactilenews.svg"
-        alt="tactile.news">
-    </nav>
-    <ul>
-      <li>
-        <nuxt-link to="/">Übersicht</nuxt-link>
-      </li>
-      <li>
-        <nuxt-link to="/create">Erstellen</nuxt-link>
-      </li>
-    </ul>
-    <div style="padding: 3rem 2rem 5rem;">
-      <nuxt/>
-    </div>
+    <tactile-header />
+    <main>
+      <nuxt class="content" />
+    </main>
   </div>
 </template>
 
 <script>
+import TactileHeader from '~/components/TactileHeader.vue'
+export default {
+  components: {
+    TactileHeader
+  }
+}
 </script>
 
-<style>
-#logo {
-  height: 50px;
+<style lang="scss" scoped>
+@import '~assets/styles/variables';
+
+main {
+  max-width: $grid-max-width;
+  margin: $spacing-unit auto;
+
+  & > .content {
+    padding: $spacing-unit;
+    background: #fff;
+  }
 }
 </style>
