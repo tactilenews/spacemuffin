@@ -3,7 +3,9 @@
     <h2>Erfolgreich</h2>
     <p>Die Production wurde erfolgreich gestartet</p>
     <div style="text-align: right">
-      <button>Zur Übersicht</button>
+      <nuxt-link
+        to="/create"
+        tag="button">Zur Übersicht</nuxt-link>
     </div>
   </div>
 </template>

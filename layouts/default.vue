@@ -8,10 +8,10 @@
     </nav>
     <ul>
       <li>
-        <a href="/">Dashboard</a>
+        <nuxt-link to="/">Dashboard</nuxt-link>
       </li>
       <li>
-        <a href="/create">Create</a>
+        <nuxt-link to="/create">Create</nuxt-link>
       </li>
     </ul>
     <div style="padding: 3rem 2rem 5rem;">

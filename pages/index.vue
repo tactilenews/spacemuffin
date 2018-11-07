@@ -3,7 +3,9 @@
     <p>
       Du hast noch keine Projekte
     </p>
-    <button>Projekt erstellen</button>
+    <nuxt-link
+      to="/create"
+      tag="button">Projekt erstellen</nuxt-link>
   </div>
 </template>
 
