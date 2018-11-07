@@ -1,9 +1,14 @@
 export const state = () => ({
-  content: {}
+  json: {}
 })
 
+export const getters = {
+  json(state) {
+    return state.json
+  }
+}
 export const mutations = {
-  save(state, content) {
-    state.content = content
+  save(state, json) {
+    state.json = json
   }
 }
