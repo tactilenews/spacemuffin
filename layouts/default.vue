@@ -26,10 +26,9 @@ export default {
     return {
       routes: [
         { name: 'Dashboard', path: '/' },
-        {
-          name: 'Editor'
-        },
-        { name: 'Review' }
+        { name: 'Editor' },
+        { name: 'Review' },
+        { name: 'Confirmation' }
       ]
     }
   }
