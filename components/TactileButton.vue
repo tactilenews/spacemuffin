@@ -2,7 +2,7 @@
   <nuxt-link
     :to="to"
     :tag="tag"
-    :class="[ 'button', modifier ]"
+    :class="{ button: true, primary, large }"
   >
     <slot />
   </nuxt-link>
@@ -19,9 +19,13 @@ export default {
       type: String,
       default: 'a'
     },
-    modifier: {
-      type: String,
-      default: 'primary'
+    primary: {
+      type: Boolean,
+      default: false
+    },
+    large: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -45,5 +49,9 @@ export default {
   background-color: $color-brand;
   color: #fff;
   font-weight: 500;
+}
+
+.large {
+  font-size: $font-size-large;
 }
 </style>
