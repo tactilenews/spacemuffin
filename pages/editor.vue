@@ -27,7 +27,8 @@ import {
   HardBreakNode,
   BulletListNode,
   ListItemNode,
-  PlaceholderExtension
+  PlaceholderExtension,
+  HistoryExtension
 } from 'tiptap-extensions'
 export default {
   components: {
@@ -42,7 +43,8 @@ export default {
         new ListItemNode(),
         new PlaceholderExtension({
           emptyNodeClass: 'is-empty'
-        })
+        }),
+        new HistoryExtension()
       ]
     }
   }
