@@ -120,9 +120,9 @@ export default {
 
 .editor {
   position: relative;
-  margin-top: -$spacing-unit + 1px;
-  margin-left: -$spacing-unit + 1px;
-  margin-right: -$spacing-unit + 1px;
+  margin-top: -$spacing-unit;
+  margin-left: -$spacing-unit;
+  margin-right: -$spacing-unit;
   margin-bottom: $spacing-unit;
 }
 
