@@ -3,7 +3,7 @@
     <p>
       Du hast noch keine Projekte
     </p>
-    <button>Projekt erstellen</button>
+    <nuxt-link to="/editor">Projekt erstellen</nuxt-link>
   </div>
 </template>
 
