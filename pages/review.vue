@@ -35,6 +35,7 @@
           <p>Ich möchte den Beitrag vertont zurück bis zum</p>
           <input
             v-model="deadline"
+            :min="minDeadline"
             type="date">
         </div>
         <div>
@@ -68,13 +69,19 @@ const dateIn48Hours = new Date().getTime() + 48 * hour
 
 const expressFee = 50
 
-const deadline = new Date(dateIn48Hours).toISOString().slice(0, 10)
+function getDateString(date = new Date()) {
+  return new Date(date).toISOString().slice(0, 10)
+}
+
+const minDeadline = getDateString()
+const deadline = getDateString(dateIn48Hours)
 
 export default {
   name: 'Review',
   data() {
     return {
       deadline,
+      minDeadline,
       charCount,
       tonesCount,
       soundsCount,
