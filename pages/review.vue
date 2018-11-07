@@ -1,4 +1,4 @@
-<template>
+<template id="review">
   <div>
     <header>
       <h1>Geschafft!</h1>
@@ -24,20 +24,22 @@
             placeholder="Name des Autoren">
         </div>
         <h2>Beiträgsübersicht</h2>
-        <p>Dein Manuskript ist bereit zur Vertonung. Es ist <b>eine Reportage</b> für die Tonie-Figur <b>Karla Klimabär</b>. In <b>1200 Zeichen</b> hast du <b>5 Töne</b> und <b>4 Geräusche</b> untergebracht.</p>
+        <p>Dein Manuskript ist bereit zur Vertonung. Es ist <b>{{ format }}</b> für die Tonie-Figur <b>{{ figure }}</b>. In <b>{{ charCount }} Zeichen</b> hast du <b>{{ tonesCount }} Töne</b> und <b>{{ soundsCount }} Geräusche</b> untergebracht.</p>
         <div>
-          <span>Ich schätze die gesprochene Länge auf <b>2:30 Minuten</b>. Das wird sich bestimmt toll anhören!</span>
+          <span>Ich schätze die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</span>
         </div>
       </section>
       <section>
         <div>
           <h2>Deadline</h2>
           <p>Ich möchte den Beitrag vertont zurück bis zum</p>
-          <input type="date">
+          <input
+            :value="deadline"
+            type="date">
         </div>
         <div>
           <h2>Preis</h2>
-          <span>152 Euro</span>
+          <span>{{ costs }} Euro</span>
         </div>
         <div>
           <h2>Kommentar</h2>
@@ -55,6 +57,36 @@
     </footer>
   </div>
 </template>
+
+<script>
+const charCount = 1200
+const tonesCount = 5
+const soundsCount = 4
+
+const hour = 60 * 60 * 1000
+const dateIn48Hours = new Date().getTime() + 48 * hour
+
+const deadline = new Date(dateIn48Hours).toISOString().slice(0, 10)
+
+const costs = charCount * 0.04 + (tonesCount + soundsCount) * 9
+const expressFee = 50
+const totalCosts = deadline > dateIn48Hours ? costs : costs + expressFee
+
+export default {
+  name: 'Review',
+  data: () => ({
+    deadline,
+    charCount,
+    tonesCount,
+    soundsCount,
+    costs: totalCosts,
+    minutes: '2:30',
+    format: 'eine Reportage',
+    figure: 'Karl Klimabär'
+  }),
+  template: '#review'
+}
+</script>
 
 <style lang="scss" scoped>
 @import '~assets/styles/variables';
