@@ -4,7 +4,11 @@
 $font-family: system-ui;
 $font-size: 18px;
 $line-height: 30px;
+
 $spacing-unit: $line-height;
+$spacing-small: $spacing-unit * 0.5;
+$spacing-medium: $spacing-unit;
+$spacing-large: $spacing-unit * 2;
 
 /**
  * GRID
