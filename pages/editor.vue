@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     onUpdate({ getJSON, getHTML }) {
-      this.$store.commit('items/save', getJSON())
+      this.$store.commit('items/saveJSON', getJSON())
     }
   }
 }
