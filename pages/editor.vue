@@ -1,6 +1,8 @@
 <template>
   <div>
-    <editor>
+    <editor
+      :extensions="extensions"
+      class="editor">
       <div
         slot="content"
         slot-scope="props">
@@ -20,9 +22,25 @@
 
 <script>
 import { Editor } from 'tiptap'
+import {
+  BulletListNode,
+  ListItemNode,
+  PlaceholderExtension
+} from 'tiptap-extensions'
 export default {
   components: {
     Editor
+  },
+  data() {
+    return {
+      extensions: [
+        new BulletListNode(),
+        new ListItemNode(),
+        new PlaceholderExtension({
+          emptyNodeClass: 'is-empty'
+        })
+      ]
+    }
   }
 }
 </script>
@@ -30,6 +48,13 @@ export default {
 <style lang="scss">
 .ProseMirror {
   padding: 1rem 1.5rem;
-  // outline: none;
+}
+.editor p.is-empty:first-child::before {
+  content: 'Füge hier deinen Beitrag ein…';
+  float: left;
+  color: #aaa;
+  pointer-events: none;
+  height: 0;
+  font-style: italic;
 }
 </style>
