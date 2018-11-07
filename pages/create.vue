@@ -1,19 +1,17 @@
 <template>
-  <form>
-    <p>
-      Ich möchte eine <b>Reportage</b>
-      mit dem Titel <b>Der Pferdeflüsterer</b>
-      für die Toni-Figur <b>Eisbär</b> erstellen
-    </p>
-    <nuxt-link
-      to="/editor"
-      tag="button">Weiter</nuxt-link>
-  </form>
+  <tactile-button
+    :primary="true"
+    to="/editor"
+  >Inhalte einfügen</tactile-button>
 </template>
 
 <script>
-export default {}
+import TactileButton from '~/components/TactileButton.vue'
+export default {
+  components: {
+    TactileButton
+  }
+}
 </script>
-
 <style>
 </style>

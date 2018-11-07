@@ -54,9 +54,7 @@ div {
 
 p {
   max-width: 500px;
-  margin: auto;
-  padding-top: $spacing-unit;
-  padding-bottom: 0.5 * $spacing-unit;
+  margin: $spacing-unit auto;
   font-size: 1.25rem;
 }
 
