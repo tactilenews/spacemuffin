@@ -4,6 +4,37 @@
       :extensions="extensions"
       class="editor">
       <div
+        slot="menububble"
+        slot-scope="{ marks, focus }"
+        class="menububble">
+        <template v-if="marks">
+          <button
+            :class="{ 'is-active': marks.bold.active() }"
+            class="menububble__button"
+            @click="marks.bold.command"
+          >
+            bold
+            <!--<icon name="bold" />-->
+          </button>
+          <button
+            :class="{ 'is-active': marks.italic.active() }"
+            class="menububble__button"
+            @click="marks.italic.command"
+          >
+            italic
+            <!--<icon name="italic" />-->
+          </button>
+          <button
+            :class="{ 'is-active': marks.code.active() }"
+            class="menububble__button"
+            @click="marks.code.command"
+          >
+            code
+            <!--<icon name="code" />-->
+          </button>
+        </template>
+      </div>
+      <div
         slot="content"
         slot-scope="props">
         <h2>Title</h2>
@@ -27,6 +58,9 @@ import {
   HardBreakNode,
   BulletListNode,
   ListItemNode,
+  BoldMark,
+  CodeMark,
+  ItalicMark,
   PlaceholderExtension,
   HistoryExtension
 } from 'tiptap-extensions'
@@ -41,6 +75,9 @@ export default {
         new HardBreakNode(),
         new BulletListNode(),
         new ListItemNode(),
+        new BoldMark(),
+        new CodeMark(),
+        new ItalicMark(),
         new PlaceholderExtension({
           emptyNodeClass: 'is-empty'
         }),
@@ -55,7 +92,7 @@ export default {
 @import '~assets/styles/variables';
 
 .ProseMirror {
-  padding: 0.8rem 1rem;
+  padding: $spacing-unit $spacing-unit;
 
   &:focus {
     outline: 1px dashed rgba($color-brand, 0.2);
@@ -79,5 +116,101 @@ export default {
   pointer-events: none;
   height: 0;
   font-style: italic;
+}
+
+.editor {
+  position: relative;
+  margin-top: -$spacing-unit + 1px;
+  margin-left: -$spacing-unit + 1px;
+  margin-right: -$spacing-unit + 1px;
+  margin-bottom: $spacing-unit;
+}
+
+$color-white: #fff;
+$color-black: #000;
+
+.menubar {
+  display: flex;
+  margin-bottom: 1rem;
+  transition: visibility 0.2s 0.4s, opacity 0.2s 0.4s;
+
+  &.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &.is-focused {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.2s, opacity 0.2s;
+  }
+
+  &__button {
+    font-weight: bold;
+    display: inline-flex;
+    background: transparent;
+    border: 0;
+    color: $color-black;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.2rem;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($color-black, 0.05);
+    }
+
+    &.is-active {
+      background-color: rgba($color-black, 0.1);
+    }
+  }
+}
+.menububble {
+  position: absolute;
+  display: flex;
+  z-index: 20;
+  background: $color-black;
+  border-radius: 5px;
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+  transform: translateX(-50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+
+  &__button {
+    display: inline-flex;
+    background: transparent;
+    border: 0;
+    color: $color-white;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.2rem;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      background-color: rgba($color-white, 0.1);
+    }
+
+    &.is-active {
+      background-color: rgba($color-white, 0.2);
+    }
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    font: inherit;
+    border: none;
+    background: transparent;
+    color: $color-white;
+  }
 }
 </style>
