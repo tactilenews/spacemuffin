@@ -35,3 +35,13 @@
     </section>
   </main>
 </template>
+
+<style lang="scss">
+main {
+  display: flex;
+}
+
+section {
+  width: 50%;
+}
+</style>
