@@ -1,6 +1,8 @@
 <template>
   <div>
-    <editor>
+    <tactile-editor
+      @update="onUpdate"
+    >
       <div
         slot="content"
         slot-scope="props">
@@ -9,11 +11,14 @@
         <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
         <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
       </div>
-    </editor>
+    </tactile-editor>
     <div style="text-align: right">
       <nuxt-link
         to="/review"
-        tag="button">Weiter</nuxt-link>
+        tag="button"
+      >
+        Weiter
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -22,7 +27,12 @@
 import { Editor } from 'tiptap'
 export default {
   components: {
-    Editor
+    'tactile-editor': Editor
+  },
+  methods: {
+    onUpdate({ getJSON }) {
+      this.$store.commit('items/save', getJSON())
+    }
   }
 }
 </script>
