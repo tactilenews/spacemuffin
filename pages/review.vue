@@ -70,7 +70,12 @@ section {
 
 footer {
   margin-top: $spacing-medium;
-  float: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+footer > button {
+  margin-left: $spacing-small;
 }
 
 textarea {
