@@ -8,3 +8,7 @@ services:
       - 3000:3000
     environment:
       - HOST=0.0.0.0
+    volumes:
+      - .:/spacemuffin
+      - /spacemuffin/node_modules
+    command: yarn run dev
