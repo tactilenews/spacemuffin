@@ -3,13 +3,17 @@
     <p>
       Du hast noch keine Projekte
     </p>
-    <button>Projekt erstellen</button>
+    <tactile-button to="/create">
+      Beitrag erstellen
+    </tactile-button>
   </div>
 </template>
 
 <script>
-export default {}
+import TactileButton from '~/components/TactileButton.vue'
+export default {
+  components: {
+    TactileButton
+  }
+}
 </script>
-
-<style>
-</style>
