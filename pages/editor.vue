@@ -13,7 +13,7 @@
             class="menububble__button"
             @click="marks.bold.command"
           >
-            bold
+            Sprecher
             <!--<icon name="bold" />-->
           </button>
           <button
@@ -21,7 +21,7 @@
             class="menububble__button"
             @click="marks.italic.command"
           >
-            italic
+            Geräusch
             <!--<icon name="italic" />-->
           </button>
           <button
@@ -29,7 +29,7 @@
             class="menububble__button"
             @click="marks.code.command"
           >
-            code
+            O-Ton
             <!--<icon name="code" />-->
           </button>
         </template>
