@@ -1,5 +1,7 @@
 FROM node:10-alpine
 EXPOSE 3000
+ENV HOST 0.0.0.0
+
 
 ARG WORKDIR=/spacemuffin
 RUN mkdir -p $WORKDIR
