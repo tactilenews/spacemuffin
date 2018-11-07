@@ -1,4 +1,4 @@
-<template id="review">
+<template>
   <div>
     <header>
       <h1>Geschafft!</h1>
@@ -34,7 +34,7 @@
           <h2>Deadline</h2>
           <p>Ich möchte den Beitrag vertont zurück bis zum</p>
           <input
-            :value="deadline"
+            v-model="deadline"
             type="date">
         </div>
         <div>
@@ -66,25 +66,31 @@ const soundsCount = 4
 const hour = 60 * 60 * 1000
 const dateIn48Hours = new Date().getTime() + 48 * hour
 
-const deadline = new Date(dateIn48Hours).toISOString().slice(0, 10)
-
-const costs = charCount * 0.04 + (tonesCount + soundsCount) * 9
 const expressFee = 50
-const totalCosts = deadline > dateIn48Hours ? costs : costs + expressFee
+
+const deadline = new Date(dateIn48Hours).toISOString().slice(0, 10)
 
 export default {
   name: 'Review',
-  data: () => ({
-    deadline,
-    charCount,
-    tonesCount,
-    soundsCount,
-    costs: totalCosts,
-    minutes: '2:30',
-    format: 'eine Reportage',
-    figure: 'Karl Klimabär'
-  }),
-  template: '#review'
+  data() {
+    return {
+      deadline,
+      charCount,
+      tonesCount,
+      soundsCount,
+      minutes: '2:30',
+      format: 'eine Reportage',
+      figure: 'Karl Klimabär'
+    }
+  },
+  computed: {
+    costs() {
+      const deadline = new Date(this.deadline).getTime()
+      const costs = charCount * 0.04 + (tonesCount + soundsCount) * 9
+      const totalCosts = deadline > dateIn48Hours ? costs : costs + expressFee
+      return totalCosts
+    }
+  }
 }
 </script>
 
