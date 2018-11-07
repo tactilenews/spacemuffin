@@ -57,7 +57,7 @@ p {
   margin: auto;
   padding-top: $spacing-unit;
   padding-bottom: 0.5 * $spacing-unit;
-  font-size: 1.25rem;
+  font-size: $font-size-large;
 }
 
 img {

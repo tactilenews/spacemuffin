@@ -52,6 +52,6 @@ export default {
 }
 
 .large {
-  font-size: 1.25rem;
+  font-size: $font-size-large;
 }
 </style>
