@@ -7,7 +7,11 @@
       >
     </div>
     <p><slot /></p>
-    <TactileButton :to="to">
+    <TactileButton
+      :primary="true"
+      :large="true"
+      :to="to"
+    >
       <slot name="action" />
     </TactileButton>
   </div>
