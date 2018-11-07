@@ -14,7 +14,7 @@ COPY styleguide/ ./styleguide
 COPY package.json .
 COPY yarn.lock .
 
-RUN yarn install && cd ./styleguide && yarn install && cd ../ && yarn run styleguide:build
+RUN yarn install && cd ./styleguide && yarn install && cd ../ && yarn run styleguide:build && rm -rf ./styleguide/node_modules
 
 COPY . .
 RUN yarn run build
