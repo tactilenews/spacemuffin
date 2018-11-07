@@ -1,6 +1,6 @@
 <template>
   <div>
-    <tactile-editor
+    <editor
       :doc="json"
       @update="onUpdate"
     >
@@ -8,7 +8,7 @@
         slot="content"
         slot-scope="props"
       />
-    </tactile-editor>
+    </editor>
     <div style="text-align: right">
       <nuxt-link
         to="/review"
@@ -25,7 +25,7 @@ import { Editor } from 'tiptap'
 
 export default {
   components: {
-    'tactile-editor': Editor
+    editor: Editor
   },
   asyncData({ store }) {
     return {
