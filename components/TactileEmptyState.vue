@@ -3,7 +3,7 @@
     <div class="muffin">
       <img
         src="~assets/img/muffin.svg"
-        alt=""
+        alt="Pinkes tactile.news Maskottchen"
       >
     </div>
     <p><slot /></p>
