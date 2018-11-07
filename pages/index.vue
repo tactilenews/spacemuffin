@@ -1,11 +1,9 @@
 <template>
   <div>
-    <p>
-      Du hast noch keine Projekte
-    </p>
+    <p>Du hast noch keine Beitrage</p>
     <nuxt-link
       to="/create"
-      tag="button">Projekt erstellen</nuxt-link>
+      tag="button">Beitrag erstellen</nuxt-link>
   </div>
 </template>
 
