@@ -19,8 +19,7 @@
     "cross-env": "^5.2.0",
     "nuxt": "^2.0.0",
     "tiptap": "^0.20.1",
-    "tiptap-extensions": "^0.22.2",
-    "vue-cion-design-system": "file:./styleguide"
+    "tiptap-extensions": "^0.22.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
