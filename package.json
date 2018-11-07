@@ -5,6 +5,7 @@
   "author": "Grzegorz Leoniec",
   "private": true,
   "scripts": {
+    "postinstall": "cd ./styleguide && npm install && cd ../ && npm run styleguide:build",
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
