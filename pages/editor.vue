@@ -11,7 +11,9 @@
       </div>
     </editor>
     <div style="text-align: right">
-      <button>Weiter</button>
+      <nuxt-link
+        to="/review"
+        tag="button">Weiter</nuxt-link>
     </div>
   </div>
 </template>

@@ -1,11 +1,9 @@
 <template>
   <div>
-    <p>
-      Du hast noch keine Projekte
-    </p>
-    <tactile-button to="/create">
-      Beitrag erstellen
-    </tactile-button>
+    <p>Du hast noch keine Beitrage</p>
+    <nuxt-link
+      to="/create"
+      tag="button">Beitrag erstellen</nuxt-link>
   </div>
 </template>
 
