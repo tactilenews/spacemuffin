@@ -35,7 +35,7 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [{ src: '~/plugins/design-system.js', ssr: false }],
+  plugins: [],
 
   /*
   ** Nuxt.js modules
@@ -73,11 +73,6 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-
-      config.resolve.alias['@@'] = path.resolve(
-        __dirname,
-        './styleguide/src/system'
-      )
     }
   }
 }
