@@ -12,8 +12,9 @@
         </div>
       </editor>
       <div style="text-align: right">
-        <ds-button 
+        <ds-button
           icon-right="arrow-right"
+          path="/review"
           primary>Weiter</ds-button>
       </div>
     </ds-card>
