@@ -4,7 +4,7 @@
       <ds-heading tag="h3">Review</ds-heading>
       <div style="text-align: right">
         <ds-button
-          icon-right="arrow-right"
+          icon-right="check"
           primary>Produktion starten</ds-button>
       </div>
     </ds-card>
