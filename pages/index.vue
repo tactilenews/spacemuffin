@@ -8,8 +8,10 @@
 </template>
 
 <script>
-export default {}
+import TactileButton from '~/components/TactileButton.vue'
+export default {
+  components: {
+    TactileButton
+  }
+}
 </script>
-
-<style>
-</style>
