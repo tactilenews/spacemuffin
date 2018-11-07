@@ -6,7 +6,7 @@
       für die Toni-Figur <b>Eisbär</b> erstellen
     </p>
     <nuxt-link
-      to="/create"
+      to="/editor"
       tag="button">Weiter</nuxt-link>
   </form>
 </template>
