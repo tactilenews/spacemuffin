@@ -6,7 +6,7 @@
 
 ``` bash
 # install dependencies and build stylegude (only on first time)
-$ yarn install && cd ./styleguide && yarn install && cd ../ && yarn run styleguide:build
+$ yarn install
 
 # serve with hot reload at localhost:3000
 $ yarn run dev
