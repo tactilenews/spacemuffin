@@ -60,31 +60,23 @@
 </template>
 
 <script>
-const charCount = 1200
-const tonesCount = 5
-const soundsCount = 4
-
 const hour = 60 * 60 * 1000
 const dateIn48Hours = new Date().getTime() + 48 * hour
-
 const expressFee = 50
 
 function getDateString(date = new Date()) {
   return new Date(date).toISOString().slice(0, 10)
 }
 
-const minDeadline = getDateString()
-const deadline = getDateString(dateIn48Hours)
-
 export default {
   name: 'Review',
   data() {
     return {
-      deadline,
-      minDeadline,
-      charCount,
-      tonesCount,
-      soundsCount,
+      deadline: getDateString(dateIn48Hours),
+      charCount: 1200,
+      tonesCount: 5,
+      soundsCount: 4,
+      minDeadline: getDateString(),
       minutes: '2:30',
       format: 'eine Reportage',
       figure: 'Karl Klimabär'
@@ -93,7 +85,8 @@ export default {
   computed: {
     costs() {
       const deadline = new Date(this.deadline).getTime()
-      const costs = charCount * 0.04 + (tonesCount + soundsCount) * 9
+      const costs =
+        this.charCount * 0.04 + (this.tonesCount + this.soundsCount) * 9
       const totalCosts = deadline > dateIn48Hours ? costs : costs + expressFee
       return totalCosts
     }
