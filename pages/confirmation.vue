@@ -31,6 +31,9 @@
       <div>
         <button>Anfragen</button>
         <button>Für später sichern</button>
+        <nuxt-link
+          to="/create"
+          tag="button">Zur Übersicht</nuxt-link>
       </div>
     </section>
   </main>

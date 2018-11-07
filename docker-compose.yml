@@ -2,7 +2,13 @@ version: '3'
 
 services:
   spacemuffin:
+    image: tactilenews/spacemuffin
     build: .
     ports:
-      - 3000:80
-    command: http-server dist -p 80
+      - 3000:3000
+    environment:
+      - HOST=0.0.0.0
+    volumes:
+      - .:/spacemuffin
+      - /spacemuffin/node_modules
+    command: yarn run dev
