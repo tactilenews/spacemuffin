@@ -11,7 +11,7 @@ RUN apk --no-cache add git
 RUN yarn global add http-server
 
 COPY styleguide/ ./styleguide
-RUN cd styleguide && yarn install --production=false --frozen-lockfile --non-interactive
+RUN cd styleguide && yarn install --production=false --frozen-lockfile --non-interactive && yarn run build
 
 COPY package.json .
 COPY yarn.lock .
