@@ -23,6 +23,8 @@
 <script>
 import { Editor } from 'tiptap'
 import {
+  HeadingNode,
+  HardBreakNode,
   BulletListNode,
   ListItemNode,
   PlaceholderExtension
@@ -34,6 +36,8 @@ export default {
   data() {
     return {
       extensions: [
+        new HeadingNode({ maxLevel: 2 }),
+        new HardBreakNode(),
         new BulletListNode(),
         new ListItemNode(),
         new PlaceholderExtension({
@@ -46,8 +50,14 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~assets/styles/variables';
+
 .ProseMirror {
-  padding: 1rem 1.5rem;
+  padding: 0.8rem 1rem;
+
+  &:focus {
+    outline: 1px dashed rgba($color-brand, 0.2);
+  }
 }
 .editor p.is-empty:first-child::before {
   content: 'Füge hier deinen Beitrag ein…';
