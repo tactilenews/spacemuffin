@@ -60,6 +60,17 @@ export default {
   &:focus {
     outline: 1px dashed rgba($color-brand, 0.2);
   }
+
+  p,
+  h1,
+  h2,
+  h3 {
+    padding-bottom: 0.5 * $spacing-unit;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
 }
 .editor p.is-empty:first-child::before {
   content: 'Füge hier deinen Beitrag ein…';
