@@ -2,7 +2,7 @@
   <div>
     <tactile-header />
     <main>
-      <nuxt />
+      <nuxt class="content" />
     </main>
   </div>
 </template>
@@ -22,8 +22,10 @@ export default {
 main {
   max-width: $grid-max-width;
   margin: $spacing-unit auto;
-  padding: $spacing-unit;
 
-  background: #fff;
+  & > .content {
+    padding: $spacing-unit;
+    background: #fff;
+  }
 }
 </style>
