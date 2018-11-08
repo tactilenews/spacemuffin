@@ -31,13 +31,12 @@
       </div>
     </tactile-content>
     <tactile-actions-footer>
-      <template slot="prev">
-        <tactile-button
-          to="/editor"
-        >
-          Beitrag bearbeiten
-        </tactile-button>
-      </template>
+      <tactile-button
+        slot="prev"
+        to="/editor"
+      >
+        Beitrag bearbeiten
+      </tactile-button>
       <template slot="next">
         <tactile-button
           to="/"

@@ -45,15 +45,13 @@
     </tactile-content>
 
     <tactile-actions-footer>
-      <template slot="next">
-        <tactile-button
-          slot="next"
-          :primary="true"
-          to="/editor"
-        >
-          Inhalte einfügen
-        </tactile-button>
-      </template>
+      <tactile-button
+        slot="next"
+        :primary="true"
+        to="/editor"
+      >
+        Inhalte einfügen
+      </tactile-button>
     </tactile-actions-footer>
 
   </div>
