@@ -84,7 +84,6 @@ export default {
   position: absolute;
   color: #aaa;
   pointer-events: none;
-  // height: 0;
   font-style: italic;
 }
 
