@@ -1,41 +1,43 @@
 <template>
   <div>
-    <header>
+    <tactile-content>
       <h1>Herzlichen Glückwunsch!</h1>
       <p>Dein Beitrag wurde an {{ speaker }} versandt. In {{ days }} Tagen sollte alles eingesprochen worden sein.</p>
-    </header>
-    <main>
-      <section class="muffin">
-        <img
-          src="~assets/img/muffin.svg"
-          alt="Pinkes tactile.news Maskottchen"
-        >
-      </section>
-      <section>
-        <h2>Kontaktinfos</h2>
-        Bei Fragen und Anregung kannst du dich gerne bei uns melden:
-        <a href="mailto://support@tactile.news">support@tactile.news</a>
-      </section>
-    </main>
-    <footer>
+
+      <img
+        src="~assets/img/muffin.svg"
+        alt="Pinkes tactile.news Maskottchen"
+      >
+
+      <h2>Kontaktinfos</h2>
+      Bei Fragen und Anregung kannst du dich gerne bei uns melden:
+
+      <a href="mailto://support@tactile.news">support@tactile.news</a>
+    </tactile-content>
+
+    <tactile-actions-footer>
       <tactile-button
-        :large="true"
+        slot="next"
         :primary="true"
         to="/"
-        tag="a" >
+      >
         Zum Dashboard
       </tactile-button>
-    </footer>
+    </tactile-actions-footer>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import TactileContent from '~/components/TactileContent.vue'
+import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
 
 export default {
   components: {
-    'tactile-button': TactileButton
+    TactileContent,
+    TactileActionsFooter,
+    TactileButton
   },
   computed: {
     ...mapGetters({
@@ -47,18 +49,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/styles/variables';
-
-main {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
-
-footer {
-  margin-top: $spacing-medium;
-  display: flex;
-  justify-content: flex-end;
-}
 
 .muffin {
   display: flex;
