@@ -69,8 +69,8 @@ export const mutations = {
     state.counts = {
       chars: node.innerText.length,
       words: node.innerText.split(/\s+/).length,
-      quotes: node.getElementsByClassName('mark-original-tone').length,
-      sounds: node.getElementsByClassName('mark-ambient-tone').length
+      quotes: node.getElementsByClassName('mark-quote').length,
+      sounds: node.getElementsByClassName('mark-sound').length
     }
   },
   saveMeta(state, meta) {
