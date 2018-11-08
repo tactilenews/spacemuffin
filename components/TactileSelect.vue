@@ -2,7 +2,7 @@
   <div :class="{ isActive }">
     {{ options[value] }}
     <span
-      v-if="!value"
+      v-if="!options[value]"
       class="placeholder"
     >
       {{ placeholder }}

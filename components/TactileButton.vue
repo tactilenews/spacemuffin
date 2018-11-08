@@ -53,7 +53,7 @@ export default {
 
 .large {
   margin: 0;
-  padding: $spacing-unit $spacing-unit;
+  padding: $spacing-small $spacing-unit;
   font-size: 1.25rem;
   font-size: $font-size-large;
 }
