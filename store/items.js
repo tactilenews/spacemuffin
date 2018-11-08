@@ -8,6 +8,11 @@ export const state = () => ({
   speaker: '',
   comment: '',
   deadline: new Date(),
+  counts: {
+    chars: 0,
+    quotes: 0,
+    sounds: 0
+  },
   json: null
 })
 
@@ -30,11 +35,7 @@ export const getters = {
     return state.comment
   },
   counts(state) {
-    return {
-      quotes: 5,
-      sounds: 4,
-      chars: 2000
-    }
+    return state.counts
   },
   deadline(state) {
     return state.deadline
@@ -61,8 +62,15 @@ export const mutations = {
   comment(state, comment) {
     state.comment = comment
   },
-  saveJSON(state, json) {
+  doc(state, { json, html }) {
+    const node = document.createElement('div')
+    node.innerHTML = html
     state.json = json
+    state.counts = {
+      chars: node.innerText.length,
+      quotes: node.getElementsByClassName("mark-original-tone").length,
+      sounds: node.getElementsByClassName("mark-ambient-tone").length
+    }
   },
   saveMeta(state, meta) {
     state.author = meta.author
