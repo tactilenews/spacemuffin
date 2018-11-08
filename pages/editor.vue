@@ -1,40 +1,41 @@
 <template>
   <div>
-    <tactile-sound-selector
-      :sounds="speakers"
-      :selected="speaker"
-      title="Speaker"
-      @selectSound="setSpeaker"
-    />
-    <tactile-editor
-      :doc="json"
-      @update="onUpdate" />
-    <div style="text-align: right">
-      <nuxt-link
-        to="/review"
-        tag="button"
-      >
-        Weiter
-      </nuxt-link>
-    </div>
+    <tactile-content>
+      <tactile-editor
+        :doc="json"
+        @update="onUpdate"
+      />
+    </tactile-content>
+    <tactile-actions-footer>
+      <template slot="next">
+        <tactile-button
+          to="/"
+        >
+          Entwurf speichern
+        </tactile-button>
+        <tactile-button
+          :primary="true"
+          to="/review"
+        >
+          Übersicht anzeigen
+        </tactile-button>
+      </template>
+    </tactile-actions-footer>
   </div>
 </template>
 
 <script>
+import TactileContent from '~/components/TactileContent.vue'
+import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
+import TactileButton from '~/components/TactileButton.vue'
 import TactileEditor from '~/components/editor/TactileEditor'
-import TactileSoundSelector from '~/components/TactileSoundSelector.vue'
-import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
-    'tactile-editor': TactileEditor,
-    'tactile-sound-selector': TactileSoundSelector
-  },
-  computed: {
-    ...mapGetters({
-      speakers: 'sounds/speakers',
-      speaker: 'items/speaker'
-    })
+    TactileContent,
+    TactileActionsFooter,
+    TactileButton,
+    TactileEditor
   },
   asyncData({ store }) {
     return {
@@ -44,10 +45,7 @@ export default {
   methods: {
     onUpdate({ getJSON, getHTML }) {
       this.$store.commit('items/saveJSON', getJSON())
-    },
-    ...mapMutations({
-      setSpeaker: 'items/setSpeaker'
-    })
+    }
   }
 }
 </script>
