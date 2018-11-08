@@ -27,7 +27,6 @@
 
 <script>
 export default {
-  name: 'Success',
   data() {
     return {
       days: 2,
