@@ -1,32 +1,31 @@
 <template>
   <div>
-    <h1>{{ title }}</h1>
-    <ul id="example-1">
+    <ul>
       <li
         v-for="sound in sounds"
         :key="sound.name">
-        {{ sound.name }}
-        <audio controls>
-          <source
-            :src="sound.url"
-            type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-        <button v-if="sound.name === selected.name">
-          Ausgewählt
-        </button>
-        <button
-          v-else
-          @click="$emit('selectSound', sound)">
-          Auswählen
-        </button>
+        <div class="name">
+          {{ sound.name }}
+        </div>
+        <div class="actions">
+          <button @click="$emit('select', sound.name)">Auswählen</button>
+          <tactile-audio-player :source="sound.url" />
+        </div>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import TactileAudioPlayer from '~/components/TactileAudioPlayer.vue'
 export default {
+  components: {
+    TactileAudioPlayer
+  },
+  model: {
+    prop: 'selected',
+    event: 'select'
+  },
   props: {
     title: {
       type: String,
@@ -43,3 +42,21 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/styles/variables';
+
+li {
+  display: flex;
+  list-style: none;
+  padding: $spacing-small 0;
+}
+
+li + li {
+  border-top: 1px solid #eee;
+}
+
+.actions {
+  margin-left: auto;
+}
+</style>
