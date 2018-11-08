@@ -32,10 +32,10 @@
 
       <tactile-select
         :options="{
-          karl: 'Karl Klimabär',
-          ralph: 'Ralph',
-          krake: 'Krake',
-          newspirat: 'Newspirat'
+          'Karl Klimabär': 'Karl Klimabär',
+          'Ralph': 'Ralph',
+          'Krake': 'Krake',
+          'Newspirat': 'Newspirat'
         }"
         v-model="meta.tonie"
         placeholder="Figur wählen"
