@@ -1,6 +1,6 @@
 <template>
   <div>
-    <tactile-content>
+    <tactile-content class="centered">
       <h1>Herzlichen Glückwunsch!</h1>
       <p>Dein Beitrag wurde an {{ speaker }} versandt. In {{ days }} Tagen sollte alles eingesprochen worden sein.</p>
 
