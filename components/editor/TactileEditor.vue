@@ -73,6 +73,9 @@ export default {
 @import '~assets/styles/variables';
 
 .ProseMirror {
+  margin-left: 1 - $spacing-small;
+  margin-right: 1 - $spacing-small;
+  margin-top: 1px;
   padding: $spacing-unit $spacing-unit;
 
   &:focus {
