@@ -12,12 +12,22 @@
             type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
+        <button v-if="sound.name === speaker">
+          Ausgewählt
+        </button>
+        <button
+          v-else
+          @click="setSpeaker(sound.name)">
+          Auswählen
+        </button>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
+
 export default {
   props: {
     title: {
@@ -28,6 +38,16 @@ export default {
       type: Array,
       default: () => []
     }
+  },
+  computed: {
+    ...mapGetters({
+      speaker: 'items/speaker'
+    })
+  },
+  methods: {
+    ...mapMutations({
+      setSpeaker: 'items/setSpeaker'
+    })
   }
 }
 </script>

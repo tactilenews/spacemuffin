@@ -32,5 +32,8 @@ export const mutations = {
     state.title = meta.title
     state.format = meta.format
     state.tonie = meta.tonie
+  },
+  setSpeaker(state, speaker) {
+    state.speaker = speaker
   }
 }
