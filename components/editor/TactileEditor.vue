@@ -60,17 +60,7 @@ export default {
   },
   methods: {
     onDialog({ mark, key, name, focus }) {
-      setTimeout(() => {
-        const fileName =
-          key === 'voice'
-            ? `männlich`
-            : `${key}-sound-${Math.round(Math.random() * 100)}.mp3`
-
-        mark.command({
-          'data-file': fileName
-        })
-        focus()
-      }, 1000)
+      this.$emit('dialog', { mark, key, name, focus })
     },
     onUpdate(e) {
       this.$emit('update', e)
@@ -88,6 +78,8 @@ export default {
   &:focus {
     outline: 1px dashed rgba($color-brand, 0.2);
   }
+
+  line-height: 1.2em;
 
   p,
   h1,
