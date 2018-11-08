@@ -24,12 +24,8 @@ import TactileEditorMenu from '~/components/editor/TactileEditorMenu.vue'
 import { Editor } from 'tiptap'
 import {
   HeadingNode,
-  HardBreakNode,
-  BulletListNode,
   ListItemNode,
   BoldMark,
-  CodeMark,
-  ItalicMark,
   PlaceholderExtension,
   HistoryExtension
 } from 'tiptap-extensions'
@@ -48,12 +44,8 @@ export default {
     return {
       extensions: [
         new HeadingNode({ maxLevel: 2 }),
-        new HardBreakNode(),
-        new BulletListNode(),
         new ListItemNode(),
         new BoldMark(),
-        new CodeMark(),
-        new ItalicMark(),
         new OriginalToneMark(),
         new AmbientToneMark(),
         new PlaceholderExtension({
