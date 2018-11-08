@@ -55,5 +55,6 @@ export default {
   margin: 0;
   padding: 0.5 * $spacing-unit $spacing-unit;
   font-size: 1.25rem;
+  font-size: $font-size-large;
 }
 </style>

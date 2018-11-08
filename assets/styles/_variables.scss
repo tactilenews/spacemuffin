@@ -1,10 +1,20 @@
 /**
  * SPACING
  */
-$font-family: system-ui;
-$font-size: 18px;
+
 $line-height: 30px;
+
 $spacing-unit: $line-height;
+$spacing-small: $spacing-unit * 0.5;
+$spacing-medium: $spacing-unit;
+$spacing-large: $spacing-unit * 2;
+
+$font-family: system-ui;
+
+$font-size: 18px;
+$font-size-medium: $font-size;
+$font-size-large: 1.25 * $font-size;
+$font-size-small: 0.75 * $font-size;
 
 /**
  * GRID

@@ -12,7 +12,7 @@
           buchtipp: 'einen Buchtipp',
           interview: 'ein Interview'
         }"
-        v-model="format"
+        v-model="meta.format"
         placeholder="Format wählen"
       />
 
@@ -21,7 +21,7 @@
       zu dem Thema
 
       »<tactile-input
-        v-model="title"
+        v-model="meta.title"
         type="text"
         placeholder="Titel eingeben"
       />«
@@ -37,7 +37,7 @@
           krake: 'Krake',
           newspirat: 'Newspirat'
         }"
-        v-model="figure"
+        v-model="meta.tonie"
         placeholder="Figur wählen"
       />
 
@@ -57,6 +57,7 @@
 import TactileInput from '~/components/TactileInput.vue'
 import TactileSelect from '~/components/TactileSelect.vue'
 import TactileButton from '~/components/TactileButton.vue'
+
 export default {
   components: {
     TactileInput,
@@ -65,9 +66,15 @@ export default {
   },
   data() {
     return {
-      format: '',
-      title: '',
-      figure: ''
+      meta: this.$store.getters['items/meta']
+    }
+  },
+  watch: {
+    meta: {
+      deep: true,
+      handler(meta) {
+        this.$store.commit('items/saveMeta', meta)
+      }
     }
   }
 }
