@@ -8,7 +8,7 @@
         isActive(marks[key]) && 'is-active'
       ]"
       class="menubar__button"
-      @click="marks[key].command"
+      @click="onButtonClick(marks[key], name, key)"
     >
       {{ name }}
     </button>
@@ -18,7 +18,8 @@
 <script>
 export default {
   props: {
-    marks: { type: Object, default: () => {} }
+    marks: { type: Object, default: () => {} },
+    focus: { type: Function, default: () => {} }
   },
   data() {
     return {
@@ -41,6 +42,14 @@ export default {
         }
       })
       return disabled
+    },
+    onButtonClick(mark, name, key) {
+      if (!mark.active()) {
+        this.$emit('dialog', { mark, name, key, focus: this.focus })
+      } else {
+        mark.command() // remove mark
+        this.$emit('removed', { mark, name, key })
+      }
     }
   }
 }

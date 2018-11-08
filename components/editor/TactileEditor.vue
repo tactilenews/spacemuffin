@@ -6,10 +6,13 @@
     @update="$emit('update', $event)">
     <div
       slot="menubar"
-      slot-scope="{ nodes, marks }"
+      slot-scope="{ nodes, marks, focus }"
       class="menubar">
       <template v-if="nodes && marks">
-        <tactile-editor-menu :marks="marks" />
+        <tactile-editor-menu
+          :marks="marks"
+          :focus="focus"
+          @dialog="onDialog" />
       </template>
     </div>
     <div
@@ -53,6 +56,24 @@ export default {
         }),
         new HistoryExtension()
       ]
+    }
+  },
+  methods: {
+    onDialog({ mark, key, name, focus }) {
+      setTimeout(() => {
+        const fileName =
+          key === 'voice'
+            ? `männlich`
+            : `${key}-sound-${Math.round(Math.random() * 100)}.mp3`
+
+        mark.command({
+          'data-file': fileName
+        })
+        focus()
+      }, 1000)
+    },
+    onUpdate(e) {
+      this.$emit('update', e)
     }
   }
 }
