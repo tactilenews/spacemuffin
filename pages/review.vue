@@ -32,9 +32,7 @@
       <nuxt-link
         to="/editor"
         tag="button">Beitrag editieren</nuxt-link>
-      <nuxt-link
-        to="/success"
-        tag="button">Jetzt produzieren</nuxt-link>
+      <button @click="sendMail">Jetzt produzieren</button>
       <nuxt-link
         to="/"
         tag="button">Für später speichern</nuxt-link>
@@ -45,6 +43,7 @@
 <script>
 // eslint-disable-next-line
 import {mapGetters} from 'vuex'
+import postEmailApi from '../apis/post-email'
 
 const hour = 60 * 60 * 1000
 const dateIn48Hours = new Date().getTime() + 48 * hour
@@ -55,7 +54,6 @@ function getDateString(date = new Date()) {
 }
 
 export default {
-  name: 'Review',
   data() {
     return {
       deadline: getDateString(dateIn48Hours),
@@ -79,6 +77,20 @@ export default {
     ...mapGetters({
       meta: 'items/meta'
     })
+  },
+  methods: {
+    sendMail() {
+      const data = {
+        username: 'me',
+        title: this.meta.title,
+        speaker: this.meta.speaker,
+        deadline: this.deadline,
+        format: this.meta.format
+      }
+
+      postEmailApi(data)
+      this.$router.push('success')
+    }
   }
 }
 </script>
