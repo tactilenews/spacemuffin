@@ -11,7 +11,6 @@
       @click="marks[key].command"
     >
       {{ name }}
-      <!--<icon name="bold" />-->
     </button>
   </div>
 </template>
@@ -24,7 +23,7 @@ export default {
   data() {
     return {
       markNames: {
-        bold: 'Sprecher',
+        voice: 'Sprecher',
         ambientTone: 'Geräusch',
         originalTone: 'O-Ton'
       }

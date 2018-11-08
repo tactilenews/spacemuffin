@@ -25,10 +25,10 @@ import { Editor } from 'tiptap'
 import {
   HeadingNode,
   ListItemNode,
-  BoldMark,
   PlaceholderExtension,
   HistoryExtension
 } from 'tiptap-extensions'
+import VoiceMark from '~/components/editor/marks/VoiceMark'
 import OriginalToneMark from '~/components/editor/marks/OriginalToneMark'
 import AmbientToneMark from '~/components/editor/marks/AmbientToneMark'
 
@@ -45,7 +45,7 @@ export default {
       extensions: [
         new HeadingNode({ maxLevel: 2 }),
         new ListItemNode(),
-        new BoldMark(),
+        new VoiceMark(),
         new OriginalToneMark(),
         new AmbientToneMark(),
         new PlaceholderExtension({
@@ -98,16 +98,28 @@ export default {
 
 $color-white: #fff;
 $color-black: #000;
-$color-ambient-tone: rgba(#777776, 0.4);
-$color-original-tone: rgba(#00f, 0.2);
+$color-voice: rgba(#ed553b, 0.4);
+$color-ambient-tone: rgba(#08bcbf, 0.4);
+$color-original-tone: rgba(#f2b134, 0.4);
 
 mark {
   padding-left: 0.2em;
   padding-right: 0.2em;
   margin-left: -0.2em;
   margin-right: -0.2em;
+  border-radius: $border-radius;
+
+  &::before {
+    display: inline-block;
+    content: '[' attr(data-file) '] ';
+    opacity: 0.5;
+    font-size: 0.5em;
+  }
 }
 
+mark.mark-voice {
+  background-color: $color-voice;
+}
 mark.mark-ambient-tone {
   background-color: $color-ambient-tone;
 }
