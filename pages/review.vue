@@ -45,7 +45,7 @@
         </tactile-button>
         <tactile-button
           :primary="true"
-          to="/review"
+          to="/success"
         >
           Produktion beauftragen
         </tactile-button>
