@@ -81,10 +81,10 @@ export default {
 }
 .editor p.is-empty:first-child::before {
   content: 'Füge hier deinen Beitrag ein…';
-  float: left;
+  position: absolute;
   color: #aaa;
   pointer-events: none;
-  height: 0;
+  // height: 0;
   font-style: italic;
 }
 
