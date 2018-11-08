@@ -6,13 +6,8 @@
     </header>
     <main>
       <section>
-        <h2>Titel & Autor</h2>
-        {{ meta.title }}
-        <em>
-          von {{ meta.author }}
-        </em>
         <h2>Beiträgsübersicht</h2>
-        <p>Dein Manuskript ist bereit zur Vertonung. Es ist <b>{{ format }}</b> mit dem $TITLE von $AUTHOR für die Tonie-Figur <b>{{ figure }}</b>. In <b>{{ charCount }} Zeichen</b> hast du <b>{{ tonesCount }} Töne</b> und <b>{{ soundsCount }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
+        <p>Dein Manuskript ist bereit zur Vertonung. Es ist <b>{{ format }}</b> mit dem <b>{{ meta.title }}</b> von <b>{{ meta.author }}</b> für die Tonie-Figur <b>{{ figure }}</b>. In <b>{{ charCount }} Zeichen</b> hast du <b>{{ tonesCount }} Töne</b> und <b>{{ soundsCount }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
       </section>
       <section>
         <div>
@@ -35,17 +30,21 @@
     </main>
     <footer>
       <nuxt-link
-        to="#"
+        to="/editor"
+        tag="button">Beitrag editieren</nuxt-link>
+      <nuxt-link
+        to="/success"
         tag="button">Jetzt produzieren</nuxt-link>
       <nuxt-link
-        to="#"
+        to="/"
         tag="button">Für später speichern</nuxt-link>
     </footer>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// eslint-disable-next-line
+import {mapGetters} from 'vuex'
 
 const hour = 60 * 60 * 1000
 const dateIn48Hours = new Date().getTime() + 48 * hour
@@ -77,7 +76,9 @@ export default {
       const totalCosts = deadline > dateIn48Hours ? costs : costs + expressFee
       return totalCosts
     },
-    ...mapGetters({ meta: 'items/meta' })
+    ...mapGetters({
+      meta: 'items/meta'
+    })
   }
 }
 </script>
@@ -94,6 +95,11 @@ section {
   width: calc(50% - 1em);
 }
 
+textarea {
+  width: 100%;
+  min-height: $spacing-unit * 5;
+}
+
 footer {
   margin-top: $spacing-medium;
   display: flex;
@@ -104,16 +110,7 @@ footer > button {
   margin-left: $spacing-small;
 }
 
-textarea {
-  width: 100%;
-  min-height: $spacing-unit * 5;
-}
-
-.label {
-  font-weight: bold;
-}
-
-.buttongroup {
-  align-self: bottom;
+footer > button:first-of-type {
+  margin: 0 auto 0 0;
 }
 </style>
