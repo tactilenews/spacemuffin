@@ -1,29 +1,17 @@
 <template>
   <div>
     <button
-      :disabled="marks.ambientTone.active() || marks.originalTone.active()"
-      :class="{ 'is-active': marks.bold.active() }"
-      class="menububble__button"
-      @click="marks.bold.command"
+      v-for="(name, key) in markNames"
+      :key="name"
+      :disabled="isDisabled(marks[key])"
+      :class="[
+        isActive(marks[key]) && 'is-active'
+      ]"
+      class="menubar__button"
+      @click="marks[key].command"
     >
-      Sprecher
+      {{ name }}
       <!--<icon name="bold" />-->
-    </button>
-    <button
-      :class="{ 'is-active': marks.italic.active() }"
-      class="menububble__button"
-      @click="marks.ambientTone.command"
-    >
-      Geräusch
-      <!--<icon name="italic" />-->
-    </button>
-    <button
-      :class="{ 'is-active': marks.code.active() }"
-      class="menububble__button"
-      @click="marks.originalTone.command"
-    >
-      O-Ton
-      <!--<icon name="code" />-->
     </button>
   </div>
 </template>
@@ -32,11 +20,33 @@
 export default {
   props: {
     marks: { type: Object, default: () => {} }
+  },
+  data() {
+    return {
+      markNames: {
+        bold: 'Sprecher',
+        ambientTone: 'Geräusch',
+        originalTone: 'O-Ton'
+      }
+    }
+  },
+  methods: {
+    isActive(mark) {
+      return mark.active()
+    },
+    isDisabled(mark) {
+      let disabled = false
+      Object.keys(this.marks).forEach(key => {
+        if (this.marks[key] !== mark && this.isActive(this.marks[key])) {
+          disabled = true
+        }
+      })
+      return disabled
+    }
   }
 }
 </script>
 
 <style lang="scss">
-@import '~assets/styles/editorMenuBubble';
 @import '~assets/styles/editorMenuBar';
 </style>

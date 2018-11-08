@@ -5,10 +5,10 @@
     class="editor"
     @update="$emit('update', $event)">
     <div
-      slot="menububble"
-      slot-scope="{ marks, focus }"
-      class="menububble">
-      <template v-if="marks">
+      slot="menubar"
+      slot-scope="{ nodes, marks }"
+      class="menubar">
+      <template v-if="nodes && marks">
         <tactile-editor-menu :marks="marks" />
       </template>
     </div>
