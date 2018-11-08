@@ -10,22 +10,26 @@
       />
     </editor>
     <div style="text-align: right">
-      <nuxt-link
+      <tactile-button
+        :large="true"
+        :primary="true"
         to="/review"
         tag="button"
       >
         Weiter
-      </nuxt-link>
+      </tactile-button>
     </div>
   </div>
 </template>
 
 <script>
 import { Editor } from 'tiptap'
+import TactileButton from '~/components/TactileButton'
 
 export default {
   components: {
-    editor: Editor
+    editor: Editor,
+    'tactile-button': TactileButton
   },
   asyncData({ store }) {
     return {

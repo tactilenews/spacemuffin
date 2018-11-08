@@ -29,15 +29,21 @@
       </section>
     </main>
     <footer>
-      <nuxt-link
+      <tactile-button
+        :primary="true"
+        :large="true"
         to="/editor"
-        tag="button">Beitrag editieren</nuxt-link>
-      <nuxt-link
+        tag="button">Beitrag editieren</tactile-button>
+      <tactile-button
+        :primary="true"
+        :large="true"
         to="/success"
-        tag="button">Jetzt produzieren</nuxt-link>
-      <nuxt-link
+        tag="button">Jetzt produzieren</tactile-button>
+      <tactile-button
+        :primary="true"
+        :large="true"
         to="/"
-        tag="button">Für später speichern</nuxt-link>
+        tag="button">Für später speichern</tactile-button>
     </footer>
   </div>
 </template>
@@ -45,6 +51,7 @@
 <script>
 // eslint-disable-next-line
 import {mapGetters} from 'vuex'
+import TactileButton from '~/components/TactileButton'
 
 const hour = 60 * 60 * 1000
 const dateIn48Hours = new Date().getTime() + 48 * hour
@@ -56,6 +63,9 @@ function getDateString(date = new Date()) {
 
 export default {
   name: 'Review',
+  components: {
+    'tactile-button': TactileButton
+  },
   data() {
     return {
       deadline: getDateString(dateIn48Hours),
