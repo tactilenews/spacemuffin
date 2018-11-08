@@ -14,7 +14,7 @@
           <div>
             <h2>Deadline</h2>
             <p>Ich möchte den Beitrag vertont zurück bis zum</p>
-            <v-date-picker
+            <DatePicker
               v-model="deadline"
               :min-date="new Date()"
               mode="single"
@@ -26,7 +26,7 @@
           </div>
           <div>
             <h2>Kommentar</h2>
-            <TactileInput
+            <textarea
               v-model="comment"
               placeholder="Möchtest du dem Sprecher was sagen?"
             />
@@ -75,12 +75,11 @@ export default {
     TactileActionsFooter,
     TactileButton,
     TactileInput,
-    'v-date-picker': DatePicker
+    DatePicker
   },
   computed: {
     ...mapGetters({
       meta: 'items/meta',
-      comment: 'items/comment',
       counts: 'items/counts',
       speaker: 'items/speaker',
       minutes: 'items/estimatedDuration',
