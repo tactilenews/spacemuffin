@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       markNames: {
-        voice: 'Sprecher',
+        voice: 'Stimme',
         ambient: 'Geräusch',
         oton: 'O-Ton'
       }
