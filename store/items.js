@@ -3,12 +3,16 @@ export const state = () => ({
   title: '',
   format: '',
   tonie: '',
+  speaker: '',
   json: null
 })
 
 export const getters = {
   json(state) {
     return state.json
+  },
+  speaker(state) {
+    return state.speaker
   },
   meta(state) {
     return {
