@@ -22,6 +22,10 @@ export default {
     icon: {
       type: String,
       default: null
+    },
+    iconPosition: {
+      type: String,
+      default: 'left'
     }
   }
 }
