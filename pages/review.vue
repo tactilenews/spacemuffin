@@ -14,10 +14,11 @@
           <div>
             <h2>Deadline</h2>
             <p>Ich möchte den Beitrag vertont zurück bis zum</p>
-            <input
-              v-model="deadlineDateString"
-              :min="currentDateString"
-              type="date">
+            <v-date-picker
+              v-model="deadline"
+              :min-date="new Date()"
+              mode="single"
+            />
           </div>
           <div>
             <h2>Preis</h2>
@@ -56,42 +57,41 @@
 
 <script>
 // eslint-disable-next-line
-import { mapGetters } from 'vuex'
-import { format, addDays } from 'date-fns'
+import { mapGetters, mapMutations } from 'vuex'
+import { format, addDays, startOfDay } from 'date-fns'
 import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
+import { setupCalendar, DatePicker } from 'v-calendar'
+import 'v-calendar/lib/v-calendar.min.css'
 
 export default {
   components: {
     TactileContent,
     TactileActionsFooter,
-    TactileButton
+    TactileButton,
+    'v-date-picker': DatePicker
   },
   computed: {
     ...mapGetters({
       meta: 'items/meta',
       counts: 'items/counts',
-      deadline: 'items/deadline',
       speaker: 'items/speaker',
       minutes: 'items/estimatedDuration',
       costs: 'items/costs'
     }),
-    currentDateString() {
-      return format(new Date(), 'yyyy-MM-dd')
-    },
-    deadlineDateString: {
+    deadline: {
       get() {
-        return format(this.deadline, 'yyyy-MM-dd')
+        return this.$store.getters['items/deadline']
       },
       set(date) {
-        this.$store.commit('items/setDeadline', new Date(date))
+        this.$store.commit('items/deadline', date)
       }
     }
   },
   created() {
-    let midnight = new Date(this.currentDateString)
-    this.$store.commit('items/setDeadline', addDays(midnight, 3))
+    setupCalendar({ firstDayOfWeek: 2 })
+    this.$store.commit('items/deadline', addDays(startOfDay(new Date()), 3))
   }
 }
 </script>

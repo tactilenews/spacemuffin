@@ -48,9 +48,8 @@ export const getters = {
   estimatedDuration(state, getters) {
     const averageWordLength = 1.52 // https://de.wikipedia.org/wiki/Wortl%C3%A4nge#Durchschnittliche_Wortl%C3%A4nge_in_verschiedenen_Textgruppen
     const words = getters.counts.chars / averageWordLength
-    console.log(words)
     const minutes = words / 130.0 // http://speechinminutes.com/
-    const time = setMinutes(new Date(), minutes)
+    const time = new Date(minutes * 60 * 1000)
     return format(time, 'mm:ss')
   }
 }
@@ -64,7 +63,7 @@ export const mutations = {
     state.format = meta.format
     state.tonie = meta.tonie
   },
-  setDeadline(state, deadline) {
+  deadline(state, deadline) {
     state.deadline = deadline
   }
 }
