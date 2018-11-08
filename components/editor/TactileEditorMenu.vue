@@ -5,6 +5,7 @@
       :key="name"
       :disabled="isDisabled(marks[key])"
       :class="[
+        `mark-button-${key}`,
         isActive(marks[key]) && 'is-active'
       ]"
       class="menubar__button"
@@ -25,8 +26,8 @@ export default {
     return {
       markNames: {
         voice: 'Sprecher',
-        ambientTone: 'Geräusch',
-        originalTone: 'O-Ton'
+        ambient: 'Geräusch',
+        oton: 'O-Ton'
       }
     }
   },
@@ -36,11 +37,11 @@ export default {
     },
     isDisabled(mark) {
       let disabled = false
-      Object.keys(this.marks).forEach(key => {
-        if (this.marks[key] !== mark && this.isActive(this.marks[key])) {
-          disabled = true
-        }
-      })
+      // Object.keys(this.marks).forEach(key => {
+      //   if (this.marks[key] !== mark && this.isActive(this.marks[key])) {
+      //     disabled = true
+      //   }
+      // })
       return disabled
     },
     onButtonClick(mark, name, key) {
@@ -57,6 +58,7 @@ export default {
 
 <style lang="scss">
 @import '~assets/styles/variables';
+@import '~assets/styles/marker';
 
 .menubar {
   position: sticky;
@@ -92,6 +94,39 @@ export default {
     &:disabled {
       opacity: 0.5;
       pointer-events: none;
+    }
+  }
+  .mark-button-voice {
+    text-decoration: underline double;
+    background-color: rgba($color-marker-voice, 0.1);
+
+    &:hover {
+      background-color: rgba($color-marker-voice, 0.3);
+    }
+    &.is-active {
+      background-color: rgba($color-marker-voice, 0.7);
+    }
+  }
+  .mark-button-ambient {
+    text-decoration: underline dashed;
+    background-color: rgba($color-marker-ambient, 0.1);
+
+    &:hover {
+      background-color: rgba($color-marker-ambient, 0.3);
+    }
+    &.is-active {
+      background-color: rgba($color-marker-ambient, 0.7);
+    }
+  }
+  .mark-button-oton {
+    text-decoration: underline dotted;
+    background-color: rgba($color-marker-oton, 0.1);
+
+    &:hover {
+      background-color: rgba($color-marker-oton, 0.3);
+    }
+    &.is-active {
+      background-color: rgba($color-marker-oton, 0.7);
     }
   }
 }
