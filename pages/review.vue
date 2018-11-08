@@ -26,7 +26,10 @@
           </div>
           <div>
             <h2>Kommentar</h2>
-            <textarea placeholder="Möchtest du dem Sprecher was sagen?"/>
+            <TactileInput
+              v-model="comment"
+              placeholder="Möchtest du dem Sprecher was sagen?"
+            />
           </div>
         </section>
       </div>
@@ -57,11 +60,12 @@
 
 <script>
 // eslint-disable-next-line
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 import { format, addDays, startOfDay } from 'date-fns'
 import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
+import TactileInput from '~/components/TactileInput.vue'
 import { setupCalendar, DatePicker } from 'v-calendar'
 import 'v-calendar/lib/v-calendar.min.css'
 
@@ -70,16 +74,26 @@ export default {
     TactileContent,
     TactileActionsFooter,
     TactileButton,
+    TactileInput,
     'v-date-picker': DatePicker
   },
   computed: {
     ...mapGetters({
       meta: 'items/meta',
+      comment: 'items/comment',
       counts: 'items/counts',
       speaker: 'items/speaker',
       minutes: 'items/estimatedDuration',
       costs: 'items/costs'
     }),
+    comment: {
+      get() {
+        return this.$store.getters['items/comment']
+      },
+      set(comment) {
+        this.$store.commit('items/comment', comment)
+      }
+    },
     deadline: {
       get() {
         return this.$store.getters['items/deadline']

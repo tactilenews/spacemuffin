@@ -6,6 +6,7 @@ export const state = () => ({
   format: '',
   tonie: '',
   speaker: '',
+  comment: '',
   deadline: new Date(),
   json: null
 })
@@ -24,6 +25,9 @@ export const getters = {
       format: state.format,
       tonie: state.tonie
     }
+  },
+  comment(state) {
+    return state.comment
   },
   counts(state) {
     return {
@@ -54,6 +58,9 @@ export const getters = {
   }
 }
 export const mutations = {
+  comment(state, comment) {
+    state.comment = comment
+  },
   saveJSON(state, json) {
     state.json = json
   },
