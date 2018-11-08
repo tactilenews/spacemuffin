@@ -1,31 +1,41 @@
 <template>
   <div>
-    <editor
-      :doc="json"
-      @update="onUpdate"
-    >
-      <div
-        slot="content"
-        slot-scope="props"
+    <tactile-content>
+      <tactile-editor
+        :doc="json"
+        @update="onUpdate"
       />
-    </editor>
-    <div style="text-align: right">
-      <nuxt-link
-        to="/review"
-        tag="button"
-      >
-        Weiter
-      </nuxt-link>
-    </div>
+    </tactile-content>
+    <tactile-actions-footer>
+      <template slot="next">
+        <tactile-button
+          to="/"
+        >
+          Entwurf speichern
+        </tactile-button>
+        <tactile-button
+          :primary="true"
+          to="/review"
+        >
+          Übersicht anzeigen
+        </tactile-button>
+      </template>
+    </tactile-actions-footer>
   </div>
 </template>
 
 <script>
-import { Editor } from 'tiptap'
+import TactileContent from '~/components/TactileContent.vue'
+import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
+import TactileButton from '~/components/TactileButton.vue'
+import TactileEditor from '~/components/editor/TactileEditor'
 
 export default {
   components: {
-    editor: Editor
+    TactileContent,
+    TactileActionsFooter,
+    TactileButton,
+    TactileEditor
   },
   asyncData({ store }) {
     return {
@@ -39,10 +49,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.ProseMirror {
-  padding: 1rem 1.5rem;
-  // outline: none;
-}
-</style>
