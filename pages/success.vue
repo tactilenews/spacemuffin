@@ -2,7 +2,7 @@
   <div>
     <header>
       <h1>Herzlichen Glückwunsch!</h1>
-      <p>Dein Beitrag wurde an $SPRECHER versandt. In $TAGEN Tagen sollte alles eingesprochen worden sein.</p>
+      <p>Dein Beitrag wurde an {{ speaker }} versandt. In {{ days }} Tagen sollte alles eingesprochen worden sein.</p>
     </header>
     <main>
       <section class="muffin">
@@ -24,6 +24,18 @@
     </footer>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Success',
+  data() {
+    return {
+      days: 2,
+      speaker: 'Ralph Caspers'
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 @import '~assets/styles/variables';
