@@ -58,11 +58,6 @@ export default {
     },
     isDisabled(mark) {
       let disabled = false
-      // Object.keys(this.marks).forEach(key => {
-      //   if (this.marks[key] !== mark && this.isActive(this.marks[key])) {
-      //     disabled = true
-      //   }
-      // })
       return disabled
     },
     onButtonClick(mark, name, key) {
