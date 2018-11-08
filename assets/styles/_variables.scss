@@ -17,6 +17,8 @@ $font-size-medium: $font-size;
 $font-size-large: 1.25 * $font-size;
 $font-size-small: 0.75 * $font-size;
 
+$border-radius: 3px;
+
 /**
  * GRID
  */
@@ -28,3 +30,4 @@ $grid-max-width: 960px;
 $color-text: #333;
 $color-bg: #eee;
 $color-brand: #d9007d;
+$color-white: #fff;

@@ -1,15 +1,10 @@
 <template>
   <div>
     <tactile-content>
-      <editor
+      <tactile-editor
         :doc="json"
         @update="onUpdate"
-      >
-        <div
-          slot="content"
-          slot-scope="props"
-        />
-      </editor>
+      />
     </tactile-content>
     <tactile-actions-footer>
       <template slot="next">
@@ -33,14 +28,14 @@
 import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
-import { Editor } from 'tiptap'
+import TactileEditor from '~/components/editor/TactileEditor'
 
 export default {
   components: {
     TactileContent,
     TactileActionsFooter,
     TactileButton,
-    Editor
+    TactileEditor
   },
   asyncData({ store }) {
     return {
@@ -54,10 +49,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.ProseMirror {
-  padding: 1rem 1.5rem;
-  // outline: none;
-}
-</style>
