@@ -6,10 +6,13 @@
     @update="$emit('update', $event)">
     <div
       slot="menubar"
-      slot-scope="{ nodes, marks }"
+      slot-scope="{ nodes, marks, focus }"
       class="menubar">
       <template v-if="nodes && marks">
-        <tactile-editor-menu :marks="marks" />
+        <tactile-editor-menu
+          :marks="marks"
+          :focus="focus"
+          @dialog="onDialog" />
       </template>
     </div>
     <div
@@ -54,6 +57,14 @@ export default {
         new HistoryExtension()
       ]
     }
+  },
+  methods: {
+    onDialog({ mark, key, name, focus }) {
+      this.$emit('dialog', { mark, key, name, focus })
+    },
+    onUpdate(e) {
+      this.$emit('update', e)
+    }
   }
 }
 </script>
@@ -62,11 +73,16 @@ export default {
 @import '~assets/styles/variables';
 
 .ProseMirror {
+  margin-left: 1 - $spacing-small;
+  margin-right: 1 - $spacing-small;
+  margin-top: 1px;
   padding: $spacing-unit $spacing-unit;
 
   &:focus {
     outline: 1px dashed rgba($color-brand, 0.2);
   }
+
+  line-height: 1.2em;
 
   p,
   h1,

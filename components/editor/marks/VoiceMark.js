@@ -1,5 +1,5 @@
 import { Mark } from 'tiptap'
-import { toggleMark } from 'tiptap-commands'
+import { toggleMark, updateMark } from 'tiptap-commands'
 
 export default class VoiceMark extends Mark {
   get name() {
@@ -13,7 +13,7 @@ export default class VoiceMark extends Mark {
           default: 'mark-voice'
         },
         'data-file': {
-          default: 'männlich'
+          default: 'selecting...'
         }
       },
       parseDOM: [
@@ -31,13 +31,11 @@ export default class VoiceMark extends Mark {
     }
   }
 
-  keys({ type }) {
-    return {
-      // 'Mod-o': toggleMark(type)
+  command({ type, attrs }) {
+    if (attrs && attrs['data-file']) {
+      return updateMark(type, attrs)
+    } else {
+      return toggleMark(type, attrs)
     }
-  }
-
-  command({ type }) {
-    return toggleMark(type)
   }
 }
