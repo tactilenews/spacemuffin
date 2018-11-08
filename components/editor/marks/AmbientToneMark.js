@@ -33,7 +33,7 @@ export default class AmbientToneMark extends Mark {
 
   keys({ type }) {
     return {
-      'Mod-a': toggleMark(type)
+      'Mod-g': toggleMark(type)
     }
   }
 
