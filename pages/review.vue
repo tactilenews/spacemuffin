@@ -7,22 +7,10 @@
     <main>
       <section>
         <h2>Titel & Autor</h2>
-        <div>
-          <label
-            class="label"
-            for="title">Titel</label>
-          <input
-            type="text"
-            placeholder="Titel des Beitrages">
-        </div>
-        <div>
-          <label
-            class="label"
-            for="author">Autor</label>
-          <input
-            type="text"
-            placeholder="Name des Autoren">
-        </div>
+        {{ meta.title }}
+        <em>
+          von {{ meta.author }}
+        </em>
         <h2>Beiträgsübersicht</h2>
         <p>Dein Manuskript ist bereit zur Vertonung. Es ist <b>{{ format }}</b> mit dem $TITLE von $AUTHOR für die Tonie-Figur <b>{{ figure }}</b>. In <b>{{ charCount }} Zeichen</b> hast du <b>{{ tonesCount }} Töne</b> und <b>{{ soundsCount }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
       </section>
@@ -57,6 +45,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 const hour = 60 * 60 * 1000
 const dateIn48Hours = new Date().getTime() + 48 * hour
 const expressFee = 50
@@ -86,7 +76,8 @@ export default {
         this.charCount * 0.04 + (this.tonesCount + this.soundsCount) * 9
       const totalCosts = deadline > dateIn48Hours ? costs : costs + expressFee
       return totalCosts
-    }
+    },
+    ...mapGetters({ meta: 'items/meta' })
   }
 }
 </script>
