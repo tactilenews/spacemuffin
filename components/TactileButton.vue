@@ -5,6 +5,7 @@
     :class="{ button: true, primary, large }"
   >
     <TactileIcon
+      v-if="icon"
       :class="{ 'icon': true, 'icon-right': iconPosition === 'right' }"
       :icon="icon"
     />
