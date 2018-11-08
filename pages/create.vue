@@ -6,12 +6,12 @@
 
       <tactile-select
         :options="{
-          reportage: 'eine Reportage',
-          latenight: 'eine Latenight',
-          qa: 'ein Q&A',
-          protokoll: 'ein Protokoll',
-          buchtipp: 'einen Buchtipp',
-          interview: 'ein Interview'
+          'eine Reportage': 'eine Reportage',
+          'eine Latenight': 'eine Latenight',
+          'ein Q&A': 'ein Q&A',
+          'ein Protokoll': 'ein Protokoll',
+          'ein Buchtipp': 'einen Buchtipp',
+          'ein Interview': 'ein Interview'
         }"
         v-model="meta.format"
         placeholder="Format wählen"

@@ -1,9 +1,12 @@
+import { setMinutes, format, differenceInHours } from 'date-fns'
+
 export const state = () => ({
   author: '',
   title: '',
   format: '',
   tonie: '',
   speaker: '',
+  deadline: new Date(),
   json: null
 })
 
@@ -21,6 +24,34 @@ export const getters = {
       format: state.format,
       tonie: state.tonie
     }
+  },
+  counts(state) {
+    return {
+      quotes: 5,
+      sounds: 4,
+      chars: 2000
+    }
+  },
+  deadline(state) {
+    return state.deadline
+  },
+  costs(state, getters) {
+    const expressFee = 50
+    let costs =
+      getters.counts.chars * 0.04 +
+      (getters.counts.quotes + getters.counts.sounds) * 9
+    if (differenceInHours(getters.deadline, new Date()) > 48) {
+      costs += expressFee
+    }
+    return costs
+  },
+  estimatedDuration(state, getters) {
+    const averageWordLength = 1.52 // https://de.wikipedia.org/wiki/Wortl%C3%A4nge#Durchschnittliche_Wortl%C3%A4nge_in_verschiedenen_Textgruppen
+    const words = getters.counts.chars / averageWordLength
+    console.log(words)
+    const minutes = words / 130.0 // http://speechinminutes.com/
+    const time = setMinutes(new Date(), minutes)
+    return format(time, 'mm:ss')
   }
 }
 export const mutations = {
@@ -32,5 +63,8 @@ export const mutations = {
     state.title = meta.title
     state.format = meta.format
     state.tonie = meta.tonie
+  },
+  setDeadline(state, deadline) {
+    state.deadline = deadline
   }
 }
