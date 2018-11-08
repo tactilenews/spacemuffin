@@ -1,14 +1,8 @@
 <template>
   <div>
-    <editor
+    <tactile-editor
       :doc="json"
-      @update="onUpdate"
-    >
-      <div
-        slot="content"
-        slot-scope="props"
-      />
-    </editor>
+      @update="onUpdate" />
     <div style="text-align: right">
       <nuxt-link
         to="/review"
@@ -21,11 +15,10 @@
 </template>
 
 <script>
-import { Editor } from 'tiptap'
-
+import TactileEditor from '~/components/editor/TactileEditor'
 export default {
   components: {
-    editor: Editor
+    TactileEditor
   },
   asyncData({ store }) {
     return {
@@ -39,10 +32,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.ProseMirror {
-  padding: 1rem 1.5rem;
-  // outline: none;
-}
-</style>
