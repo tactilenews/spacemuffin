@@ -1,8 +1,8 @@
 <template>
   <div>
     <header>
-      <h1>Geschafft!</h1>
-      <p>Dirk freut sich schon darauf deinen Manuskript einzusprechen. Wirf noch einen letzten Blick und schicke ihm den Auftrag.</p>
+      <h1>Fast Geschafft!</h1>
+      <p>Dirk freut sich schon darauf, dein Manuskript einzusprechen. Wirf noch einen letzten Blick auf deine Bestellung und schicke sie dann ab.</p>
     </header>
     <main>
       <section>
@@ -24,10 +24,7 @@
             placeholder="Name des Autoren">
         </div>
         <h2>Beiträgsübersicht</h2>
-        <p>Dein Manuskript ist bereit zur Vertonung. Es ist <b>{{ format }}</b> für die Tonie-Figur <b>{{ figure }}</b>. In <b>{{ charCount }} Zeichen</b> hast du <b>{{ tonesCount }} Töne</b> und <b>{{ soundsCount }} Geräusche</b> untergebracht.</p>
-        <div>
-          <span>Ich schätze die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</span>
-        </div>
+        <p>Dein Manuskript ist bereit zur Vertonung. Es ist <b>{{ format }}</b> mit dem $TITLE von $AUTHOR für die Tonie-Figur <b>{{ figure }}</b>. In <b>{{ charCount }} Zeichen</b> hast du <b>{{ tonesCount }} Töne</b> und <b>{{ soundsCount }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
       </section>
       <section>
         <div>
