@@ -1,9 +1,7 @@
 <template>
   <div>
     <tactile-header />
-    <main>
-      <nuxt class="content" />
-    </main>
+    <nuxt class="wrapper" />
   </div>
 </template>
 
@@ -19,13 +17,9 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/styles/variables';
 
-main {
+.wrapper {
   max-width: $grid-max-width;
   margin: $spacing-unit auto;
-
-  & > .content {
-    padding: $spacing-unit;
-    background: #fff;
-  }
+  background: #fff;
 }
 </style>

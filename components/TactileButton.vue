@@ -36,7 +36,6 @@ export default {
 
 .button {
   display: inline-block;
-  margin: $spacing-tiny 0;
   padding: $spacing-tiny $spacing-small;
 
   text-decoration: none;
@@ -52,7 +51,6 @@ export default {
 }
 
 .large {
-  margin: 0;
   padding: $spacing-small $spacing-unit;
   font-size: 1.25rem;
   font-size: $font-size-large;
