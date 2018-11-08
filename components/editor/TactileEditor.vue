@@ -32,8 +32,8 @@ import {
   HistoryExtension
 } from 'tiptap-extensions'
 import VoiceMark from '~/components/editor/marks/VoiceMark'
-import OriginalToneMark from '~/components/editor/marks/OriginalToneMark'
-import AmbientToneMark from '~/components/editor/marks/AmbientToneMark'
+import QuoteMark from '~/components/editor/marks/QuoteMark'
+import SoundMark from '~/components/editor/marks/SoundMark'
 
 export default {
   components: {
@@ -49,8 +49,8 @@ export default {
         new HeadingNode({ maxLevel: 2 }),
         new ListItemNode(),
         new VoiceMark(),
-        new OriginalToneMark(),
-        new AmbientToneMark(),
+        new QuoteMark(),
+        new SoundMark(),
         new PlaceholderExtension({
           emptyNodeClass: 'is-empty'
         }),
