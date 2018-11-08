@@ -8,7 +8,7 @@
       <div class="data">
         <section>
           <h2>Beiträgsübersicht</h2>
-          <p>Dein Manuskript ist bereit zur Vertonung. Es ist <b>{{ format }}</b> mit dem <b>{{ meta.title }}</b> von <b>{{ meta.author }}</b> für die Tonie-Figur <b>{{ figure }}</b>. In <b>{{ charCount }} Zeichen</b> hast du <b>{{ tonesCount }} Töne</b> und <b>{{ soundsCount }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
+          <p>Dein Manuskript ist bereit zur Vertonung. Es ist <b>{{ meta.format }}</b> mit dem <b>{{ meta.title }}</b> von <b>{{ meta.author }}</b> für die Tonie-Figur <b>{{ meta.tonie }}</b>. In <b>{{ charCount }} Zeichen</b> hast du <b>{{ tonesCount }} Töne</b> und <b>{{ soundsCount }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
         </section>
         <section>
           <div>
@@ -82,9 +82,7 @@ export default {
       tonesCount: 5,
       soundsCount: 4,
       minDeadline: getDateString(),
-      minutes: '2:30',
-      format: 'eine Reportage',
-      figure: 'Karl Klimabär'
+      minutes: '2:30'
     }
   },
   computed: {
