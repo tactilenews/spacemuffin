@@ -26,12 +26,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  data() {
-    return {
-      days: 2,
-      speaker: 'Ralph Caspers'
-    }
+  computed: {
+    ...mapGetters({
+      speaker: 'items/speaker'
+    })
   }
 }
 </script>

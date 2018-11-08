@@ -38,7 +38,7 @@
     </main>
     <footer>
       <nuxt-link
-        to="#"
+        to="success"
         tag="button">Jetzt produzieren</nuxt-link>
       <nuxt-link
         to="#"
