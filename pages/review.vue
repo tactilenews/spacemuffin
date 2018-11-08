@@ -45,8 +45,7 @@
         </tactile-button>
         <tactile-button
           :primary="true"
-          to="/success"
-          @click="sendMail"
+          @click="() => sendMail()"
         >
           Produktion beauftragen
         </tactile-button>
@@ -104,7 +103,7 @@ export default {
     })
   },
   methods: {
-    sendMail() {
+    sendMail: () => {
       const data = {
         username: 'me',
         title: this.meta.title,

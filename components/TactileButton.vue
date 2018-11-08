@@ -1,11 +1,17 @@
 <template>
   <nuxt-link
+    v-if="to"
     :to="to"
     :tag="tag"
     :class="{ button: true, primary, large }"
   >
     <slot />
   </nuxt-link>
+  <button
+    v-else
+    @click="$emit('click', $event)">
+    <slot />
+  </button>
 </template>
 
 <script>
