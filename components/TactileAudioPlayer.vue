@@ -1,11 +1,18 @@
 <template>
   <button @click="isPlaying ? stop() : play()">
-    {{ isPlaying ? 'Stop' : 'Play' }}
+    <tactile-icon :icon="isPlaying ? 'pause' : 'play'" />
+    <span class="visually-hidden">
+      {{ isPlaying ? 'Audio stoppen' : 'Audio starten' }}
+    </span>
   </button>
 </template>
 
 <script>
+import TactileIcon from '~/components/TactileIcon.vue'
 export default {
+  components: {
+    TactileIcon
+  },
   props: {
     source: {
       type: String,
@@ -49,3 +56,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/styles/variables';
+
+button {
+  width: 1.5 * $spacing-unit;
+  height: 1.5 * $spacing-unit;
+
+  color: #fff;
+  background-color: $color-brand;
+  border: none;
+  border-radius: 50%;
+}
+</style>
