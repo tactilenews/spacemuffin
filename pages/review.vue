@@ -34,6 +34,7 @@
       <tactile-button
         slot="prev"
         to="/editor"
+        icon="chevron-left"
       >
         Beitrag bearbeiten
       </tactile-button>
@@ -46,6 +47,8 @@
         <tactile-button
           :primary="true"
           to="/success"
+          icon-position="right"
+          icon="check"
         >
           Produktion beauftragen
         </tactile-button>
