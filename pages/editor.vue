@@ -2,7 +2,9 @@
   <div>
     <tactile-sound-selector
       :sounds="speakers"
+      :selected="speaker"
       title="Speaker"
+      @selectSound="setSpeaker"
     />
     <tactile-editor
       :doc="json"
@@ -21,7 +23,7 @@
 <script>
 import TactileEditor from '~/components/editor/TactileEditor'
 import TactileSoundSelector from '~/components/TactileSoundSelector.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
@@ -30,7 +32,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      speakers: 'sounds/speakers'
+      speakers: 'sounds/speakers',
+      speaker: 'items/speaker'
     })
   },
   asyncData({ store }) {
@@ -41,7 +44,10 @@ export default {
   methods: {
     onUpdate({ getJSON, getHTML }) {
       this.$store.commit('items/saveJSON', getJSON())
-    }
+    },
+    ...mapMutations({
+      setSpeaker: 'items/setSpeaker'
+    })
   }
 }
 </script>
