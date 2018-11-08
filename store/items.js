@@ -1,8 +1,8 @@
 export const state = () => ({
-  author: 'Ich',
-  title: 'Die Pferdeflüsterer',
-  format: 'Reportage',
-  tonie: 'Eisbär',
+  author: '',
+  title: '',
+  format: '',
+  tonie: '',
   json: null
 })
 
