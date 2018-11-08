@@ -1,11 +1,9 @@
 @import '~assets/styles/variables';
 
-$color-white: #fff;
-$color-black: #000;
-
 .menubar {
   position: sticky;
   top: 0;
+  z-index: 99;
   background: $color-white;
   padding: $spacing-small 0.7 * $spacing-unit;
 
@@ -17,18 +15,18 @@ $color-black: #000;
     display: inline-flex;
     background: transparent;
     border: 0;
-    color: $color-black;
+    color: $color-text;
     padding: $paddingV $paddingH;
     margin-right: 0.2 * $spacing-small;
     border-radius: $border-radius;
     cursor: pointer;
 
     &:hover {
-      background-color: rgba($color-black, 0.05);
+      background-color: rgba($color-text, 0.05);
     }
 
     &.is-active {
-      background-color: rgba($color-black, 0.1);
+      background-color: rgba($color-text, 0.1);
     }
 
     &:disabled {
