@@ -6,7 +6,12 @@
         v-for="sound in sounds"
         :key="sound.name">
         {{ sound.name }}
-        {{ sound.url }}
+        <audio controls>
+          <source
+            :src="sound.url"
+            type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
       </li>
     </ul>
   </div>
