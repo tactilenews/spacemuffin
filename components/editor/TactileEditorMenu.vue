@@ -39,12 +39,12 @@ export default {
           icon: 'user',
           description: 'Ändere die Stimme für den markierten Text.'
         },
-        ambient: {
+        sound: {
           label: 'Geräusch',
           icon: 'microphone',
           description: 'Lege ein Geräusch unter den markierten Text.'
         },
-        oton: {
+        quote: {
           label: 'O-Ton',
           icon: 'headphones-alt',
           description: 'Lege einen O-Ton zum über den markierten Text.'
@@ -136,26 +136,26 @@ export default {
       background-color: rgba($color-marker-voice, 0.7);
     }
   }
-  .mark-button-ambient {
+  .mark-button-sound {
     text-decoration: underline dashed;
-    background-color: rgba($color-marker-ambient, 0.1);
+    background-color: rgba($color-marker-sound, 0.1);
 
     &:hover {
-      background-color: rgba($color-marker-ambient, 0.3);
+      background-color: rgba($color-marker-sound, 0.3);
     }
     &.is-active {
-      background-color: rgba($color-marker-ambient, 0.7);
+      background-color: rgba($color-marker-sound, 0.7);
     }
   }
-  .mark-button-oton {
+  .mark-button-quote {
     text-decoration: underline dotted;
-    background-color: rgba($color-marker-oton, 0.1);
+    background-color: rgba($color-marker-quote, 0.1);
 
     &:hover {
-      background-color: rgba($color-marker-oton, 0.3);
+      background-color: rgba($color-marker-quote, 0.3);
     }
     &.is-active {
-      background-color: rgba($color-marker-oton, 0.7);
+      background-color: rgba($color-marker-quote, 0.7);
     }
   }
 }

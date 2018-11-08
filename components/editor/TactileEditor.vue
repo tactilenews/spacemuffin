@@ -134,12 +134,12 @@ mark {
   color: rgba($color-text, 0.7);
   text-decoration: underline double;
 }
-.mark-ambient {
-  background-color: $color-marker-ambient;
+.mark-sound {
+  background-color: $color-marker-sound;
   text-decoration: underline dashed;
 }
-.mark-oton {
-  background-color: $color-marker-oton;
+.mark-quote {
+  background-color: $color-marker-quote;
   text-decoration: underline dotted;
 }
 </style>
