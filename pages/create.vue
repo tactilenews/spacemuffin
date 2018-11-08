@@ -46,11 +46,20 @@
 
     <tactile-actions-footer>
       <tactile-button
+        slot="prev"
+        to="/"
+        icon="chevron-left"
+      >
+        Zurück zur Übersicht
+      </tactile-button>
+      <tactile-button
         slot="next"
         :primary="true"
         to="/editor"
+        icon="chevron-right"
+        icon-position="right"
       >
-        Inhalte einfügen
+        Loslegen
       </tactile-button>
     </tactile-actions-footer>
 

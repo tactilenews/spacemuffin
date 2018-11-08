@@ -16,3 +16,9 @@ html {
   background: $color-bg;
   color: $color-text;
 }
+
+textarea,
+input {
+  padding: $spacing-tiny;
+  resize: none;
+}
