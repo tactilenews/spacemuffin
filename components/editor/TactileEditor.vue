@@ -71,6 +71,7 @@ export default {
 
 <style lang="scss">
 @import '~assets/styles/variables';
+@import '~assets/styles/marker';
 
 .ProseMirror {
   margin-left: 1 - $spacing-small;
@@ -111,12 +112,6 @@ export default {
   margin-bottom: $spacing-unit;
 }
 
-$color-white: #fff;
-$color-black: #000;
-$color-voice: rgba(#ed553b, 0.4);
-$color-ambient-tone: rgba(#08bcbf, 0.4);
-$color-original-tone: rgba(#f2b134, 0.4);
-
 mark {
   padding-left: 0.2em;
   padding-right: 0.2em;
@@ -129,16 +124,22 @@ mark {
     content: '[' attr(data-file) '] ';
     opacity: 0.5;
     font-size: 0.5em;
+    color: $color-text;
   }
 }
 
-mark.mark-voice {
-  background-color: $color-voice;
+.mark-voice {
+  background-color: $color-marker-voice;
+  font-style: italic;
+  color: rgba($color-text, 0.7);
+  text-decoration: underline double;
 }
-mark.mark-ambient-tone {
-  background-color: $color-ambient-tone;
+.mark-ambient {
+  background-color: $color-marker-ambient;
+  text-decoration: underline dashed;
 }
-mark.mark-original-tone {
-  background-color: $color-original-tone;
+.mark-oton {
+  background-color: $color-marker-oton;
+  text-decoration: underline dotted;
 }
 </style>

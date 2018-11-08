@@ -3,14 +3,14 @@ import { toggleMark, updateMark } from 'tiptap-commands'
 
 export default class OriginalToneMark extends Mark {
   get name() {
-    return 'originalTone'
+    return 'oton'
   }
 
   get schema() {
     return {
       attrs: {
         class: {
-          default: 'mark-original-tone'
+          default: 'mark-oton'
         },
         'data-file': {
           default: 'selecting...'
