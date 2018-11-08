@@ -22,7 +22,6 @@
 
       »<tactile-input
         v-model="meta.title"
-        type="text"
         placeholder="Titel eingeben"
       />«
 

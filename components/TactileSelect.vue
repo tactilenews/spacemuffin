@@ -62,7 +62,7 @@ export default {
 div {
   position: relative;
   display: inline-block;
-  padding: 0.25 * $spacing-unit 0 * $spacing-unit;
+  padding: $spacing-tiny 0;
 
   font-weight: 700;
   border-bottom: 2px dashed $color-brand;
