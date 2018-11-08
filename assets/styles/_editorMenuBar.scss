@@ -8,8 +8,8 @@
   padding: $spacing-small 0.7 * $spacing-unit;
 
   &__button {
-    $padding-vertical: 0.5 * $spacing-small;
-    $padding-horizontal: 0.6 * $spacing-small;
+    $padding-vertical: $spacing-tiny;
+    $padding-horizontal: 1 + $spacing-tiny;
 
     // font-weight: bold;
     display: inline-flex;

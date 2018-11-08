@@ -18,7 +18,7 @@ nav {
 }
 
 ul {
-  margin-right: -1 * $link-padding-horizontal;
+  margin-right: -$link-padding-horizontal;
   list-style: none;
 }
 
