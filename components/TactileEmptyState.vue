@@ -11,6 +11,8 @@
       :primary="true"
       :large="true"
       :to="to"
+      icon="plus"
+      icon-position="right"
     >
       <slot name="action" />
     </TactileButton>
@@ -27,6 +29,10 @@ export default {
   props: {
     to: {
       type: [String, Object],
+      default: null
+    },
+    icon: {
+      type: String,
       default: null
     }
   }
