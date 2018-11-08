@@ -18,17 +18,25 @@
       </section>
     </main>
     <footer>
-      <nuxt-link
+      <tactile-button
+        :large="true"
+        :primary="true"
         to="/"
-        tag="button">Zum Dashboard</nuxt-link>
+        tag="a" >
+        Zum Dashboard
+      </tactile-button>
     </footer>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import TactileButton from '~/components/TactileButton.vue'
 
 export default {
+  components: {
+    'tactile-button': TactileButton
+  },
   computed: {
     ...mapGetters({
       speaker: 'items/speaker'
