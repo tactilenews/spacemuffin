@@ -10,6 +10,7 @@ export const state = () => ({
   deadline: new Date(),
   counts: {
     chars: 0,
+    words: 0,
     quotes: 0,
     sounds: 0
   },
@@ -51,8 +52,7 @@ export const getters = {
     return costs
   },
   estimatedDuration(state, getters) {
-    const averageWordLength = 1.52 // https://de.wikipedia.org/wiki/Wortl%C3%A4nge#Durchschnittliche_Wortl%C3%A4nge_in_verschiedenen_Textgruppen
-    const words = getters.counts.chars / averageWordLength
+    const words = getters.counts.words
     const minutes = words / 130.0 // http://speechinminutes.com/
     const time = new Date(minutes * 60 * 1000)
     return format(time, 'mm:ss')
@@ -68,8 +68,9 @@ export const mutations = {
     state.json = json
     state.counts = {
       chars: node.innerText.length,
-      quotes: node.getElementsByClassName("mark-original-tone").length,
-      sounds: node.getElementsByClassName("mark-ambient-tone").length
+      words: node.innerText.split(/\s+/).length,
+      quotes: node.getElementsByClassName('mark-original-tone').length,
+      sounds: node.getElementsByClassName('mark-ambient-tone').length
     }
   },
   saveMeta(state, meta) {
