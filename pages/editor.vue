@@ -1,31 +1,46 @@
 <template>
   <div>
-    <editor
-      :doc="json"
-      @update="onUpdate"
-    >
-      <div
-        slot="content"
-        slot-scope="props"
-      />
-    </editor>
-    <div style="text-align: right">
-      <nuxt-link
-        to="/review"
-        tag="button"
+    <tactile-content>
+      <editor
+        :doc="json"
+        @update="onUpdate"
       >
-        Weiter
-      </nuxt-link>
-    </div>
+        <div
+          slot="content"
+          slot-scope="props"
+        />
+      </editor>
+    </tactile-content>
+    <tactile-actions-footer>
+      <template slot="next">
+        <tactile-button
+          to="/"
+        >
+          Entwurf speichern
+        </tactile-button>
+        <tactile-button
+          :primary="true"
+          to="/review"
+        >
+          Übersicht anzeigen
+        </tactile-button>
+      </template>
+    </tactile-actions-footer>
   </div>
 </template>
 
 <script>
+import TactileContent from '~/components/TactileContent.vue'
+import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
+import TactileButton from '~/components/TactileButton.vue'
 import { Editor } from 'tiptap'
 
 export default {
   components: {
-    editor: Editor
+    TactileContent,
+    TactileActionsFooter,
+    TactileButton,
+    Editor
   },
   asyncData({ store }) {
     return {

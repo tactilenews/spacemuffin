@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="form">
+
+    <tactile-content class="form">
       Du willst
 
       <tactile-select
@@ -41,24 +42,34 @@
       />
 
       vertonen.
+    </tactile-content>
 
-    </div>
+    <tactile-actions-footer>
+      <template slot="next">
+        <tactile-button
+          slot="next"
+          :primary="true"
+          to="/editor"
+        >
+          Inhalte einfügen
+        </tactile-button>
+      </template>
+    </tactile-actions-footer>
 
-    <tactile-button
-      :primary="true"
-      :large="true"
-      to="/editor"
-    >Inhalte einfügen</tactile-button>
   </div>
 </template>
 
 <script>
+import TactileContent from '~/components/TactileContent.vue'
+import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileInput from '~/components/TactileInput.vue'
 import TactileSelect from '~/components/TactileSelect.vue'
 import TactileButton from '~/components/TactileButton.vue'
 
 export default {
   components: {
+    TactileContent,
+    TactileActionsFooter,
     TactileInput,
     TactileSelect,
     TactileButton
