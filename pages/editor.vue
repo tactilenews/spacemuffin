@@ -1,5 +1,9 @@
 <template>
   <div>
+    <tactile-sound-selector
+      :sounds="speakers"
+      title="Speaker"
+    />
     <tactile-editor
       :doc="json"
       @update="onUpdate" />
@@ -16,9 +20,18 @@
 
 <script>
 import TactileEditor from '~/components/editor/TactileEditor'
+import TactileSoundSelector from '~/components/TactileSoundSelector.vue'
+import { mapGetters } from 'vuex'
+
 export default {
   components: {
-    TactileEditor
+    'tactile-editor': TactileEditor,
+    'tactile-sound-selector': TactileSoundSelector
+  },
+  computed: {
+    ...mapGetters({
+      speakers: 'sounds/speakers'
+    })
   },
   asyncData({ store }) {
     return {
