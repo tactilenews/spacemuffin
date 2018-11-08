@@ -1,6 +1,9 @@
 <template>
   <section class="dropzone">
-    <input type="file">
+    <input
+      type="file"
+      accept="audio/*"
+      @change="handleFileChange">
     <div class="placeholder">
       Click to select a file and drag it in here!
     </div>
@@ -9,20 +12,20 @@
 
 <script>
 export default {
-  data() {
-    return {
-      active: false
-    }
-  },
-  watch: {
-    source(source) {
-      this.element.src = source
-    }
-  },
   methods: {
-    click() {
-      console.log('asd')
-      this.$refs.input.click()
+    handleFileChange(event) {
+      const file = event.target.files[0]
+      const reader = new FileReader()
+
+      reader.addEventListener(
+        'load',
+        () => (this.fileString = reader.result),
+        false
+      )
+
+      if (file) {
+        reader.readAsDataURL(file)
+      }
     }
   }
 }
@@ -59,9 +62,5 @@ input {
   opacity: 0;
   width: 100%;
   height: 100%;
-}
-
-.active {
-  background-color: blue;
 }
 </style>
