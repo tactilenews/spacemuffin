@@ -1,7 +1,10 @@
 <template>
   <nav>
     <ul>
+      <li><nuxt-link to="/faq">FAQ</nuxt-link></li>
       <li><nuxt-link to="/">Übersicht</nuxt-link></li>
+
+
     </ul>
   </nav>
 </template>
