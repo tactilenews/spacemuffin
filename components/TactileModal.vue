@@ -36,7 +36,7 @@
                 <tactile-actions-footer class="modal-footer">
                   <tactile-button
                     slot="prev"
-                    icon="chevron-left"
+                    icon="times"
                     @click="cancel('cancel')"
                   >
                     Abbrechen

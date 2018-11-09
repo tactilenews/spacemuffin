@@ -15,7 +15,8 @@ import {
   faPause,
   faMicrophone,
   faVolumeUp,
-  faQuoteLeft
+  faQuoteLeft,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -28,7 +29,8 @@ library.add(
   faPause,
   faMicrophone,
   faVolumeUp,
-  faQuoteLeft
+  faQuoteLeft,
+  faTimes
 )
 
 export default {
