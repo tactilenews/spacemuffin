@@ -42,7 +42,7 @@ export const getters = {
   meta(state) {
     return {
       user: state.user,
-      author: state.author,
+      author: state.author || 'Autor',
       title: state.title,
       format: state.format,
       tonie: state.tonie
