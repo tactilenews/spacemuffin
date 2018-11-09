@@ -78,7 +78,7 @@ export default {
   margin-left: 1 - $spacing-small;
   margin-right: 1 - $spacing-small;
   margin-top: 1px;
-  padding: $spacing-unit $spacing-unit;
+  padding: $spacing-unit 1.5 * $spacing-unit;
 
   &:focus {
     outline: 1px solid rgba($color-brand, 0.5);

@@ -78,7 +78,7 @@ export default {
   background: $color-white;
   margin-left: -$spacing-small;
   margin-right: -$spacing-small;
-  padding: $spacing-small 0.7 * $spacing-unit;
+  padding: $spacing-small 1.5 * $spacing-unit;
   border-bottom: 1px solid #ccc6;
 
   &__button {
