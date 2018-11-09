@@ -4,22 +4,24 @@
       <h2> {{ meta.title }}</h2>
       <p> {{ meta.format }} <em v-if="meta.author"> von {{ meta.author }} </em> </p>
     </div>
-    <div
-      v-if="status === 'draft'"
-      class="actions" >
+    <div class="actions" >
       <TactileButton
+        v-if="status === 'draft'"
         icon="edit"
         icon-position="right"
-        @click="$emit('edit')"
-      >
+        @click="$emit('edit')" >
         Bearbeiten
       </TactileButton>
       <TactileButton
         icon="trash"
         icon-position="right"
-        @click="$emit('delete')"
-      >
-        Löschen
+        @click="$emit('delete')" >
+        <div v-if="status === 'draft'">
+          Löschen
+        </div>
+        <div v-if="status === 'ordered'">
+          Stornieren
+        </div>
       </TactileButton>
     </div>
   </div>
