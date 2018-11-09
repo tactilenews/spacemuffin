@@ -80,11 +80,8 @@ export default {
       this.$store.commit('items/saveDraft')
       this.$router.push('/')
     },
-    onUpdate({ getJSON, getHTML }) {
-      this.$store.commit('items/doc', {
-        json: getJSON(),
-        html: getHTML()
-      })
+    onUpdate(editorState) {
+      this.$store.commit('items/doc', editorState)
     },
     onDialog({ mark, key, name, focus }) {
       let fileName

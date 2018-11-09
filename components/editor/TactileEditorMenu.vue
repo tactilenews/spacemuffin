@@ -1,25 +1,27 @@
 <template>
-  <div>
+  <div class="wrapper">
     <small>{{ hoveredDescription }}</small>
-    <button
-      v-for="(meta, key) in markMeta"
-      :key="key"
-      :disabled="isDisabled(marks[key])"
-      :class="[
-        `mark-button-${key}`,
-        isActive(marks[key]) && 'is-active'
-      ]"
-      :title="meta.description"
-      class="menubar__button"
-      @mouseover="hoveredDescription = meta.description"
-      @mouseout="hoveredDescription = null"
-      @click="onButtonClick(marks[key], meta.label, key)"
-    >
-      <tactile-icon
-        :icon="meta.icon"
-        class="icon"
-      /> {{ meta.label }}
-    </button>
+    <div class="buttons">
+      <button
+        v-for="(meta, key) in markMeta"
+        :key="key"
+        :disabled="isDisabled(marks[key])"
+        :class="[
+          `mark-button-${key}`,
+          isActive(marks[key]) && 'is-active'
+        ]"
+        :title="meta.description"
+        @mouseover="hoveredDescription = meta.description"
+        @mouseout="hoveredDescription = null"
+        @click="onButtonClick(marks[key], meta.label, key)"
+      >
+        <tactile-icon
+          :icon="meta.icon"
+          class="icon"
+        />
+        {{ meta.label }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -77,23 +79,27 @@ export default {
 
 .menubar {
   position: sticky;
-  text-align: right;
   top: 0;
   z-index: 99;
-  background: $color-white;
-  margin-left: -$spacing-small;
-  margin-right: -$spacing-small;
-  padding: $spacing-small 0.5 * $spacing-unit;
-  border-bottom: 1px solid #ccc6;
+  padding: $spacing-small;
 
-  small {
-    float: left;
-    color: $color-text;
-    opacity: 0.8;
-    padding-left: $spacing-unit;
+  background: $color-white;
+  border-bottom: 1px solid #ddd;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
   }
 
-  &__button {
+  small {
+    flex-grow: 1;
+    margin-right: auto;
+    color: $color-text;
+    opacity: 0.8;
+  }
+
+  button {
     $padding-vertical: $spacing-tiny;
     $padding-horizontal: 1 + $spacing-tiny;
 

@@ -3,21 +3,26 @@
     :extensions="extensions"
     :doc="doc"
     class="editor"
-    @update="$emit('update', $event)">
+    @update="$emit('update', $event)"
+  >
+
     <div
+      v-if="nodes && marks"
       slot="menubar"
       slot-scope="{ nodes, marks, focus }"
-      class="menubar">
-      <template v-if="nodes && marks">
-        <tactile-editor-menu
-          :marks="marks"
-          :focus="focus"
-          @dialog="onDialog" />
-      </template>
+      class="menubar"
+    >
+      <tactile-editor-menu
+        :marks="marks"
+        :focus="focus"
+        @dialog="onDialog"
+      />
     </div>
+
     <div
       slot="content"
       slot-scope="props"
+      class="content"
     />
   </editor>
 </template>
@@ -75,31 +80,17 @@ export default {
 @import '~assets/styles/marker';
 
 .ProseMirror {
-  margin-left: 1 - $spacing-small;
-  margin-right: 1 - $spacing-small;
-  margin-top: 1px;
-  padding: $spacing-unit 1.5 * $spacing-unit;
-
-  &:focus {
-    outline: 1px solid rgba($color-brand, 0.5);
-  }
-
-  line-height: 1.3em;
-
-  p,
-  h1,
-  h2,
-  h3 {
-    padding-bottom: 0.5 * $spacing-unit;
-
-    &:last-child {
-      padding-bottom: 0;
-    }
-  }
+  padding: $spacing-small;
+  min-height: 5 * $spacing-unit;
 }
-.editor p.is-empty:first-child::before {
-  content: 'Kopiere den gewünschten Text hierher. Wenn du möchtest, kannst du ihn um Geräusche und Originaltöne ergänzen.';
-  float: right;
+
+.ProseMirror:focus {
+  outline: none;
+}
+
+.ProseMirror .is-empty:first-child::before {
+  content: 'Füge hier deinen Text ein…';
+  position: absolute;
   color: #aaa;
   pointer-events: none;
   height: auto;
@@ -110,13 +101,26 @@ export default {
 
 .editor {
   position: relative;
-  margin-top: -$spacing-unit;
-  margin-left: -$spacing-unit;
-  margin-right: -$spacing-unit;
-  margin-bottom: -1.5 * $spacing-unit;
+  border: 1px solid #ddd;
+  border-radius: $border-radius;
+  line-height: 1.75;
 }
 
-mark {
+.editor:focus-within {
+  border: 1px solid rgba($color-brand, 0.5);
+}
+
+.menubar {
+  margin: $border-radius 0;
+}
+
+.editor :matches(p, h1, h2, h3):not(:last-child) {
+  padding-bottom: 0.5 * $spacing-unit;
+}
+
+.mark-voice,
+.mark-sound,
+.mark-quote {
   padding-left: 0.5em;
   padding-right: 0.5em;
   margin-left: -0.25em;
@@ -139,11 +143,13 @@ mark {
   text-decoration: underline double;
   text-underline-position: under;
 }
+
 .mark-sound {
   background-color: $color-marker-sound;
   text-decoration: underline dashed;
   text-underline-position: under;
 }
+
 .mark-quote {
   background-color: $color-marker-quote;
   text-decoration: underline dotted;

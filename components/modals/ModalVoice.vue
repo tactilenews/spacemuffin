@@ -1,22 +1,29 @@
 <template>
   <tactile-modal
     :show="show"
+    confirm-label="Sprecher auswählen"
     @cancel="cancel"
     @close="close"
     @confirm="confirm"
   >
-    <span slot="title">Stimme wählen</span>
-    <p>Wähle eine Stimme für den Markierten Abschnitt.</p>
+    <span slot="title">Sprecher wählen</span>
+    <p>Wähle einen Sprecher aus, der deinen Text vertonen soll.</p>
+    <tactile-sound-selector
+      v-model="selectedSpeaker"
+      :sounds="$store.getters['sounds/speakers']"
+    />
   </tactile-modal>
 </template>
 
 <script>
 import TactileModal from '~/components/TactileModal.vue'
 import ModalMixin from '~/components/modals/modalMixin.js'
+import TactileSoundSelector from '~/components/TactileSoundSelector.vue'
 
 export default {
   components: {
-    TactileModal
+    TactileModal,
+    TactileSoundSelector
   },
   mixins: [ModalMixin],
   props: {

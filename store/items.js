@@ -108,10 +108,10 @@ export const mutations = {
   recipientEmail(state, email) {
     state.recipientEmail = email
   },
-  doc(state, { json, html }) {
+  doc(state, { getJSON, getHTML }) {
     const node = document.createElement('div')
-    node.innerHTML = html
-    state.json = json
+    node.innerHTML = getHTML()
+    state.json = getJSON()
     state.counts = {
       chars: node.innerText.length,
       words: node.innerText.split(/\s+/).length,
