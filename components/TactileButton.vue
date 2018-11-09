@@ -4,7 +4,8 @@
     :to="to"
     :tag="tag"
     :class="{ button: true, primary, large }"
-    @click.native="$emit('click', $event)">
+    @click.native="$emit('click', $event)"
+  >
     <TactileIcon
       :class="{ 'icon': true, 'icon-right': iconPosition === 'right' }"
       :icon="icon"
@@ -14,7 +15,12 @@
   <button
     v-else
     :class="{ button: true, primary, large }"
-    @click="$emit('click', $event)">
+    @click="$emit('click', $event)"
+  >
+    <TactileIcon
+      :class="{ 'icon': true, 'icon-right': iconPosition === 'right' }"
+      :icon="icon"
+    />
     <slot />
   </button>
 </template>
@@ -66,6 +72,7 @@ export default {
 
   text-decoration: none;
   color: $color-text;
+  background-color: transparent;
   border: 1px solid;
   border-radius: $border-radius;
 }
