@@ -4,7 +4,7 @@
       <li
         v-for="sound in sounds"
         :key="sound.name"
-        :class="{ 'is-active': sound.name === selected }"
+        :class="{ 'is-active': sound.name === selected.name }"
 
       >
         <div class="name">
@@ -15,7 +15,7 @@
           <tactile-audio-player :source="sound.url" />
           <tactile-circle-button
             icon="check"
-            @click="$emit('select', sound.name)"
+            @click="$emit('select', sound)"
           >
             Sound verwenden
           </tactile-circle-button>
@@ -47,8 +47,8 @@ export default {
       default: () => []
     },
     selected: {
-      type: String,
-      default: null
+      type: Object,
+      default: () => {}
     }
   }
 }
