@@ -59,7 +59,7 @@ export const getters = {
     const costPerQuote = 9
     const costPerSound = 9
     let costs =
-      getters.counts.chars * 0.04 +
+      getters.counts.chars * costPerChar +
       getters.counts.quotes * costPerQuote +
       getters.counts.sounds * costPerSound
     if (differenceInHours(getters.deadline, new Date()) > 48) {
