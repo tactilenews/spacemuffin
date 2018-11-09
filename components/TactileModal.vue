@@ -109,7 +109,6 @@ export default {
 
 <style lang="scss">
 @import '~assets/styles/variables';
-// @import '~assets/styles/modal';
 
 .modal-dialog {
   /* This way it could be display flex or grid or whatever also. */
