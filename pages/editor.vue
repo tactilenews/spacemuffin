@@ -61,7 +61,7 @@ export default {
   data() {
     return {
       showModal: false,
-      lastEditorContext: null
+      lastEditorContext: {}
     }
   },
   methods: {
