@@ -12,7 +12,7 @@
       class="menubar__button"
       @click="onButtonClick(marks[key], meta.label, key)"
     >
-      <TactileIcon
+      <tactile-icon
         :icon="meta.icon"
         class="icon"
       /> {{ meta.label }}
