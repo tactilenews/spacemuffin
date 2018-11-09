@@ -4,24 +4,27 @@
       type="file"
       accept="audio/*"
       @change="handleFileChange">
-    <div class="placeholder">
-      Click to select a file and drag it in here!
+    <div class="info">
+      {{ info }}
     </div>
   </section>
 </template>
 
 <script>
 export default {
+  data: () => ({
+    info: 'Click to select a file and drag it in here!'
+  }),
   methods: {
     handleFileChange(event) {
       const file = event.target.files[0]
       const reader = new FileReader()
 
-      reader.addEventListener(
-        'load',
-        () => (this.fileString = reader.result),
-        false
-      )
+      reader.addEventListener('load', () => {
+        const sizeInMB = Math.round(file.size / 1024 ** 2)
+        this.info = `${file.name} (${sizeInMB} MB)`
+        this.$emit('change', reader.result)
+      })
 
       if (file) {
         reader.readAsDataURL(file)
@@ -44,7 +47,7 @@ export default {
   font-size: 1rem;
 }
 
-.placeholder {
+.info {
   position: absolute;
   z-index: -1;
   top: 0;
