@@ -10,12 +10,10 @@ import {
   faChevronLeft,
   faCheck,
   faPlus,
-  faUserCircle,
   faPlay,
   faPause,
   faMicrophone,
   faVolumeUp,
-  faQuoteLeft,
   faTimes
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -24,12 +22,10 @@ library.add(
   faChevronLeft,
   faCheck,
   faPlus,
-  faUserCircle,
   faPlay,
   faPause,
   faMicrophone,
   faVolumeUp,
-  faQuoteLeft,
   faTimes
 )
 

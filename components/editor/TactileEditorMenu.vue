@@ -34,11 +34,6 @@ export default {
   data() {
     return {
       markMeta: {
-        voice: {
-          label: 'Stimme',
-          icon: 'user-circle',
-          description: 'Ändere die Stimme für den markierten Text.'
-        },
         sound: {
           label: 'Geräusch',
           icon: 'volume-up',
@@ -46,7 +41,7 @@ export default {
         },
         quote: {
           label: 'Zitat',
-          icon: 'quote-left',
+          icon: 'microphone',
           description: 'Lege einen Zitat (O-Ton) über den markierten Text.'
         }
       }
