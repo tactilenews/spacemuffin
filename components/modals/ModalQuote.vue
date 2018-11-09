@@ -9,13 +9,7 @@
     <p>Füge ein Original Zitat Audio (O-Ton) ein.</p>
     <tactile-sound-selector
       v-model="selectedSound"
-      :sounds="[
-        { name: 'Frauenstimme 1', url:'/quotes/woman-astrid.mp3' },
-        { name: 'Frauenstimme 2', url:'/quotes/woman-franci.mp3' },
-        { name: 'Männerstimme 1', url: '/quotes/man-robert.mp3'},
-        { name: 'Männerstimme 2', url:'/quotes/man-friedrich.mp3' },
-        { name: 'Jungestimme 1', url:'/quotes/boy-matthias.mp3' }
-      ]"
+      :sounds="sounds"
     />
   </tactile-modal>
 </template>
@@ -35,9 +29,18 @@ export default {
     markerContext: { type: Object, default: null }
   },
   data() {
-    return {
-      selectedSound: {}
+    const data = {
+      selectedSound: {},
+      sounds: [
+        { name: 'Frauenstimme 1', url: '/quotes/woman-astrid.mp3' },
+        { name: 'Frauenstimme 2', url: '/quotes/woman-franci.mp3' },
+        { name: 'Männerstimme 1', url: '/quotes/man-robert.mp3' },
+        { name: 'Männerstimme 2', url: '/quotes/man-friedrich.mp3' },
+        { name: 'Jungestimme 1', url: '/quotes/boy-matthias.mp3' }
+      ]
     }
+    data.selectedSound = data.sounds[0]
+    return data
   },
   methods: {
     confirm(type) {
