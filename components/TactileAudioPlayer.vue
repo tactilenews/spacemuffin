@@ -33,25 +33,25 @@ export default {
     this.element = document.createElement('audio')
     this.element.src = this.source
 
-    this.element.addEventListener('play', () => {
-      this.isPlaying = true
-    })
-
-    this.element.addEventListener('ended', () => {
-      this.isPlaying = false
-    })
-
-    this.element.addEventListener('pause', () => {
-      this.isPlaying = false
-    })
+    this.element.addEventListener('play', this.onPlay)
+    this.element.addEventListener('ended', this.onStop)
+    this.element.addEventListener('pause', this.onStop)
   },
   methods: {
     play() {
+      this.element.currentTime = 0
       this.element.play()
     },
     stop() {
       this.element.pause()
-      this.element.currentTime = 0
+    },
+    onPlay() {
+      this.isPlaying = true
+      this.$emit('play', this)
+    },
+    onStop() {
+      this.isPlaying = false
+      this.$emit('stop', this)
     }
   }
 }

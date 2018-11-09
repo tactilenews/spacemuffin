@@ -78,7 +78,7 @@ export default {
   margin-left: 1 - $spacing-small;
   margin-right: 1 - $spacing-small;
   margin-top: 1px;
-  padding: $spacing-unit $spacing-unit;
+  padding: $spacing-unit 1.5 * $spacing-unit;
 
   &:focus {
     outline: 1px solid rgba($color-brand, 0.5);
@@ -98,10 +98,13 @@ export default {
   }
 }
 .editor p.is-empty:first-child::before {
-  content: 'Füge hier deinen Text ein…';
-  position: absolute;
+  content: 'Kopiere den gewünschten Text hierher. Wenn du möchtest, kannst du ihn um Geräusche und Originaltöne ergänzen.';
+  float: right;
   color: #aaa;
   pointer-events: none;
+  height: auto;
+  width: auto;
+  padding-bottom: $spacing-unit;
   font-style: italic;
 }
 
@@ -122,7 +125,7 @@ mark {
 
   &::before {
     display: inline-block;
-    content: '[' attr(data-file) '] ';
+    content: '[' attr(data-label) '] ';
     opacity: 0.5;
     font-size: 0.5em;
     color: $color-text;

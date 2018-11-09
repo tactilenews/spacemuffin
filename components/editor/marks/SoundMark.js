@@ -14,6 +14,9 @@ export default class SoundMark extends Mark {
         },
         'data-file': {
           default: 'selecting...'
+        },
+        'data-label': {
+          default: 'ERROR - data-label missing'
         }
       },
       parseDOM: [
