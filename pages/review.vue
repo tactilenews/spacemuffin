@@ -48,7 +48,7 @@
             <h2>Nachricht an den Sprecher</h2>
             <textarea
               v-model="comment"
-              placeholder="Hier kannst du Wünsche zur Vertonung mitteilen, zum Beispiel, ob du den Text in einer bestimmten Stimmung haben möchtest (wie naiv, allwissend, nachdenklich, euphorisch)." />
+              placeholder="Hast du weitere Wünsche zur Vertonung? Dann schreib dem Sprecher, ob du den Text in einer bestimmten Stimmung gesprochen haben möchtest (z.B. naiv, allwissend, nachdenklich, euphorisch)." />
           </div>
         </section>
       </div>
