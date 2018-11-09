@@ -14,3 +14,71 @@ $easeOut: cubic-bezier(0.19, 1, 0.22, 1);
   box-shadow: none;
   transform: translate3d(0, 15px, 0);
 }
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .12s;
+  opacity: 1;
+}
+.fade-enter, .fade-leave-to {
+  transition: opacity 0;
+  opacity: 0;
+}
+
+// modal transitions
+$modalAnimationDuration: 250ms;
+$modalAnimationEase: cubic-bezier(0.250, 0.100, 0.250, 1.000);
+.modal-transition-enter-active,
+.modal-transition-leave-active {
+  .modal-dialog {
+    transition: opacity $modalAnimationDuration $modalAnimationEase;
+    transition: transform $modalAnimationDuration $modalAnimationEase;
+    transform: translate3d(-50%, -50%, 0) !important;
+    opacity: 1 !important;
+  }
+}
+.modal-transition-leave-active {
+  .modal-dialog {
+    transition: opacity ($modalAnimationDuration * .7) $modalAnimationEase;
+    transition: transform ($modalAnimationDuration) $modalAnimationEase;
+  }
+}
+.modal-transition-enter, .modal-transition-leave-to {
+  .modal-dialog {
+    transition: opacity ($modalAnimationDuration * .7) $modalAnimationEase;
+    transform: translate3d(-50%, -60%, 0) !important;
+    opacity: 0 !important;
+  }
+}
+.modal-transition-leave-to {
+  .modal-dialog {
+    transition-duration: opacity $modalAnimationDuration * .3;
+    transform: translate3d(-50%, -50%, 0) !important;
+  }
+}
+
+/* .modal-transition-enter-active,
+.modal-transition-leave-active {
+  transition: opacity $modalAnimationDuration $modalAnimationEase;
+  opacity: 1;
+
+  .modal-dialog {
+    transition: transform $modalAnimationDuration $modalAnimationEase;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.modal-transition-leave-active {
+  transition: opacity ($modalAnimationDuration * .7) $modalAnimationEase;
+
+  .modal-dialog {
+    transition: transform ($modalAnimationDuration) $modalAnimationEase;
+  }
+}
+.modal-transition-enter, .modal-transition-leave-to {
+  transition: opacity ($modalAnimationDuration * .7) $modalAnimationEase;
+  opacity: 0;
+
+  .modal-dialog {
+    transform: translate3d(0, -3rem, -2rem);
+  }
+}*/

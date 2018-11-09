@@ -28,6 +28,7 @@
 
 <script>
 import TactileIcon from '~/components/TactileIcon.vue'
+
 export default {
   components: {
     'tactile-icon': TactileIcon
@@ -63,7 +64,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/styles/variables';
-
 .button {
   display: inline-flex;
   font-size: inherit;
