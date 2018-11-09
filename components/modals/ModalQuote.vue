@@ -5,8 +5,8 @@
     @close="close"
     @confirm="confirm"
   >
-    <span slot="title">Stimme wählen</span>
-    <p>Wähle eine Stimme für den Markierten Abschnitt.</p>
+    <span slot="title">Zitat / O-Ton</span>
+    <p>Füge ein Original Zitat Audio (O-Ton) ein.</p>
   </tactile-modal>
 </template>
 
@@ -24,14 +24,9 @@ export default {
   },
   methods: {
     confirm(type) {
-      let fileName = [
-        'Mann',
-        'Frau',
-        'Mädchien (6)',
-        'Junge (6)',
-        'Mädchien (12)',
-        'Junge (12)'
-      ][Math.round(Math.random() * 5)]
+      let fileName = `${this.markerContext.key}-sound-${Math.round(
+        Math.random() * 100
+      )}.mp3`
 
       this.$emit('add-marker', {
         'data-file': fileName

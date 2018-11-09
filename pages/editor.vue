@@ -31,7 +31,10 @@
         </tactile-button>
       </template>
     </tactile-actions-footer>
-    <modal-voice
+
+    <!-- load current modal component based on the selected mark type `modal-quote, modal-sound, modal-voice` -->
+    <component
+      :is="`modal-${markType}`"
       :show.sync="showModal"
       :marker-context="lastEditorContext"
       @add-marker="onVoice" />
@@ -44,6 +47,8 @@ import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
 import TactileEditor from '~/components/editor/TactileEditor'
 import ModalVoice from '~/components/modals/ModalVoice'
+import ModalSound from '~/components/modals/ModalSound'
+import ModalQuote from '~/components/modals/ModalQuote'
 
 export default {
   components: {
@@ -51,7 +56,9 @@ export default {
     TactileActionsFooter,
     TactileButton,
     TactileEditor,
-    ModalVoice
+    ModalVoice,
+    ModalSound,
+    ModalQuote
   },
   asyncData({ store }) {
     return {
@@ -60,6 +67,7 @@ export default {
   },
   data() {
     return {
+      markType: 'voice',
       showModal: false,
       lastEditorContext: {}
     }
@@ -77,6 +85,7 @@ export default {
     onDialog({ mark, key, name, focus }) {
       let fileName
       this.lastEditorContext = { mark, key, name, focus }
+      this.markType = key
       this.showModal = true
     }
   }
