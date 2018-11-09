@@ -1,4 +1,5 @@
 import {
+  addDays,
   setMinutes,
   format,
   differenceInHours,
@@ -20,6 +21,7 @@ const initialState = () => ({
   recipientEmail: '',
   status: null,
   deadline: new Date(),
+  timerange: 5,
   counts: {
     chars: 0,
     words: 0,
@@ -59,8 +61,11 @@ export const getters = {
   counts(state) {
     return state.counts
   },
-  deadline(state) {
-    return state.deadline
+  timerange(state) {
+    return state.timerange
+  },
+  deadline(state, getters) {
+    return addDays(new Date(), getters.timerange)
   },
   daysToDeadline(state) {
     return differenceInDays(state.deadline, new Date())
@@ -74,11 +79,13 @@ export const getters = {
       getters.counts.chars * costPerChar +
       getters.counts.quotes * costPerQuote +
       getters.counts.sounds * costPerSound
-    if (differenceInHours(getters.deadline, new Date()) > 48) {
+
+    // TODO: serious race condition here! Open for suggestions!
+    if (differenceInHours(getters.deadline, new Date()) < 48) {
       costs += expressFee
     }
-    costs = Math.round(costs)
-    return costs
+
+    return Math.round(costs)
   },
   estimatedDuration(state, getters) {
     const words = getters.counts.words
@@ -121,8 +128,8 @@ export const mutations = {
   setSpeaker(state, speaker) {
     state.speaker = speaker
   },
-  deadline(state, deadline) {
-    state.deadline = deadline
+  timerange(state, timerange) {
+    state.timerange = Number(timerange)
   },
   saveDraft(state) {
     state.status = 'draft'
