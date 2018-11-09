@@ -22,17 +22,17 @@
                 <div>
                   <input
                     id="timerange-2days"
+                    :value="daysForExpress"
                     name="timerange"
-                    type="radio"
-                    value="172800000">
-                  <label for="timerange-2days">Express in 2 Werktagen</label>
+                    type="radio">
+                  <label for="timerange-2days">Express in 2 Werktagen (+ 50 €)</label>
                 </div>
                 <div>
                   <input
                     id="timerange-5days"
+                    :value="daysForStandard"
                     name="timerange"
                     type="radio"
-                    value="432000000"
                     checked>
                   <label for="timerange-5days">Standard in 5 Werktagen</label>
                 </div>
@@ -81,7 +81,6 @@
 </template>
 
 <script>
-// eslint-disable-next-line
 import { mapGetters, mapMutations } from 'vuex'
 import { format, addDays, startOfDay } from 'date-fns'
 
@@ -95,10 +94,6 @@ import TactileInput from '~/components/TactileInput.vue'
 import { setupCalendar, DatePicker } from 'v-calendar'
 import 'v-calendar/lib/v-calendar.min.css'
 
-function getDeadline(date, timerange) {
-  return new Date(date).getTime() + Number(timerange)
-}
-
 export default {
   components: {
     TactileContent,
@@ -106,6 +101,12 @@ export default {
     TactileButton,
     TactileInput,
     DatePicker
+  },
+  data() {
+    return {
+      daysForExpress: 2,
+      daysForStandard: 5
+    }
   },
   computed: {
     ...mapGetters({
@@ -147,10 +148,6 @@ export default {
     formattedDate() {
       return new Date(this.deadline).toLocaleDateString('de')
     }
-  },
-  created() {
-    setupCalendar({ firstDayOfWeek: 2 })
-    this.$store.commit('items/deadline', addDays(startOfDay(new Date()), 3))
   },
   methods: {
     setTimerange() {
@@ -196,7 +193,7 @@ export default {
 .data {
   display: flex;
   margin: -$spacing-unit;
-  padding: 0.5 * $spacing-unit;
+  padding: $spacing-small;
 }
 
 section {

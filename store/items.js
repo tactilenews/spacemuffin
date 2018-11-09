@@ -1,4 +1,5 @@
 import {
+  addDays,
   setMinutes,
   format,
   differenceInHours,
@@ -20,7 +21,7 @@ const initialState = () => ({
   recipientEmail: '',
   status: null,
   deadline: new Date(),
-  timerange: 1000 * 60 * 60 * 24 * 5,
+  timerange: addDays(new Date(), 5),
   counts: {
     chars: 0,
     words: 0,
@@ -63,8 +64,8 @@ export const getters = {
   timerange(state) {
     return state.timerange
   },
-  deadline(state) {
-    return new Date().getTime() + state.timerange
+  deadline(state, getters) {
+    return addDays(new Date(), getters.timerange)
   },
   daysToDeadline(state) {
     return differenceInDays(state.deadline, new Date())
