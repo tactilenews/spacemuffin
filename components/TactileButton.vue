@@ -3,7 +3,7 @@
     v-if="to"
     :to="to"
     :tag="tag"
-    :class="{ button: true, primary, large }"
+    :class="{ button: true, primary, secondary: !primary, large }"
     @click.native="$emit('click', $event)"
   >
     <tactile-icon
@@ -15,10 +15,11 @@
   </nuxt-link>
   <button
     v-else
-    :class="{ button: true, primary, large }"
+    :class="{ button: true, primary, secondary: !primary, large }"
     @click="$emit('click', $event)"
   >
     <tactile-icon
+      v-if="icon"
       :class="{ 'icon': true, 'icon-right': iconPosition === 'right' }"
       :icon="icon"
     />
@@ -70,12 +71,12 @@ export default {
   line-height: inherit;
   align-items: center;
   padding: $spacing-tiny $spacing-small;
-
   text-decoration: none;
   color: $color-text;
   background-color: transparent;
   border: 1px solid;
   border-radius: $border-radius;
+  cursor: pointer;
 }
 
 .button + .button {
@@ -86,6 +87,15 @@ export default {
   background-color: $color-brand;
   color: #fff;
   font-weight: 500;
+}
+
+.primary:hover {
+  background-color: darken($color-brand, 10);
+}
+
+.secondary:hover {
+  background-color: $color-text;
+  color: $color-white;
 }
 
 .large {

@@ -32,8 +32,8 @@ import {
   HistoryExtension
 } from 'tiptap-extensions'
 import VoiceMark from '~/components/editor/marks/VoiceMark'
-import OriginalToneMark from '~/components/editor/marks/OriginalToneMark'
-import AmbientToneMark from '~/components/editor/marks/AmbientToneMark'
+import QuoteMark from '~/components/editor/marks/QuoteMark'
+import SoundMark from '~/components/editor/marks/SoundMark'
 
 export default {
   components: {
@@ -49,8 +49,8 @@ export default {
         new HeadingNode({ maxLevel: 2 }),
         new ListItemNode(),
         new VoiceMark(),
-        new OriginalToneMark(),
-        new AmbientToneMark(),
+        new QuoteMark(),
+        new SoundMark(),
         new PlaceholderExtension({
           emptyNodeClass: 'is-empty'
         }),
@@ -60,6 +60,7 @@ export default {
   },
   methods: {
     onDialog({ mark, key, name, focus }) {
+      focus() // focus the editor if not already done to get the needed context
       this.$emit('dialog', { mark, key, name, focus })
     },
     onUpdate(e) {
@@ -71,6 +72,7 @@ export default {
 
 <style lang="scss">
 @import '~assets/styles/variables';
+@import '~assets/styles/marker';
 
 .ProseMirror {
   margin-left: 1 - $spacing-small;
@@ -79,10 +81,10 @@ export default {
   padding: $spacing-unit $spacing-unit;
 
   &:focus {
-    outline: 1px dashed rgba($color-brand, 0.2);
+    outline: 1px solid rgba($color-brand, 0.5);
   }
 
-  line-height: 1.2em;
+  line-height: 1.3em;
 
   p,
   h1,
@@ -108,37 +110,40 @@ export default {
   margin-top: -$spacing-unit;
   margin-left: -$spacing-unit;
   margin-right: -$spacing-unit;
-  margin-bottom: $spacing-unit;
+  margin-bottom: -1.5 * $spacing-unit;
 }
 
-$color-white: #fff;
-$color-black: #000;
-$color-voice: rgba(#ed553b, 0.4);
-$color-ambient-tone: rgba(#08bcbf, 0.4);
-$color-original-tone: rgba(#f2b134, 0.4);
-
 mark {
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  margin-left: -0.2em;
-  margin-right: -0.2em;
-  border-radius: $border-radius;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: -0.25em;
+  margin-right: -0.25em;
+  border-radius: 1rem;
 
   &::before {
     display: inline-block;
     content: '[' attr(data-file) '] ';
     opacity: 0.5;
     font-size: 0.5em;
+    color: $color-text;
   }
 }
 
-mark.mark-voice {
-  background-color: $color-voice;
+.mark-voice {
+  background-color: $color-marker-voice;
+  font-style: italic;
+  color: rgba($color-text, 0.7);
+  text-decoration: underline double;
+  text-underline-position: under;
 }
-mark.mark-ambient-tone {
-  background-color: $color-ambient-tone;
+.mark-sound {
+  background-color: $color-marker-sound;
+  text-decoration: underline dashed;
+  text-underline-position: under;
 }
-mark.mark-original-tone {
-  background-color: $color-original-tone;
+.mark-quote {
+  background-color: $color-marker-quote;
+  text-decoration: underline dotted;
+  text-underline-position: under;
 }
 </style>

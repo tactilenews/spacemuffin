@@ -10,11 +10,34 @@ import {
   faChevronLeft,
   faCheck,
   faPlus,
+  faUserCircle,
+  faEdit,
+  faTrash,
+  faUser,
   faPlay,
-  faPause
+  faPause,
+  faMicrophone,
+  faVolumeUp,
+  faQuoteLeft,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faChevronRight, faChevronLeft, faCheck, faPlus, faPlay, faPause)
+library.add(
+  faChevronRight,
+  faChevronLeft,
+  faCheck,
+  faPlus,
+  faUserCircle,
+  faEdit,
+  faTrash,
+  faUser,
+  faPlay,
+  faPause,
+  faMicrophone,
+  faVolumeUp,
+  faQuoteLeft,
+  faTimes
+)
 
 export default {
   components: {

@@ -1,16 +1,16 @@
 import { Mark } from 'tiptap'
 import { toggleMark, updateMark } from 'tiptap-commands'
 
-export default class AmbientToneMark extends Mark {
+export default class QuoteMark extends Mark {
   get name() {
-    return 'ambientTone'
+    return 'quote'
   }
 
   get schema() {
     return {
       attrs: {
         class: {
-          default: 'mark-ambient-tone'
+          default: 'mark-quote'
         },
         'data-file': {
           default: 'selecting...'

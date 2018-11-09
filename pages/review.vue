@@ -63,7 +63,7 @@
       </tactile-button>
       <template slot="next">
         <tactile-button
-          to="/"
+          @click="saveDraft"
         >
           Entwurf speichern
         </tactile-button>
@@ -71,7 +71,7 @@
           :primary="true"
           icon="check"
           icon-position="right"
-          @click="sendMail"
+          @click="orderProduction"
         >
           Produktion beauftragen
         </tactile-button>
@@ -82,7 +82,7 @@
 
 <script>
 // eslint-disable-next-line
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import { format, addDays, startOfDay } from 'date-fns'
 
 import postEmailApi from '../apis/post-email'
@@ -159,6 +159,10 @@ export default {
       )
       this.timerange = Number(timerangeString)
     },
+    orderProduction() {
+      this.order()
+      this.sendMail()
+    },
     sendMail() {
       const data = {
         deadline: this.formattedDate,
@@ -174,7 +178,14 @@ export default {
       postOrderEmailApi(data)
 
       this.$router.push('success')
-    }
+    },
+    saveDraft() {
+      this.$store.commit('items/saveDraft')
+      this.$router.push('/')
+    },
+    ...mapMutations({
+      order: 'items/order'
+    })
   }
 }
 </script>
