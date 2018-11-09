@@ -98,7 +98,7 @@ export default {
   }
 }
 .editor p.is-empty:first-child::before {
-  content: 'Füge hier dein Manuskript per Copy&Paste ein. Dann kannst Du es mit Geräuschen und Originaltönen ausstatten.';
+  content: 'Kopiere den gewünschten Text hierher. Wenn du möchtest, kannst du ihn um Geräusche und Originaltöne ergänzen.';
   float: right;
   color: #aaa;
   pointer-events: none;
