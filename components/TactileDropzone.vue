@@ -1,12 +1,13 @@
 <template>
   <section class="dropzone">
-    <input
-      type="file"
-      accept="audio/*"
-      @change="handleFileChange">
     <div class="info">
       {{ info }}
     </div>
+    <input
+      type="file"
+      accept="audio/*"
+      @change="handleFileChange"
+    >
   </section>
 </template>
 
@@ -20,40 +21,38 @@ export default {
       const file = event.target.files[0]
       const reader = new FileReader()
 
+      if (file) {
+        reader.readAsDataURL(file)
+      }
+
       reader.addEventListener('load', () => {
         const sizeInMB = Math.round(file.size / 1024 ** 2)
         this.info = `${file.name} (${sizeInMB} MB)`
         this.$emit('change', reader.result)
       })
-
-      if (file) {
-        reader.readAsDataURL(file)
-      }
     }
   }
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
+@import '~assets/styles/variables';
+
 .dropzone {
   position: relative;
-  z-index: 99;
-  height: 200px;
+  min-height: 6 * $spacing-unit;
+
+  font-size: $font-size-large;
+  color: #999;
   background: #eee;
   border: 5px dashed #ccc;
-  border-radius: 3px;
-  margin-bottom: 30px;
-  color: #999;
-  font-size: 1rem;
+  border-radius: $border-radius;
 }
 
 .info {
   position: absolute;
-  z-index: -1;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
   width: 100%;
   height: 100%;
   display: flex;
