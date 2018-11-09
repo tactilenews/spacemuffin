@@ -36,18 +36,18 @@ export default {
       markMeta: {
         voice: {
           label: 'Stimme',
-          icon: 'user',
+          icon: 'user-circle',
           description: 'Ändere die Stimme für den markierten Text.'
         },
         sound: {
           label: 'Geräusch',
-          icon: 'microphone',
+          icon: 'volume-up',
           description: 'Lege ein Geräusch unter den markierten Text.'
         },
         quote: {
-          label: 'O-Ton',
-          icon: 'headphones-alt',
-          description: 'Lege einen O-Ton über den markierten Text.'
+          label: 'Zitat',
+          icon: 'quote-left',
+          description: 'Lege einen Zitat (O-Ton) über den markierten Text.'
         }
       }
     }
@@ -123,6 +123,7 @@ export default {
   .mark-button-voice {
     text-decoration: underline double;
     background-color: rgba($color-marker-voice, 0.1);
+    text-underline-position: under;
 
     &:hover {
       background-color: rgba($color-marker-voice, 0.3);
@@ -134,6 +135,7 @@ export default {
   .mark-button-sound {
     text-decoration: underline dashed;
     background-color: rgba($color-marker-sound, 0.1);
+    text-underline-position: under;
 
     &:hover {
       background-color: rgba($color-marker-sound, 0.3);
@@ -145,6 +147,7 @@ export default {
   .mark-button-quote {
     text-decoration: underline dotted;
     background-color: rgba($color-marker-quote, 0.1);
+    text-underline-position: under;
 
     &:hover {
       background-color: rgba($color-marker-quote, 0.3);

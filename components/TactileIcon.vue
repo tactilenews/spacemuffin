@@ -10,11 +10,13 @@ import {
   faChevronLeft,
   faCheck,
   faPlus,
-  faUser,
+  faUserCircle,
   faPlay,
   faPause,
   faMicrophone,
-  faHeadphonesAlt
+  faVolumeUp,
+  faQuoteLeft,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -22,11 +24,13 @@ library.add(
   faChevronLeft,
   faCheck,
   faPlus,
-  faUser,
+  faUserCircle,
   faPlay,
   faPause,
   faMicrophone,
-  faHeadphonesAlt
+  faVolumeUp,
+  faQuoteLeft,
+  faTimes
 )
 
 export default {

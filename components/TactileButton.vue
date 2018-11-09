@@ -15,7 +15,7 @@
   </nuxt-link>
   <button
     v-else
-    :class="{ button: true, primary, large }"
+    :class="{ button: true, primary, secondary: !primary, large }"
     @click="$emit('click', $event)"
   >
     <tactile-icon
@@ -71,12 +71,12 @@ export default {
   line-height: inherit;
   align-items: center;
   padding: $spacing-tiny $spacing-small;
-
   text-decoration: none;
   color: $color-text;
   background-color: transparent;
   border: 1px solid;
   border-radius: $border-radius;
+  cursor: pointer;
 }
 
 .button + .button {

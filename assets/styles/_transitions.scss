@@ -14,3 +14,12 @@ $easeOut: cubic-bezier(0.19, 1, 0.22, 1);
   box-shadow: none;
   transform: translate3d(0, 15px, 0);
 }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .12s;
+  opacity: 1;
+}
+.fade-enter, .fade-leave-to {
+  transition: opacity 0;
+  opacity: 0;
+}

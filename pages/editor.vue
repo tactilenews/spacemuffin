@@ -31,6 +31,13 @@
         </tactile-button>
       </template>
     </tactile-actions-footer>
+
+    <!-- load current modal component based on the selected mark type `modal-quote, modal-sound, modal-voice` -->
+    <component
+      :is="`modal-${markType}`"
+      :show.sync="showModal"
+      :marker-context="lastEditorContext"
+      @add-marker="onVoice" />
   </div>
 </template>
 
@@ -39,20 +46,36 @@ import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
 import TactileEditor from '~/components/editor/TactileEditor'
+import ModalVoice from '~/components/modals/ModalVoice'
+import ModalSound from '~/components/modals/ModalSound'
+import ModalQuote from '~/components/modals/ModalQuote'
 
 export default {
   components: {
     TactileContent,
     TactileActionsFooter,
     TactileButton,
-    TactileEditor
+    TactileEditor,
+    ModalVoice,
+    ModalSound,
+    ModalQuote
   },
   asyncData({ store }) {
     return {
       json: store.getters['items/json']
     }
   },
+  data() {
+    return {
+      markType: 'voice',
+      showModal: false,
+      lastEditorContext: {}
+    }
+  },
   methods: {
+    onVoice(meta) {
+      this.lastEditorContext.mark.command(meta)
+    },
     onUpdate({ getJSON, getHTML }) {
       this.$store.commit('items/doc', {
         json: getJSON(),
@@ -61,33 +84,9 @@ export default {
     },
     onDialog({ mark, key, name, focus }) {
       let fileName
-
-      switch (key) {
-        case 'voice': {
-          // simulate voice selection
-          fileName = [
-            'Mann',
-            'Frau',
-            'Mädchien (6)',
-            'Junge (6)',
-            'Mädchien (12)',
-            'Junge (12)'
-          ][Math.round(Math.random() * 5)]
-          break
-        }
-        default: {
-          // simulate random mp3 filename
-          fileName = `${key}-sound-${Math.round(Math.random() * 100)}.mp3`
-        }
-      }
-
-      // Simulate async dialoge selection
-      setTimeout(() => {
-        mark.command({
-          'data-file': fileName
-        })
-        focus()
-      }, 200)
+      this.lastEditorContext = { mark, key, name, focus }
+      this.markType = key
+      this.showModal = true
     }
   }
 }
