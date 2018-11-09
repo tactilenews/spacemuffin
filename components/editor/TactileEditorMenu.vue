@@ -1,5 +1,6 @@
 <template>
   <div>
+    <small>{{ hoveredDescription }}</small>
     <button
       v-for="(meta, key) in markMeta"
       :key="key"
@@ -10,6 +11,8 @@
       ]"
       :title="meta.description"
       class="menubar__button"
+      @mouseover="hoveredDescription = meta.description"
+      @mouseout="hoveredDescription = null"
       @click="onButtonClick(marks[key], meta.label, key)"
     >
       <tactile-icon
@@ -44,7 +47,8 @@ export default {
           icon: 'microphone',
           description: 'Lege einen Zitat (O-Ton) über den markierten Text.'
         }
-      }
+      },
+      hoveredDescription: null
     }
   },
   methods: {
@@ -73,13 +77,21 @@ export default {
 
 .menubar {
   position: sticky;
+  text-align: right;
   top: 0;
   z-index: 99;
   background: $color-white;
   margin-left: -$spacing-small;
   margin-right: -$spacing-small;
-  padding: $spacing-small 1.5 * $spacing-unit;
+  padding: $spacing-small 0.5 * $spacing-unit;
   border-bottom: 1px solid #ccc6;
+
+  small {
+    float: left;
+    color: $color-text;
+    opacity: 0.8;
+    padding-left: $spacing-unit;
+  }
 
   &__button {
     $padding-vertical: $spacing-tiny;
