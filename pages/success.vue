@@ -38,7 +38,7 @@ export default {
   components: {
     TactileContent,
     TactileActionsFooter,
-    TactileButton
+    'tactile-button': TactileButton
   },
   computed: {
     ...mapGetters({

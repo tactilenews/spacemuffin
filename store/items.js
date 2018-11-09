@@ -18,6 +18,7 @@ export const state = () => ({
   speaker: '',
   comment: '',
   recipientEmail: '',
+  status: null,
   deadline: new Date(),
   counts: {
     chars: 0,
@@ -46,6 +47,9 @@ export const getters = {
       format: state.format,
       tonie: state.tonie
     }
+  },
+  status(state) {
+    return state.status
   },
   comment(state) {
     return state.comment
@@ -110,5 +114,11 @@ export const mutations = {
   },
   deadline(state, deadline) {
     state.deadline = deadline
+  },
+  saveDraft(state) {
+    state.status = 'draft'
+  },
+  order(state) {
+    state.status = 'ordered'
   }
 }
