@@ -9,7 +9,6 @@
         `mark-button-${key}`,
         isActive(marks[key]) && 'is-active'
       ]"
-      :title="meta.description"
       class="menubar__button"
       @mouseover="hoveredDescription = meta.description"
       @mouseout="hoveredDescription = null"
