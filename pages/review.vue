@@ -3,39 +3,48 @@
     <tactile-content>
       <div class="header">
         <h1>Fast Geschafft!</h1>
-        <p><b>{{ speaker }}</b> freut sich schon darauf, dein Manuskript einzusprechen. Wirf noch einen letzten Blick auf deine Bestellung und schicke sie dann ab.</p>
       </div>
       <div class="data">
-        <section>
-          <h2>Beiträgsübersicht</h2>
-          <p>Dein Manuskript ist bereit zur Vertonung. Es ist <b>{{ meta.format }}</b> mit dem Titel <b>{{ meta.title }}</b> von <b>{{ meta.author }}</b> für die Tonie-Figur <b>{{ meta.tonie }}</b>. In <b>{{ counts.chars }} Zeichen</b> und <b>{{ counts.words }} Wörtern</b> hast du <b>{{ counts.quotes }} O-Töne</b> und <b>{{ counts.sounds }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
-          <div>
-            <h2>Empfänger Email Adresse</h2>
-            <input
-              v-model="recipientEmail"
-              placeholder="redaktion@example.org" >
-          </div>
+        <section class="summary">
+          <p><b>{{ speaker }}</b> freut sich schon darauf, dein Manuskript einzusprechen.</p>
+          <p>Es ist <b>{{ meta.format }}</b> mit dem Titel <b>{{ meta.title }}</b> von <b>{{ meta.author }}</b> für die Tonie-Figur <b>{{ meta.tonie }}</b>. In <b>{{ counts.chars }} Zeichen</b> und <b>{{ counts.words }} Wörtern</b> hast du <b>{{ counts.quotes }} O-Töne</b> und <b>{{ counts.sounds }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
+          <br>
+          <p>Wir senden dir den fertigen Beitrag per E-Mail.</p>
         </section>
         <section>
           <div>
-            <h2>Deadline</h2>
-            <p>Ich möchte den Beitrag vertont zurück bis zum</p>
-            <DatePicker
-              v-model="deadline"
-              :min-date="new Date()"
-              mode="single"
-            />
+            <h2>Liefertermin</h2>
+            <p>Ich möchte den Beitrag vertont zurück</p>
+            <div class="list">
+              <div>
+                <input
+                  id="deadline-express"
+                  name="deadline"
+                  type="radio"
+                  value="0">
+                <label for="deadline-express">Express in 2 Werktagen</label>
+              </div>
+              <div>
+                <input
+                  id="deadline-standard"
+                  name="deadline"
+                  type="radio"
+                  value="0"
+                  checked>
+                <label for="deadline-standard">Standard in 5 Werktagen</label>
+              </div>
+            </div>
+            <p>bis zum <b>{{ new Date(deadline).toLocaleDateString().replace(/\//g, '.') }}</b>.</p>
           </div>
           <div>
             <h2>Preis</h2>
             <span>{{ costs }} Euro</span>
           </div>
           <div>
-            <h2>Kommentar</h2>
+            <h2>Nachricht an den Sprecher</h2>
             <textarea
               v-model="comment"
-              placeholder="Möchtest du dem Sprecher was sagen?"
-            />
+              placeholder="Hier kannst du Wünsche zur Vertonung mitteilen, zum Beispiel, ob du den Text in einer bestimmten Stimmung haben möchtest (wie naiv, allwissend, nachdenklich, euphorisch)." />
           </div>
         </section>
       </div>
@@ -160,6 +169,14 @@ export default {
 section {
   width: 50%;
   padding: 0.5 * $spacing-unit;
+}
+
+.summary {
+  margin-top: $spacing-medium;
+}
+
+.list {
+  padding: $spacing-small;
 }
 
 textarea {
