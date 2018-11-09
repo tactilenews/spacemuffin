@@ -96,7 +96,7 @@ export default {
   }
 }
 .editor p.is-empty:first-child::before {
-  content: 'Füge hier deinen Beitrag ein…';
+  content: 'Füge hier deinen Text ein…';
   position: absolute;
   color: #aaa;
   pointer-events: none;
