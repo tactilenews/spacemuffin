@@ -12,7 +12,11 @@
         </div>
 
         <div class="actions">
-          <tactile-audio-player :source="sound.url" />
+          <tactile-audio-player
+            ref="players"
+            :source="sound.url"
+            @play="onPlay"
+          />
           <tactile-circle-button
             icon="check"
             @click="$emit('select', sound)"
@@ -49,6 +53,15 @@ export default {
     selected: {
       type: Object,
       default: () => {}
+    }
+  },
+  methods: {
+    onPlay(playingPlayer) {
+      this.$refs.players.forEach(player => {
+        if (player !== playingPlayer) {
+          player.stop()
+        }
+      })
     }
   }
 }
