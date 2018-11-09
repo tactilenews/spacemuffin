@@ -134,13 +134,16 @@ mark {
   font-style: italic;
   color: rgba($color-text, 0.7);
   text-decoration: underline double;
+  text-underline-position: under;
 }
 .mark-sound {
   background-color: $color-marker-sound;
   text-decoration: underline dashed;
+  text-underline-position: under;
 }
 .mark-quote {
   background-color: $color-marker-quote;
   text-decoration: underline dotted;
+  text-underline-position: under;
 }
 </style>

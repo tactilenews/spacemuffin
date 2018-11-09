@@ -123,6 +123,7 @@ export default {
   .mark-button-voice {
     text-decoration: underline double;
     background-color: rgba($color-marker-voice, 0.1);
+    text-underline-position: under;
 
     &:hover {
       background-color: rgba($color-marker-voice, 0.3);
@@ -134,6 +135,7 @@ export default {
   .mark-button-sound {
     text-decoration: underline dashed;
     background-color: rgba($color-marker-sound, 0.1);
+    text-underline-position: under;
 
     &:hover {
       background-color: rgba($color-marker-sound, 0.3);
@@ -145,6 +147,7 @@ export default {
   .mark-button-quote {
     text-decoration: underline dotted;
     background-color: rgba($color-marker-quote, 0.1);
+    text-underline-position: under;
 
     &:hover {
       background-color: rgba($color-marker-quote, 0.3);
