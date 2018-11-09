@@ -80,10 +80,10 @@ export default {
   padding: $spacing-unit $spacing-unit;
 
   &:focus {
-    outline: 1px dashed rgba($color-brand, 0.2);
+    outline: 1px solid rgba($color-brand, 0.5);
   }
 
-  line-height: 1.2em;
+  line-height: 1.3em;
 
   p,
   h1,
@@ -109,7 +109,7 @@ export default {
   margin-top: -$spacing-unit;
   margin-left: -$spacing-unit;
   margin-right: -$spacing-unit;
-  margin-bottom: $spacing-unit;
+  margin-bottom: -1.5 * $spacing-unit;
 }
 
 mark {
