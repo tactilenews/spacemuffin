@@ -113,11 +113,11 @@ export default {
 }
 
 mark {
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  margin-left: -0.2em;
-  margin-right: -0.2em;
-  border-radius: $border-radius;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: -0.25em;
+  margin-right: -0.25em;
+  border-radius: 1rem;
 
   &::before {
     display: inline-block;
