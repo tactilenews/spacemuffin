@@ -4,11 +4,12 @@
     :to="to"
     :tag="tag"
     :class="{ button: true, primary, large }"
-  >
+    @click.native="$emit('click', $event)">
     <slot />
   </nuxt-link>
   <button
     v-else
+    :class="{ button: true, primary, large }"
     @click="$emit('click', $event)">
     <slot />
   </button>
@@ -42,6 +43,8 @@ export default {
 
 .button {
   display: inline-block;
+  font-size: inherit;
+  line-height: inherit;
   padding: $spacing-tiny $spacing-small;
 
   text-decoration: none;

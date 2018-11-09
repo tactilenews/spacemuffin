@@ -5,7 +5,7 @@ export default function postEmail(data) {
   }
 
   const from = {
-    name: 'Lisa',
+    name: 'Lisa von tactile.news',
     email: 'service@tactile.news'
   }
 
@@ -16,11 +16,9 @@ export default function postEmail(data) {
     data.title
   } bestellt. ${data.speaker} wird deinen Beitrag bis zum ${
     data.deadline
-  } für dich vertonen und abmischen. Du bekommst das fertige Audiofile im ${
-    data.format
-  } von uns per eMail zugeschickt.\n\nUnter diesem Link kannst du jederzeit den Status deiner Bestellung einsehen: <a href="${
+  } für dich vertonen und abmischen. Du bekommst das fertige Audiofile von uns per eMail zugeschickt.\n\nUnter diesem Link kannst du jederzeit den Status deiner Bestellung einsehen: <a href="${
     location.href
-  }">Beitragsübersicht</a>\n\nWenn du in der Zwischenzeit Fragen hast, wende dich gerne an uns unter support@tactile.news.\n\nWir freuen uns über deinen Auftrag!\n\nHerzliche Grüße von deinem\ntactile.news-Team\n`
+  }">Beitragsübersicht</a>\n\nWenn du in der Zwischenzeit Fragen hast, wende dich gerne an unser Team unter <a href="mailto:support@tactile.news">support@tactile.news</a>.\n\nWir freuen uns über deinen Auftrag!\n\nHerzliche Grüße von deinem\ntactile.news-Team\n`
 
   const options = {
     method: 'POST',
