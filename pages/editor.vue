@@ -74,26 +74,6 @@ export default {
     onDialog({ mark, key, name, focus }) {
       let fileName
       this.lastEditorContext = { mark, key, name, focus }
-
-      // switch (key) {
-      //   case 'voice': {
-      //     // simulate voice selection
-      //     fileName = [
-      //       'Mann',
-      //       'Frau',
-      //       'Mädchien (6)',
-      //       'Junge (6)',
-      //       'Mädchien (12)',
-      //       'Junge (12)'
-      //     ][Math.round(Math.random() * 5)]
-      //     break
-      //   }
-      //   default: {
-      //     // simulate random mp3 filename
-      //     fileName = `${key}-sound-${Math.round(Math.random() * 100)}.mp3`
-      //   }
-      // }
-
       this.showModal = true
     }
   }
