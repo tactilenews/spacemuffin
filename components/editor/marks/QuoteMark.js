@@ -16,7 +16,7 @@ export default class QuoteMark extends Mark {
           default: 'ERROR - data-file missing'
         },
         'data-label': {
-          default: 'Das sollte der Name haben'
+          default: 'ERROR - data-label missing'
         }
       },
       parseDOM: [

@@ -16,7 +16,7 @@ export default class VoiceMark extends Mark {
           default: 'selecting...'
         },
         'data-label': {
-          default: 'Das sollte der Name haben'
+          default: 'ERROR - data-label missing'
         }
       },
       parseDOM: [
