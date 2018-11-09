@@ -17,7 +17,7 @@
       </tactile-button>
       <template slot="next">
         <tactile-button
-          to="/"
+          @click="saveDraft"
         >
           Entwurf speichern
         </tactile-button>
@@ -75,6 +75,10 @@ export default {
   methods: {
     onVoice(meta) {
       this.lastEditorContext.mark.command(meta)
+    },
+    saveDraft() {
+      this.$store.commit('items/saveDraft')
+      this.$router.push('/')
     },
     onUpdate({ getJSON, getHTML }) {
       this.$store.commit('items/doc', {

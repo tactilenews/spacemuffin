@@ -5,7 +5,7 @@ import {
   differenceInDays
 } from 'date-fns'
 
-export const state = () => ({
+const initialState = () => ({
   user: {
     name: 'Astrid Csuraji',
     email: 'astrid@tactile.news',
@@ -18,6 +18,7 @@ export const state = () => ({
   speaker: '',
   comment: '',
   recipientEmail: '',
+  status: null,
   deadline: new Date(),
   counts: {
     chars: 0,
@@ -27,6 +28,8 @@ export const state = () => ({
   },
   json: null
 })
+
+export const state = initialState
 
 export const getters = {
   json(state) {
@@ -41,11 +44,14 @@ export const getters = {
   meta(state) {
     return {
       user: state.user,
-      author: state.author,
+      author: state.author || 'Autor',
       title: state.title,
       format: state.format,
       tonie: state.tonie
     }
+  },
+  status(state) {
+    return state.status
   },
   comment(state) {
     return state.comment
@@ -82,6 +88,13 @@ export const getters = {
   }
 }
 export const mutations = {
+  reset(state) {
+    // https://github.com/vuejs/vuex/issues/1118#issuecomment-356286218
+    const s = initialState()
+    Object.keys(s).forEach(key => {
+      state[key] = s[key]
+    })
+  },
   comment(state, comment) {
     state.comment = comment
   },
@@ -110,5 +123,11 @@ export const mutations = {
   },
   deadline(state, deadline) {
     state.deadline = deadline
+  },
+  saveDraft(state) {
+    state.status = 'draft'
+  },
+  order(state) {
+    state.status = 'ordered'
   }
 }
