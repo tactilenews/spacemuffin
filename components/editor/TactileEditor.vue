@@ -100,10 +100,11 @@ export default {
 .editor p.is-empty:first-child::before {
   content: 'Füge hier dein Manuskript per Copy&Paste ein. Dann kannst Du es mit Geräuschen und Originaltönen ausstatten.';
   float: left;
-  height: auto;
-  padding-bottom: $spacing-unit;
   color: #aaa;
   pointer-events: none;
+  height: auto;
+  width: auto;
+  padding-bottom: $spacing-unit;
   font-style: italic;
 }
 
