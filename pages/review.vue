@@ -52,7 +52,7 @@
           :primary="true"
           icon="check"
           icon-position="right"
-          @click="() => sendMail()"
+          @click="sendMail"
         >
           Produktion beauftragen
         </tactile-button>
@@ -67,6 +67,7 @@ import { mapGetters } from 'vuex'
 import { format, addDays, startOfDay } from 'date-fns'
 
 import postEmailApi from '../apis/post-email'
+import postOrderEmailApi from '../apis/post-order-email'
 
 import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
@@ -113,16 +114,20 @@ export default {
     this.$store.commit('items/deadline', addDays(startOfDay(new Date()), 3))
   },
   methods: {
-    sendMail: () => {
+    sendMail() {
       const data = {
-        username: 'me',
-        title: this.meta.title,
-        speaker: this.meta.speaker,
         deadline: this.deadline,
-        format: this.meta.format
+        tonesCount: this.tonesCount,
+        soundsCount: this.soundsCount,
+        user: this.meta.user,
+        title: this.meta.title,
+        format: this.meta.format,
+        speaker: this.meta.speaker
       }
 
       postEmailApi(data)
+      postOrderEmailApi(data)
+
       this.$router.push('success')
     }
   }

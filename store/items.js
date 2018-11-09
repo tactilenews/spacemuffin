@@ -1,6 +1,11 @@
 import { setMinutes, format, differenceInHours } from 'date-fns'
 
 export const state = () => ({
+  user: {
+    name: 'Astrid Csuraji',
+    email: 'astrid@tactile.news',
+    office: 'Open Data Journal'
+  },
   author: '',
   title: '',
   format: '',
@@ -20,6 +25,7 @@ export const getters = {
   },
   meta(state) {
     return {
+      user: state.user,
       author: state.author,
       title: state.title,
       format: state.format,
