@@ -22,7 +22,7 @@
         icon="chevron-right"
         icon-position="right"
       >
-        Zum Dashboard
+        Zur Übersicht
       </tactile-button>
     </tactile-actions-footer>
   </div>
@@ -38,7 +38,7 @@ export default {
   components: {
     TactileContent,
     TactileActionsFooter,
-    TactileButton
+    'tactile-button': TactileButton
   },
   computed: {
     ...mapGetters({
