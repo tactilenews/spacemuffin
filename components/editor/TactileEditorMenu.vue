@@ -1,32 +1,54 @@
 <template>
   <div>
     <button
-      v-for="(name, key) in markNames"
-      :key="name"
+      v-for="(meta, key) in markMeta"
+      :key="key"
       :disabled="isDisabled(marks[key])"
       :class="[
+        `mark-button-${key}`,
         isActive(marks[key]) && 'is-active'
       ]"
+      :title="meta.description"
       class="menubar__button"
-      @click="onButtonClick(marks[key], name, key)"
+      @click="onButtonClick(marks[key], meta.label, key)"
     >
-      {{ name }}
+      <tactile-icon
+        :icon="meta.icon"
+        class="icon"
+      /> {{ meta.label }}
     </button>
   </div>
 </template>
 
 <script>
+import TactileIcon from '~/components/TactileIcon.vue'
+
 export default {
+  components: {
+    TactileIcon
+  },
   props: {
     marks: { type: Object, default: () => {} },
     focus: { type: Function, default: () => {} }
   },
   data() {
     return {
-      markNames: {
-        voice: 'Sprecher',
-        ambientTone: 'Geräusch',
-        originalTone: 'O-Ton'
+      markMeta: {
+        voice: {
+          label: 'Stimme',
+          icon: 'user',
+          description: 'Ändere die Stimme für den markierten Text.'
+        },
+        sound: {
+          label: 'Geräusch',
+          icon: 'microphone',
+          description: 'Lege ein Geräusch unter den markierten Text.'
+        },
+        quote: {
+          label: 'O-Ton',
+          icon: 'headphones-alt',
+          description: 'Lege einen O-Ton über den markierten Text.'
+        }
       }
     }
   },
@@ -36,11 +58,6 @@ export default {
     },
     isDisabled(mark) {
       let disabled = false
-      Object.keys(this.marks).forEach(key => {
-        if (this.marks[key] !== mark && this.isActive(this.marks[key])) {
-          disabled = true
-        }
-      })
       return disabled
     },
     onButtonClick(mark, name, key) {
@@ -57,6 +74,7 @@ export default {
 
 <style lang="scss">
 @import '~assets/styles/variables';
+@import '~assets/styles/marker';
 
 .menubar {
   position: sticky;
@@ -92,6 +110,47 @@ export default {
     &:disabled {
       opacity: 0.5;
       pointer-events: none;
+    }
+
+    .icon {
+      font-size: 0.7em;
+      margin-top: 0.5em;
+      margin-right: 0.5em;
+      color: $color-text;
+    }
+  }
+
+  .mark-button-voice {
+    text-decoration: underline double;
+    background-color: rgba($color-marker-voice, 0.1);
+
+    &:hover {
+      background-color: rgba($color-marker-voice, 0.3);
+    }
+    &.is-active {
+      background-color: rgba($color-marker-voice, 0.7);
+    }
+  }
+  .mark-button-sound {
+    text-decoration: underline dashed;
+    background-color: rgba($color-marker-sound, 0.1);
+
+    &:hover {
+      background-color: rgba($color-marker-sound, 0.3);
+    }
+    &.is-active {
+      background-color: rgba($color-marker-sound, 0.7);
+    }
+  }
+  .mark-button-quote {
+    text-decoration: underline dotted;
+    background-color: rgba($color-marker-quote, 0.1);
+
+    &:hover {
+      background-color: rgba($color-marker-quote, 0.3);
+    }
+    &.is-active {
+      background-color: rgba($color-marker-quote, 0.7);
     }
   }
 }

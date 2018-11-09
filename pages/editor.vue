@@ -72,7 +72,7 @@ export default {
             'Junge (6)',
             'Mädchien (12)',
             'Junge (12)'
-          ][Math.round(Math.random() * 6)]
+          ][Math.round(Math.random() * 5)]
           break
         }
         default: {
