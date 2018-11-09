@@ -16,13 +16,12 @@
             <h2>Liefertermin</h2>
             <p>Ich möchte den Beitrag vertont zurück</p>
             <div class="list">
-              <form
-                ref="timerangeForm"
-                @change="setTimerange">
+              <form>
                 <div>
                   <input
                     id="timerange-2days"
                     :value="daysForExpress"
+                    v-model="timerange"
                     name="timerange"
                     type="radio">
                   <label for="timerange-2days">Express in 2 Werktagen (+ 50 €)</label>
@@ -31,6 +30,7 @@
                   <input
                     id="timerange-5days"
                     :value="daysForStandard"
+                    v-model="timerange"
                     name="timerange"
                     type="radio"
                     checked>
@@ -150,12 +150,6 @@ export default {
     }
   },
   methods: {
-    setTimerange() {
-      const timerangeString = new FormData(this.$refs.timerangeForm).get(
-        'timerange'
-      )
-      this.timerange = Number(timerangeString)
-    },
     orderProduction() {
       this.order()
       this.sendMail()

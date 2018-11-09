@@ -21,7 +21,7 @@ const initialState = () => ({
   recipientEmail: '',
   status: null,
   deadline: new Date(),
-  timerange: addDays(new Date(), 5),
+  timerange: 5,
   counts: {
     chars: 0,
     words: 0,
@@ -129,7 +129,7 @@ export const mutations = {
     state.speaker = speaker
   },
   timerange(state, timerange) {
-    state.timerange = timerange
+    state.timerange = Number(timerange)
   },
   saveDraft(state) {
     state.status = 'draft'
