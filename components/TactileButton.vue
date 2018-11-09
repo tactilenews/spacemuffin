@@ -64,6 +64,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/styles/variables';
+
 .button {
   display: inline-flex;
   font-size: inherit;
@@ -77,29 +78,36 @@ export default {
   border-radius: $border-radius;
   cursor: pointer;
 }
+
 .button + .button {
   margin-left: $spacing-tiny;
 }
+
 .primary {
   background-color: $color-brand;
   color: #fff;
   font-weight: 500;
 }
+
 .primary:hover {
   background-color: darken($color-brand, 10);
 }
+
 .secondary:hover {
   background-color: $color-text;
   color: $color-white;
 }
+
 .large {
   padding: $spacing-small $spacing-unit;
   font-size: 1.25rem;
   font-size: $font-size-large;
 }
+
 .icon {
   margin-right: 0.5em;
 }
+
 .icon-right {
   order: 2;
   margin-right: 0;
