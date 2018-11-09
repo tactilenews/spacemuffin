@@ -1,62 +1,63 @@
 <template>
   <div>
-    <div
-      v-if="show"
-      ref="backdrop"
-      class="modal-backdrop">&nbsp;</div>
-    <transition name="modal-transition">
+    <transition name="fade">
       <div
         v-if="show"
-        ref="modal"
-        class="modal"
-        tableindex="-1"
-        role="dialog"
-        @click="backdropClickHandler">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2>
-                <slot name="title" />
-              </h2>
-              <button
-                class="close"
-                aria-hidden="true"
-                @click="cancel('close')"/>
-            </div>
-            <div
-              ref="modalBody"
-              class="modal-body">
-              <slot />
-            </div>
-            <div class="modal-footer">
-              <slot
-                :cancel="cancel"
-                :confirm="confirm"
-                name="footer">
-                <tactile-actions-footer class="modal-footer">
-                  <tactile-button
-                    slot="prev"
-                    icon="times"
-                    @click="cancel('cancel')"
-                  >
-                    Abbrechen
-                  </tactile-button>
-                  <tactile-button
-                    slot="next"
-                    :primary="true"
-                    icon="check"
-                    icon-position="right"
-                    @click="confirm('confirm')"
-                  >
-                    Einfügen
-                  </tactile-button>
-                </tactile-actions-footer>
-              </slot>
-            </div>
+        ref="backdrop"
+        class="modal-backdrop"/>
+    </transition>
+    <div
+      v-if="show"
+      ref="modal"
+      key="modal-key"
+      class="modal"
+      tableindex="-1"
+      role="dialog"
+      @click="backdropClickHandler">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>
+              <slot name="title" />
+            </h2>
+            <button
+              class="close"
+              aria-hidden="true"
+              @click="cancel('close')"/>
+          </div>
+          <div
+            ref="modalBody"
+            class="modal-body">
+            <slot />
+          </div>
+          <div class="modal-footer">
+            <slot
+              :cancel="cancel"
+              :confirm="confirm"
+              name="footer">
+              <tactile-actions-footer class="modal-footer">
+                <tactile-button
+                  slot="prev"
+                  icon="times"
+                  @click="cancel('cancel')"
+                >
+                  Abbrechen
+                </tactile-button>
+                <tactile-button
+                  slot="next"
+                  :primary="true"
+                  icon="check"
+                  icon-position="right"
+                  @click="confirm('confirm')"
+                >
+                  Einfügen
+                </tactile-button>
+              </tactile-actions-footer>
+            </slot>
           </div>
         </div>
       </div>
-    </transition>
+    </div>
   </div>
 </template>
 
