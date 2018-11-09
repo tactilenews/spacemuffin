@@ -16,25 +16,29 @@
             <h2>Liefertermin</h2>
             <p>Ich möchte den Beitrag vertont zurück</p>
             <div class="list">
-              <div>
-                <input
-                  id="deadline-express"
-                  name="deadline"
-                  type="radio"
-                  value="0">
-                <label for="deadline-express">Express in 2 Werktagen</label>
-              </div>
-              <div>
-                <input
-                  id="deadline-standard"
-                  name="deadline"
-                  type="radio"
-                  value="0"
-                  checked>
-                <label for="deadline-standard">Standard in 5 Werktagen</label>
-              </div>
+              <form
+                ref="timerangeForm"
+                @change="setTimerange">
+                <div>
+                  <input
+                    id="timerange-2days"
+                    name="timerange"
+                    type="radio"
+                    value="172800000">
+                  <label for="timerange-2days">Express in 2 Werktagen</label>
+                </div>
+                <div>
+                  <input
+                    id="timerange-5days"
+                    name="timerange"
+                    type="radio"
+                    value="432000000"
+                    checked>
+                  <label for="timerange-5days">Standard in 5 Werktagen</label>
+                </div>
+              </form>
             </div>
-            <p>bis zum <b>{{ new Date(deadline).toLocaleDateString().replace(/\//g, '.') }}</b>.</p>
+            <p>bis zum <b>{{ formattedDate }}</b>.</p>
           </div>
           <div>
             <h2>Preis</h2>
@@ -91,6 +95,10 @@ import TactileInput from '~/components/TactileInput.vue'
 import { setupCalendar, DatePicker } from 'v-calendar'
 import 'v-calendar/lib/v-calendar.min.css'
 
+function getDeadline(date, timerange) {
+  return new Date(date).getTime() + Number(timerange)
+}
+
 export default {
   components: {
     TactileContent,
@@ -123,13 +131,21 @@ export default {
         this.$store.commit('items/recipientEmail', email)
       }
     },
+    timerange: {
+      get() {
+        return this.$store.getters['items/timerange']
+      },
+      set(timerange) {
+        this.$store.commit('items/timerange', timerange)
+      }
+    },
     deadline: {
       get() {
         return this.$store.getters['items/deadline']
-      },
-      set(date) {
-        this.$store.commit('items/deadline', date)
       }
+    },
+    formattedDate() {
+      return new Date(this.deadline).toLocaleDateString('de')
     }
   },
   created() {
@@ -137,9 +153,15 @@ export default {
     this.$store.commit('items/deadline', addDays(startOfDay(new Date()), 3))
   },
   methods: {
+    setTimerange() {
+      const timerangeString = new FormData(this.$refs.timerangeForm).get(
+        'timerange'
+      )
+      this.timerange = Number(timerangeString)
+    },
     sendMail() {
       const data = {
-        deadline: this.deadline,
+        deadline: this.formattedDate,
         tonesCount: this.tonesCount,
         soundsCount: this.soundsCount,
         user: this.meta.user,
