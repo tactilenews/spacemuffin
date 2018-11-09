@@ -43,12 +43,17 @@ export const getters = {
   },
   costs(state, getters) {
     const expressFee = 50
+    const costPerChar = 0.04
+    const costPerQuote = 9
+    const costPerSound = 9
     let costs =
       getters.counts.chars * 0.04 +
-      (getters.counts.quotes + getters.counts.sounds) * 9
+      getters.counts.quotes * costPerQuote +
+      getters.counts.sounds * costPerSound
     if (differenceInHours(getters.deadline, new Date()) > 48) {
       costs += expressFee
     }
+    costs = Math.round(costs)
     return costs
   },
   estimatedDuration(state, getters) {

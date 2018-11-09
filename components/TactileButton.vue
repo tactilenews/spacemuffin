@@ -4,7 +4,7 @@
     :tag="tag"
     :class="{ button: true, primary, large }"
   >
-    <TactileIcon
+    <tactile-icon
       v-if="icon"
       :class="{ 'icon': true, 'icon-right': iconPosition === 'right' }"
       :icon="icon"
@@ -17,7 +17,7 @@
 import TactileIcon from '~/components/TactileIcon.vue'
 export default {
   components: {
-    TactileIcon
+    'tactile-icon': TactileIcon
   },
   props: {
     to: {
