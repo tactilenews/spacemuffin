@@ -47,7 +47,7 @@ export default {
         quote: {
           label: 'O-Ton',
           icon: 'headphones-alt',
-          description: 'Lege einen O-Ton zum über den markierten Text.'
+          description: 'Lege einen O-Ton über den markierten Text.'
         }
       }
     }
