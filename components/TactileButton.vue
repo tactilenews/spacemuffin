@@ -4,19 +4,33 @@
     :to="to"
     :tag="tag"
     :class="{ button: true, primary, large }"
-    @click.native="$emit('click', $event)">
+    @click.native="$emit('click', $event)"
+  >
+    <TactileIcon
+      :class="{ 'icon': true, 'icon-right': iconPosition === 'right' }"
+      :icon="icon"
+    />
     <slot />
   </nuxt-link>
   <button
     v-else
     :class="{ button: true, primary, large }"
-    @click="$emit('click', $event)">
+    @click="$emit('click', $event)"
+  >
+    <TactileIcon
+      :class="{ 'icon': true, 'icon-right': iconPosition === 'right' }"
+      :icon="icon"
+    />
     <slot />
   </button>
 </template>
 
 <script>
+import TactileIcon from '~/components/TactileIcon.vue'
 export default {
+  components: {
+    TactileIcon
+  },
   props: {
     to: {
       type: [String, Object],
@@ -33,6 +47,14 @@ export default {
     large: {
       type: Boolean,
       default: false
+    },
+    icon: {
+      type: String,
+      default: null
+    },
+    iconPosition: {
+      type: String,
+      default: 'left'
     }
   }
 }
@@ -42,15 +64,21 @@ export default {
 @import '~assets/styles/variables';
 
 .button {
-  display: inline-block;
+  display: inline-flex;
   font-size: inherit;
   line-height: inherit;
+  align-items: center;
   padding: $spacing-tiny $spacing-small;
 
   text-decoration: none;
   color: $color-text;
+  background-color: transparent;
   border: 1px solid;
-  border-radius: 3px;
+  border-radius: $border-radius;
+}
+
+.button + .button {
+  margin-left: $spacing-tiny;
 }
 
 .primary {
@@ -63,5 +91,15 @@ export default {
   padding: $spacing-small $spacing-unit;
   font-size: 1.25rem;
   font-size: $font-size-large;
+}
+
+.icon {
+  margin-right: 0.5em;
+}
+
+.icon-right {
+  order: 2;
+  margin-right: 0;
+  margin-left: 0.5em;
 }
 </style>

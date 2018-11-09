@@ -20,6 +20,8 @@
         slot="next"
         :primary="true"
         to="/"
+        icon="chevron-right"
+        icon-position="right"
       >
         Zum Dashboard
       </tactile-button>
