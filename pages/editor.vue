@@ -69,7 +69,10 @@ export default {
       this.lastEditorContext.mark.command(meta)
     },
     onUpdate({ getJSON, getHTML }) {
-      this.$store.commit('items/saveJSON', getJSON())
+      this.$store.commit('items/doc', {
+        json: getJSON(),
+        html: getHTML()
+      })
     },
     onDialog({ mark, key, name, focus }) {
       let fileName

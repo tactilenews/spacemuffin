@@ -2,17 +2,16 @@
   <div>
     <tactile-content class="centered">
       <h1>Herzlichen Glückwunsch!</h1>
-      <p>Dein Beitrag wurde an {{ speaker }} versandt. In {{ days }} Tagen sollte alles eingesprochen worden sein.</p>
+      <p>Dein Beitrag wurde an <b>{{ speaker }}</b> versandt. In <b>{{ days }} Tagen</b> ist er fertig produziert. Du bekommst ihn dann per E-Mail zugeschickt.
+      <span v-if="recipientEmail"> Wir schicken die Audio-Datei an <b>{{ recipientEmail }}</b>.</span></p>
 
       <img
         src="~assets/img/muffin.svg"
         alt="Pinkes tactile.news Maskottchen"
       >
 
-      <h2>Kontaktinfos</h2>
-      Bei Fragen und Anregung kannst du dich gerne bei uns melden:
-
-      <a href="mailto://support@tactile.news">support@tactile.news</a>
+      <h2>Noch Fragen?</h2>
+      <p>Melde dich gerne bei uns: <a href="mailto:astrid@tactile.news">astrid@tactile.news</a></p>
     </tactile-content>
 
     <tactile-actions-footer>
@@ -43,7 +42,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      speaker: 'items/speaker'
+      speaker: 'items/speaker',
+      recipientEmail: 'items/recipientEmail',
+      days: 'items/daysToDeadline'
     })
   }
 }

@@ -76,7 +76,6 @@ select {
   height: 100%;
   opacity: 0;
   font-size: $font-size;
-  cursor: pointer;
 }
 
 .isActive {

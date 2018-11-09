@@ -12,7 +12,7 @@
       class="menubar__button"
       @click="onButtonClick(marks[key], meta.label, key)"
     >
-      <TactileIcon
+      <tactile-icon
         :icon="meta.icon"
         class="icon"
       /> {{ meta.label }}
@@ -47,7 +47,7 @@ export default {
         quote: {
           label: 'O-Ton',
           icon: 'headphones-alt',
-          description: 'Lege einen O-Ton zum über den markierten Text.'
+          description: 'Lege einen O-Ton über den markierten Text.'
         }
       }
     }

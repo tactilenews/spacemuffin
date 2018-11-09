@@ -81,10 +81,10 @@ export default {
   padding: $spacing-unit $spacing-unit;
 
   &:focus {
-    outline: 1px dashed rgba($color-brand, 0.2);
+    outline: 1px solid rgba($color-brand, 0.5);
   }
 
-  line-height: 1.2em;
+  line-height: 1.3em;
 
   p,
   h1,
@@ -98,7 +98,7 @@ export default {
   }
 }
 .editor p.is-empty:first-child::before {
-  content: 'Füge hier deinen Beitrag ein…';
+  content: 'Füge hier deinen Text ein…';
   position: absolute;
   color: #aaa;
   pointer-events: none;
@@ -110,15 +110,15 @@ export default {
   margin-top: -$spacing-unit;
   margin-left: -$spacing-unit;
   margin-right: -$spacing-unit;
-  margin-bottom: $spacing-unit;
+  margin-bottom: -1.5 * $spacing-unit;
 }
 
 mark {
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  margin-left: -0.2em;
-  margin-right: -0.2em;
-  border-radius: $border-radius;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: -0.25em;
+  margin-right: -0.25em;
+  border-radius: 1rem;
 
   &::before {
     display: inline-block;
