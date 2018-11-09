@@ -15,7 +15,7 @@
   </nuxt-link>
   <button
     v-else
-    :class="{ button: true, primary, large }"
+    :class="{ button: true, primary, secondary: !primary, large }"
     @click="$emit('click', $event)"
   >
     <tactile-icon
@@ -75,6 +75,7 @@ export default {
   background-color: transparent;
   border: 1px solid;
   border-radius: $border-radius;
+  cursor: pointer;
 }
 .button + .button {
   margin-left: $spacing-tiny;
