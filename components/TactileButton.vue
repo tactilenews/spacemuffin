@@ -3,7 +3,7 @@
     v-if="to"
     :to="to"
     :tag="tag"
-    :class="{ button: true, primary, large }"
+    :class="{ button: true, primary, secondary: !primary, large }"
     @click.native="$emit('click', $event)"
   >
     <tactile-icon
@@ -86,6 +86,15 @@ export default {
   background-color: $color-brand;
   color: #fff;
   font-weight: 500;
+}
+
+.primary:hover {
+  background-color: darken($color-brand, 10);
+}
+
+.secondary:hover {
+  background-color: $color-text;
+  color: $color-white;
 }
 
 .large {
