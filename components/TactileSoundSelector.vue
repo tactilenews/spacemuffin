@@ -3,13 +3,22 @@
     <ul>
       <li
         v-for="sound in sounds"
-        :key="sound.name">
+        :key="sound.name"
+        :class="{ 'is-active': sound.name === selected }"
+
+      >
         <div class="name">
           {{ sound.name }}
         </div>
+
         <div class="actions">
-          <button @click="$emit('select', sound.name)">Auswählen</button>
           <tactile-audio-player :source="sound.url" />
+          <tactile-circle-button
+            icon="check"
+            @click="$emit('select', sound.name)"
+          >
+            Sound verwenden
+          </tactile-circle-button>
         </div>
       </li>
     </ul>
@@ -18,9 +27,11 @@
 
 <script>
 import TactileAudioPlayer from '~/components/TactileAudioPlayer.vue'
+import TactileCircleButton from '~/components/TactileCircleButton.vue'
 export default {
   components: {
-    TactileAudioPlayer
+    TactileAudioPlayer,
+    TactileCircleButton
   },
   model: {
     prop: 'selected',
@@ -48,12 +59,17 @@ export default {
 
 li {
   display: flex;
+  align-items: center;
   list-style: none;
-  padding: $spacing-small 0;
+  padding: $spacing-small;
 }
 
 li + li {
   border-top: 1px solid #eee;
+}
+
+.is-active {
+  background-color: #eee;
 }
 
 .actions {

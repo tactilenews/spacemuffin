@@ -1,17 +1,17 @@
 <template>
-  <button @click="isPlaying ? stop() : play()">
-    <tactile-icon :icon="isPlaying ? 'pause' : 'play'" />
-    <span class="visually-hidden">
-      {{ isPlaying ? 'Audio stoppen' : 'Audio starten' }}
-    </span>
-  </button>
+  <tactile-circle-button
+    :icon="isPlaying ? 'pause' : 'play'"
+    @click="isPlaying ? stop() : play()"
+  >
+    {{ isPlaying ? 'Audio stoppen' : 'Audio starten' }}
+  </tactile-circle-button>
 </template>
 
 <script>
-import TactileIcon from '~/components/TactileIcon.vue'
+import TactileCircleButton from '~/components/TactileCircleButton.vue'
 export default {
   components: {
-    TactileIcon
+    TactileCircleButton
   },
   props: {
     source: {
@@ -56,17 +56,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import '~assets/styles/variables';
-
-button {
-  width: 1.5 * $spacing-unit;
-  height: 1.5 * $spacing-unit;
-
-  color: #fff;
-  background-color: $color-brand;
-  border: none;
-  border-radius: 50%;
-}
-</style>
