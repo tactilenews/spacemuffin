@@ -1,8 +1,10 @@
 <template>
   <nuxt-link
+    v-if="to"
     :to="to"
     :tag="tag"
     :class="{ button: true, primary, large }"
+    @click.native="$emit('click', $event)"
   >
     <TactileIcon
       :class="{ 'icon': true, 'icon-right': iconPosition === 'right' }"
@@ -10,6 +12,17 @@
     />
     <slot />
   </nuxt-link>
+  <button
+    v-else
+    :class="{ button: true, primary, large }"
+    @click="$emit('click', $event)"
+  >
+    <TactileIcon
+      :class="{ 'icon': true, 'icon-right': iconPosition === 'right' }"
+      :icon="icon"
+    />
+    <slot />
+  </button>
 </template>
 
 <script>
@@ -52,11 +65,14 @@ export default {
 
 .button {
   display: inline-flex;
+  font-size: inherit;
+  line-height: inherit;
   align-items: center;
   padding: $spacing-tiny $spacing-small;
 
   text-decoration: none;
   color: $color-text;
+  background-color: transparent;
   border: 1px solid;
   border-radius: $border-radius;
 }

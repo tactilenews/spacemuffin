@@ -50,9 +50,9 @@
         </tactile-button>
         <tactile-button
           :primary="true"
-          to="/success"
-          icon-position="right"
           icon="check"
+          icon-position="right"
+          @click="() => sendMail()"
         >
           Produktion beauftragen
         </tactile-button>
@@ -65,6 +65,9 @@
 // eslint-disable-next-line
 import { mapGetters } from 'vuex'
 import { format, addDays, startOfDay } from 'date-fns'
+
+import postEmailApi from '../apis/post-email'
+
 import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
@@ -108,6 +111,20 @@ export default {
   created() {
     setupCalendar({ firstDayOfWeek: 2 })
     this.$store.commit('items/deadline', addDays(startOfDay(new Date()), 3))
+  },
+  methods: {
+    sendMail: () => {
+      const data = {
+        username: 'me',
+        title: this.meta.title,
+        speaker: this.meta.speaker,
+        deadline: this.deadline,
+        format: this.meta.format
+      }
+
+      postEmailApi(data)
+      this.$router.push('success')
+    }
   }
 }
 </script>
