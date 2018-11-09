@@ -10,11 +10,11 @@
     <tactile-sound-selector
       v-model="selectedSound"
       :sounds="[
-        { name: 'Frau - Astrid', url:'/quotes/woman-astrid.mp3' },
-        { name: 'Frau - Franci', url:'/quotes/woman-franci.mp3' },
-        { name: 'Mann - Robert', url: '/quotes/man-robert.mp3'},
-        { name: 'Mann - Friedrich', url:'/quotes/man-friedrich.mp3' },
-        { name: 'Junge - Matthias', url:'/quotes/boy-matthias.mp3' }
+        { name: 'Frauenstimme 1', url:'/quotes/woman-astrid.mp3' },
+        { name: 'Frauenstimme 2', url:'/quotes/woman-franci.mp3' },
+        { name: 'Männerstimme 1', url: '/quotes/man-robert.mp3'},
+        { name: 'Männerstimme 2', url:'/quotes/man-friedrich.mp3' },
+        { name: 'Jungestimme 1', url:'/quotes/boy-matthias.mp3' }
       ]"
     />
   </tactile-modal>
@@ -36,14 +36,13 @@ export default {
   },
   data() {
     return {
-      selectedSound: null
+      selectedSound: {}
     }
   },
   methods: {
     confirm(type) {
-      console.log({ ...this.selectedSound })
       this.$emit('add-marker', {
-        'data-label': this.selectedSound.label,
+        'data-label': this.selectedSound.name,
         'data-file': this.selectedSound.url
       })
     }

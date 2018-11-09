@@ -122,7 +122,7 @@ mark {
 
   &::before {
     display: inline-block;
-    content: '[' attr(data-file) '] ';
+    content: '[' attr(data-label) '] ';
     opacity: 0.5;
     font-size: 0.5em;
     color: $color-text;

@@ -14,6 +14,9 @@ export default class VoiceMark extends Mark {
         },
         'data-file': {
           default: 'selecting...'
+        },
+        'data-label': {
+          default: 'Das sollte der Name haben'
         }
       },
       parseDOM: [
