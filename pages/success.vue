@@ -1,6 +1,6 @@
 <template>
   <div>
-    <tactile-content>
+    <tactile-content class="centered">
       <h1>Herzlichen Glückwunsch!</h1>
       <p>Dein Beitrag wurde an <b>{{ speaker }}</b> versandt. In <b>{{ days }} Tagen</b> wird alles eingesprochen sein.
       <span v-if="recipientEmail"> Wir schicken die Audio-Datei an <b>{{ recipientEmail }}</b>.</span></p>
