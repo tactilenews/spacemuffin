@@ -13,7 +13,10 @@ export default class QuoteMark extends Mark {
           default: 'mark-quote'
         },
         'data-file': {
-          default: 'selecting...'
+          default: 'ERROR - data-file missing'
+        },
+        'data-label': {
+          default: 'Das sollte der Name haben'
         }
       },
       parseDOM: [
