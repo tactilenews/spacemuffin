@@ -47,7 +47,7 @@ export default {
       default: () => []
     },
     selected: {
-      type: Object,
+      type: String,
       default: null
     }
   }
