@@ -3,7 +3,10 @@
     <tactile-item
       v-if="status"
       :meta="meta"
+      :status="status"
       to="create"
+      @edit="editItem"
+      @delete="clearStorage"
     />
     <tactile-empty-state
       v-else
@@ -31,6 +34,14 @@ export default {
       status: 'items/status',
       meta: 'items/meta'
     })
+  },
+  methods: {
+    editItem() {
+      this.$router.push('create')
+    },
+    clearStorage() {
+      this.$store.commit('items/reset')
+    }
   }
 }
 </script>

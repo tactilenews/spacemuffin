@@ -4,7 +4,9 @@
       <h2> {{ meta.title }}</h2>
       <p> {{ meta.format }} <em v-if="meta.author"> von {{ meta.author }} </em> </p>
     </div>
-    <div class="actions">
+    <div
+      v-if="status === 'draft'"
+      class="actions" >
       <TactileButton
         icon="edit"
         icon-position="right"
@@ -34,6 +36,10 @@ export default {
     meta: {
       type: Object,
       required: true
+    },
+    status: {
+      type: String,
+      default: null
     }
   }
 }

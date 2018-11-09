@@ -5,7 +5,7 @@ import {
   differenceInDays
 } from 'date-fns'
 
-export const state = () => ({
+const initialState = () => ({
   user: {
     name: 'Astrid Csuraji',
     email: 'astrid@tactile.news',
@@ -28,6 +28,8 @@ export const state = () => ({
   },
   json: null
 })
+
+export const state = initialState
 
 export const getters = {
   json(state) {
@@ -86,6 +88,13 @@ export const getters = {
   }
 }
 export const mutations = {
+  reset(state) {
+    // https://github.com/vuejs/vuex/issues/1118#issuecomment-356286218
+    const s = initialState()
+    Object.keys(s).forEach(key => {
+      state[key] = s[key]
+    })
+  },
   comment(state, comment) {
     state.comment = comment
   },
