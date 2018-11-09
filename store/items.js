@@ -105,6 +105,9 @@ export const mutations = {
     state.format = meta.format
     state.tonie = meta.tonie
   },
+  setSpeaker(state, speaker) {
+    state.speaker = speaker
+  },
   deadline(state, deadline) {
     state.deadline = deadline
   }
