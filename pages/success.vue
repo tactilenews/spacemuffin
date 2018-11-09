@@ -2,7 +2,8 @@
   <div>
     <tactile-content>
       <h1>Herzlichen Glückwunsch!</h1>
-      <p>Dein Beitrag wurde an {{ speaker }} versandt. In {{ days }} Tagen sollte alles eingesprochen worden sein.</p>
+      <p>Dein Beitrag wurde an <b>{{ speaker }}</b> versandt. In <b>{{ days }} Tagen</b> wird alles eingesprochen sein.
+      <span v-if="recipientEmail"> Wir schicken die Audio-Datei an <b>{{ recipientEmail }}</b>.</span></p>
 
       <img
         src="~assets/img/muffin.svg"
@@ -43,7 +44,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      speaker: 'items/speaker'
+      speaker: 'items/speaker',
+      recipientEmail: 'items/recipientEmail',
+      days: 'items/daysToDeadline'
     })
   }
 }
