@@ -18,7 +18,7 @@
     :class="{ button: true, primary, large }"
     @click="$emit('click', $event)"
   >
-    <TactileIcon
+    <tactile-icon
       :class="{ 'icon': true, 'icon-right': iconPosition === 'right' }"
       :icon="icon"
     />
