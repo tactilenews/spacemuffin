@@ -99,7 +99,7 @@ export default {
 }
 .editor p.is-empty:first-child::before {
   content: 'Füge hier dein Manuskript per Copy&Paste ein. Dann kannst Du es mit Geräuschen und Originaltönen ausstatten.';
-  float: left;
+  float: right;
   color: #aaa;
   pointer-events: none;
   height: auto;
