@@ -19,6 +19,7 @@
     @click="$emit('click', $event)"
   >
     <tactile-icon
+      v-if="icon"
       :class="{ 'icon': true, 'icon-right': iconPosition === 'right' }"
       :icon="icon"
     />
