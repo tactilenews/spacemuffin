@@ -8,7 +8,7 @@
         isActive(marks[key]) && 'is-active'
       ]"
       class="menubar__button"
-      @click="marks[key].command"
+      @click="onButtonClick(marks[key], name, key)"
     >
       {{ name }}
     </button>
@@ -18,7 +18,8 @@
 <script>
 export default {
   props: {
-    marks: { type: Object, default: () => {} }
+    marks: { type: Object, default: () => {} },
+    focus: { type: Function, default: () => {} }
   },
   data() {
     return {
@@ -41,11 +42,57 @@ export default {
         }
       })
       return disabled
+    },
+    onButtonClick(mark, name, key) {
+      if (!mark.active()) {
+        this.$emit('dialog', { mark, name, key, focus: this.focus })
+      } else {
+        mark.command() // remove mark
+        this.$emit('removed', { mark, name, key })
+      }
     }
   }
 }
 </script>
 
 <style lang="scss">
-@import '~assets/styles/editorMenuBar';
+@import '~assets/styles/variables';
+
+.menubar {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: $color-white;
+  margin-left: -$spacing-small;
+  margin-right: -$spacing-small;
+  padding: $spacing-small 0.7 * $spacing-unit;
+  border-bottom: 1px solid #ccc6;
+
+  &__button {
+    $padding-vertical: $spacing-tiny;
+    $padding-horizontal: 1 + $spacing-tiny;
+
+    display: inline-flex;
+    background: transparent;
+    border: 0;
+    color: $color-text;
+    padding: $padding-vertical $padding-horizontal;
+    margin-right: 0.2 * $spacing-small;
+    border-radius: $border-radius;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($color-text, 0.05);
+    }
+
+    &.is-active {
+      background-color: rgba($color-text, 0.1);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}
 </style>

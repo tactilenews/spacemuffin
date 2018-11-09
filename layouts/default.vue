@@ -1,9 +1,7 @@
 <template>
   <div>
     <tactile-header />
-    <div class="wrapper">
-      <nuxt />
-    </div>
+    <nuxt class="wrapper" />
   </div>
 </template>
 
