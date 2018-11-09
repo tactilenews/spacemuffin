@@ -22,7 +22,7 @@
         icon="chevron-right"
         icon-position="right"
       >
-        Zum Dashboard
+        Zur Übersicht
       </tactile-button>
     </tactile-actions-footer>
   </div>

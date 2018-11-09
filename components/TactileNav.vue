@@ -1,7 +1,7 @@
 <template>
   <nav>
     <ul>
-      <li><nuxt-link to="/">Dashboard</nuxt-link></li>
+      <li><nuxt-link to="/">Übersicht</nuxt-link></li>
       <li><nuxt-link to="/create">Neuer Beitrag</nuxt-link></li>
     </ul>
   </nav>
