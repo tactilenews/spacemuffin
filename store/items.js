@@ -1,4 +1,9 @@
-import { setMinutes, format, differenceInHours } from 'date-fns'
+import {
+  setMinutes,
+  format,
+  differenceInHours,
+  differenceInDays
+} from 'date-fns'
 
 export const state = () => ({
   author: '',
@@ -7,6 +12,7 @@ export const state = () => ({
   tonie: '',
   speaker: '',
   comment: '',
+  recipientEmail: '',
   deadline: new Date(),
   counts: {
     chars: 0,
@@ -22,7 +28,10 @@ export const getters = {
     return state.json
   },
   speaker(state) {
-    return state.speaker
+    return state.speaker || 'Max Sprechermann'
+  },
+  recipientEmail(state) {
+    return state.recipientEmail
   },
   meta(state) {
     return {
@@ -40,6 +49,9 @@ export const getters = {
   },
   deadline(state) {
     return state.deadline
+  },
+  daysToDeadline(state) {
+    return differenceInDays(state.deadline, new Date())
   },
   costs(state, getters) {
     const expressFee = 50
@@ -66,6 +78,9 @@ export const getters = {
 export const mutations = {
   comment(state, comment) {
     state.comment = comment
+  },
+  recipientEmail(state, email) {
+    state.recipientEmail = email
   },
   doc(state, { json, html }) {
     const node = document.createElement('div')

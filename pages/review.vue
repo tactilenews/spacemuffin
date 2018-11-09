@@ -3,12 +3,18 @@
     <tactile-content>
       <div class="header">
         <h1>Fast Geschafft!</h1>
-        <p><b>{{ speaker.name }}</b> freut sich schon darauf, dein Manuskript einzusprechen. Wirf noch einen letzten Blick auf deine Bestellung und schicke sie dann ab.</p>
+        <p><b>{{ speaker }}</b> freut sich schon darauf, dein Manuskript einzusprechen. Wirf noch einen letzten Blick auf deine Bestellung und schicke sie dann ab.</p>
       </div>
       <div class="data">
         <section>
           <h2>Beiträgsübersicht</h2>
           <p>Dein Manuskript ist bereit zur Vertonung. Es ist <b>{{ meta.format }}</b> mit dem Titel <b>{{ meta.title }}</b> von <b>{{ meta.author }}</b> für die Tonie-Figur <b>{{ meta.tonie }}</b>. In <b>{{ counts.chars }} Zeichen</b> und <b>{{ counts.words }} Wörtern</b> hast du <b>{{ counts.quotes }} O-Töne</b> und <b>{{ counts.sounds }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
+          <div>
+            <h2>Empfänger Email Adresse</h2>
+            <input
+              v-model="recipientEmail"
+              placeholder="redaktion@example.org" >
+          </div>
         </section>
         <section>
           <div>
@@ -94,6 +100,14 @@ export default {
       },
       set(comment) {
         this.$store.commit('items/comment', comment)
+      }
+    },
+    recipientEmail: {
+      get() {
+        return this.$store.getters['items/recipientEmail']
+      },
+      set(email) {
+        this.$store.commit('items/recipientEmail', email)
       }
     },
     deadline: {
