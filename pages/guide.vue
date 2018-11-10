@@ -39,7 +39,7 @@
       <b>5. Noch Fragen?</b>
     </p>
     <p>
-      Wenn du nicht weiter weißt oder eine Anregung für uns hast, schreib uns einfach eine E-Mail an <a href="mailto:astrid@tactile.news">astrid@tactile.news</a> oder <a href="jacob@tactile.news">jakob@tactile.news</a>.
+      Wenn du nicht weiter weißt oder eine Anregung für uns hast, schreib uns einfach eine E-Mail an <a href="mailto:astrid@tactile.news">astrid@tactile.news</a> oder <a href="mailto:jacob@tactile.news">jakob@tactile.news</a>.
     </p>
 
   </tactile-content>
