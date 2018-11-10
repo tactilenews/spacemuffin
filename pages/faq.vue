@@ -1,13 +1,5 @@
 <template>
   <tactile-content>
-    <tactile-item
-      v-if="status"
-      :meta="meta"
-      :status="status"
-      to="create"
-      @edit="editItem"
-      @delete="clearStorage"
-    />
     <h2>Dein Schnellstart mit Spacemuffin
     </h2>
     <p>
@@ -23,7 +15,7 @@
       <b>2. Sprecher auswählen</b>
     </p>
     <p>
-      Wenn du den Text eingefügt hast, suche dir eine Sprecherin oder einen Sprecher aus. Für deine Beiträge bieten wir dir verschiedene Stimmen zur Vertonung an. Wenn du auf den blauen Button "Sprecher" klickst, kannst du aus Frauen- und Männer- und Kinderstimmen wählen. Du kannst testhören, indem du auf die Lautsprechersymbole neben den Namen klickst. Du wählst Sprecher aus, indem du den Haken neben dem Namen anklickst. Der ausgewählte Sprecher spricht den gesamten Text ein und sorgt auch für die richtige Mischung mit Geräuscnen, wenn du welche aussuchst. Ganz schön komfortabel, was?
+      Wenn du den Text eingefügt hast, suche dir eine Sprecherin oder einen Sprecher aus. Für deine Beiträge bieten wir dir verschiedene Stimmen zur Vertonung an. Wenn du auf den blauen Button "Sprecher" klickst, kannst du aus Frauen- und Männer- und Kinderstimmen wählen. Du kannst testhören, indem du auf die Lautsprechersymbole neben den Namen klickst. Du wählst Sprecher aus, indem du den Haken neben dem Namen anklickst. Der ausgewählte Sprecher spricht den gesamten Text ein und sorgt auch für die richtige Mischung mit Geräuschen, wenn du welche aussuchst. Ganz schön komfortabel, was?
     </p>
     <p>
       <b>2. Geräusche einfügen</b>
@@ -47,38 +39,18 @@
       <b>5. Noch Fragen?</b>
     </p>
     <p>
-      Wenn du nicht weiter weißt oder eine Anregung für uns hast, schreib uns einfach eine E-Mail an astrid@tactile.news oder jakob@tactile.news.
+      Wenn du nicht weiter weißt oder eine Anregung für uns hast, schreib uns einfach eine E-Mail an <a href="mailto:astrid@tactile.news">astrid@tactile.news</a> oder <a href="jacob@tactile.news">jakob@tactile.news</a>.
     </p>
-
 
   </tactile-content>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import TactileContent from '~/components/TactileContent.vue'
-import TactileEmptyState from '~/components/TactileEmptyState.vue'
-import TactileItem from '~/components/TactileItem'
 
 export default {
   components: {
-    TactileContent,
-    TactileEmptyState,
-    TactileItem
-  },
-  computed: {
-    ...mapGetters({
-      status: 'items/status',
-      meta: 'items/meta'
-    })
-  },
-  methods: {
-    editItem() {
-      this.$router.push('create')
-    },
-    clearStorage() {
-      this.$store.commit('items/reset')
-    }
+    TactileContent
   }
 }
 </script>

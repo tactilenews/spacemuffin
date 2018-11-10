@@ -50,7 +50,7 @@
         to="/"
         icon="chevron-left"
       >
-        Zurück zur Übersicht
+        Zurück zum Dashboard
       </tactile-button>
       <tactile-button
         slot="next"
