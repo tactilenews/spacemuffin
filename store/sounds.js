@@ -40,23 +40,28 @@ export const state = () => ({
   voices: [
     {
       name: 'Frau 1',
-      url: '/audio/voices/woman-astrid.mp3'
+      url:
+        '/audio/voices/woman-astrid.mp3'
     },
     {
       name: 'Frau 2',
-      url: '/audio/voices/woman-franci.mp3'
+      url:
+        '/audio/voices/woman-franci.mp3'
     },
     {
       name: 'Mann 1',
-      url: '/audio/voices/man-friedrich.mp3'
+      url:
+        '/audio/voices/man-friedrich.mp3'
     },
     {
       name: 'Mann 2',
-      url: '/audio/voices/man-robert.mp3'
+      url:
+        '/audio/voices/man-robert.mp3'
     },
     {
       name: 'Jungenstimme',
-      url: '/audio/voices/boy-matthias.mp3'
+      url:
+        '/audio/voices/boy-matthias.mp3'
     }
   ],
   sounds: [
