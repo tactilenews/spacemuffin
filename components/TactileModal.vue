@@ -1,4 +1,4 @@
-8<template>
+<template>
   <div>
     <transition name="fade">
       <div
