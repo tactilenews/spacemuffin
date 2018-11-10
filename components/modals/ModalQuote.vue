@@ -9,7 +9,7 @@
     <p>Füge ein Original Zitat Audio (O-Ton) ein.</p>
     <tactile-sound-selector
       v-model="selectedSound"
-      :sounds="sounds"
+      :sounds="voices"
     />
   </tactile-modal>
 </template>
@@ -18,6 +18,7 @@
 import TactileModal from '~/components/TactileModal.vue'
 import TactileSoundSelector from '~/components/TactileSoundSelector.vue'
 import ModalMixin from '~/components/modals/modalMixin.js'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -29,18 +30,14 @@ export default {
     markerContext: { type: Object, default: null }
   },
   data() {
-    const data = {
-      selectedSound: {},
-      sounds: [
-        { name: 'Frauenstimme 1', url: '/quotes/woman-astrid.mp3' },
-        { name: 'Frauenstimme 2', url: '/quotes/woman-franci.mp3' },
-        { name: 'Männerstimme 1', url: '/quotes/man-robert.mp3' },
-        { name: 'Männerstimme 2', url: '/quotes/man-friedrich.mp3' },
-        { name: 'Jungestimme 1', url: '/quotes/boy-matthias.mp3' }
-      ]
+    return {
+      selectedSound: this.$store.getters['sounds/voices'][0]
     }
-    data.selectedSound = data.sounds[0]
-    return data
+  },
+  computed: {
+    ...mapGetters({
+      voices: 'sounds/voices'
+    })
   },
   methods: {
     confirm(type) {

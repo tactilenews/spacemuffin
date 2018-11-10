@@ -2,39 +2,39 @@ export const state = () => ({
   speakers: [
     {
       name: 'Basta',
-      url: '/audio/speakers/basta.mp3',
+      url: '/audio/speakers/basta.mp3'
     },
     {
       name: 'Franci',
-      url: '/audio/speakers/franci.mp3',
+      url: '/audio/speakers/franci.mp3'
     },
     {
       name: 'Friedrich',
-      url: '/audio/speakers/friedrich.mp3',
+      url: '/audio/speakers/friedrich.mp3'
     },
     {
       name: 'Giosue Tolu',
-      url: '/audio/speakers/giosue-tolu.mp3',
+      url: '/audio/speakers/giosue-tolu.mp3'
     },
     {
       name: 'Katja',
-      url: '/audio/speakers/katja.mp3',
+      url: '/audio/speakers/katja.mp3'
     },
     {
       name: 'Martin',
-      url: '/audio/speakers/martin.mp3',
+      url: '/audio/speakers/martin.mp3'
     },
     {
       name: 'Matthias',
-      url: '/audio/speakers/matthias.mp3',
+      url: '/audio/speakers/matthias.mp3'
     },
     {
       name: 'Milla',
-      url: '/audio/speakers/milla.mp3',
+      url: '/audio/speakers/milla.mp3'
     },
     {
       name: 'Stefanie',
-      url: '/audio/speakers/stefanie.mp3',
+      url: '/audio/speakers/stefanie.mp3'
     }
   ],
   voices: [
@@ -130,5 +130,11 @@ export const state = () => ({
 export const getters = {
   speakers(state) {
     return state.speakers
+  },
+  sounds(state) {
+    return state.sounds
+  },
+  voices(state) {
+    return state.voices
   }
 }
