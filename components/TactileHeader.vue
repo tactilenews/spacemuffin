@@ -1,12 +1,15 @@
 <template>
   <header>
     <div class="wrapper">
-      <nuxt-link to="/">
+      <a
+        href="http://tactile.news"
+        target="_blank"
+      >
         <img
           src="~assets/img/logo.svg"
           alt="Tactile News"
         >
-      </nuxt-link>
+      </a>
       <tactile-nav />
     </div>
   </header>
