@@ -36,7 +36,6 @@ export default class QuoteMark extends Mark {
   }
 
   command({ type, attrs }) {
-    console.log(type)
     if (attrs && attrs['data-file']) {
       return insertSound(type, attrs, ' [ZITAT] ')
     } else {

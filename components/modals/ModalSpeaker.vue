@@ -6,7 +6,7 @@
     @confirm="confirm"
   >
     <template slot="title">Sprecher wählen</template>
-    <p>Hier kannst du den Sprecher auswäheln, der deinen Text vertonen soll.</p>
+    <p>Hier kannst du den Sprecher auswählen, der deinen Text vertonen soll.</p>
     <tactile-sound-selector
       v-model="selectedSpeaker"
       :sounds="speakers"

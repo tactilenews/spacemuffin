@@ -137,7 +137,7 @@ export default {
   width: 100%;
   margin-bottom: $spacing-small;
   padding: 0;
-  font-size: 2 * $font-size;
+  font-size: $font-size-huge;
   line-height: $spacing-unit;
   border: none;
 }
