@@ -14,48 +14,43 @@
       tableindex="-1"
       role="dialog"
       @click="backdropClickHandler">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2>
-              <slot name="title" />
-            </h2>
-            <button
-              class="close"
-              aria-hidden="true"
-              @click="cancel('close')"/>
-          </div>
-          <div
-            ref="modalBody"
-            class="modal-body">
-            <slot />
-          </div>
-          <div class="modal-footer">
-            <slot
-              :cancel="cancel"
-              :confirm="confirm"
-              name="footer">
-              <tactile-actions-footer class="modal-footer">
-                <tactile-button
-                  slot="prev"
-                  icon="times"
-                  @click="cancel('cancel')"
-                >
-                  {{ cancelLabel }}
-                </tactile-button>
-                <tactile-button
-                  slot="next"
-                  :primary="true"
-                  icon="check"
-                  icon-position="right"
-                  @click="confirm('confirm')"
-                >
-                  {{ confirmLabel }}
-                </tactile-button>
-              </tactile-actions-footer>
-            </slot>
-          </div>
-        </div>
+      <div class="modal-header">
+        <h2>
+          <slot name="title" />
+        </h2>
+        <button
+          class="close"
+          aria-hidden="true"
+          @click="cancel('close')"/>
+      </div>
+      <div
+        ref="modalBody"
+        class="modal-body">
+        <slot />
+      </div>
+      <div class="modal-footer">
+        <slot
+          :cancel="cancel"
+          :confirm="confirm"
+          name="footer"
+        >
+          <tactile-button
+            class="button-cancel"
+            icon="times"
+            @click="cancel('cancel')"
+          >
+            Abbrechen
+          </tactile-button>
+          <tactile-button
+            :primary="true"
+            class="button-confirm"
+            icon="check"
+            icon-position="right"
+            @click="confirm('confirm')"
+          >
+            Einfügen
+          </tactile-button>
+        </slot>
       </div>
     </div>
   </div>
@@ -117,31 +112,30 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '~assets/styles/variables';
 
-.modal-dialog {
-  /* This way it could be display flex or grid or whatever also. */
-  display: block;
-  /* Probably need media queries here */
-  width: 600px;
-  max-width: 100%;
-  min-height: 200px;
-  max-height: 100%;
+.modal {
   position: fixed;
   z-index: 102;
   left: 50%;
   top: 50%;
-  /* Use this for centering if unknown width/height */
   transform: translate3d(-50%, -50%, 0);
+
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  max-width: 100%;
+  max-height: 90vh;
+
   background: white;
   border-radius: $border-radius;
-  padding: $spacing-unit $spacing-unit 150px;
-  box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.3);
+  padding: 0 $spacing-unit;
 }
 
-.modal-header {
-  margin-top: -$spacing-unit;
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
 }
 
 .modal-backdrop {
@@ -154,12 +148,10 @@ export default {
 
   background: rgba(0, 0, 0, 0.7);
 }
+
 .modal-footer {
-  padding-left: $spacing-unit !important;
-  padding-right: $spacing-unit !important;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  display: flex;
+  padding: $spacing-small 0;
+  flex-shrink: 0;
 }
 </style>
