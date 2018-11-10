@@ -1,5 +1,6 @@
 import { Mark } from 'tiptap'
-import { toggleMark, updateMark, insertText } from 'tiptap-commands'
+import { toggleMark, insertText } from 'tiptap-commands'
+import insertSound from '~/components/editor/commands/insertSound'
 
 export default class QuoteMark extends Mark {
   get name() {
@@ -34,11 +35,9 @@ export default class QuoteMark extends Mark {
     }
   }
 
-  command(ctx) {
-    const { type, attrs } = ctx
+  command({ type, attrs }) {
     if (attrs && attrs['data-file']) {
-      // TODO: THIS IS BROKEN; TRY TO GET IT WORKING FOR EMPTY SELECTIONS ONLY
-      return [() => insertText(' [ZITAT] '), () => updateMark(type, attrs)]
+      return insertSound(type, attrs)
     } else {
       return toggleMark(type, attrs)
     }
