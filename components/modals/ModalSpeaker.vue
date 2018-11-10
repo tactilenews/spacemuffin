@@ -5,9 +5,7 @@
     @close="close"
     @confirm="confirm"
   >
-    <template slot="title">
-      Sprecher wählen
-    </template>
+    <template slot="title">Sprecher wählen</template>
     <p>Hier kannst du den Sprecher auswäheln, der deinen Text vertonen soll.</p>
     <tactile-sound-selector
       v-model="selectedSpeaker"
@@ -30,7 +28,7 @@ export default {
   data() {
     const speakers = this.$store.getters['sounds/speakers']
     return {
-      speakers: speakers,
+      speakers,
       selectedSpeaker: speakers[0]
     }
   },

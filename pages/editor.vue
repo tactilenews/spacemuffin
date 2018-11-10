@@ -7,18 +7,10 @@
           class="title"
           type="text"
         >
-        <tactile-button
-          icon="user"
-          @click="showSpeakerSelectorModal = true"
-        >
-          {{ speaker ? 'Dein Sprecher: ' + speaker.name : 'Sprecher wählen' }}
-        </tactile-button>
-        <modal-speaker
-          :show.sync="showSpeakerSelectorModal"
-          @selectSpeaker="onSelectSpeaker"
+        <tactile-speaker-selector
+          v-model="speaker"
         />
       </div>
-
       <tactile-editor
         :doc="json"
         @update="onUpdate"
@@ -65,9 +57,9 @@ import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
 import TactileEditor from '~/components/editor/TactileEditor'
-import ModalSpeaker from '~/components/modals/ModalSpeaker'
 import ModalSound from '~/components/modals/ModalSound'
 import ModalQuote from '~/components/modals/ModalQuote'
+import TactileSpeakerSelector from '~/components/TactileSpeakerSelector.vue'
 
 export default {
   components: {
@@ -75,9 +67,9 @@ export default {
     TactileActionsFooter,
     TactileButton,
     TactileEditor,
-    ModalSpeaker,
     ModalSound,
-    ModalQuote
+    ModalQuote,
+    TactileSpeakerSelector
   },
   asyncData({ store }) {
     return {
@@ -86,11 +78,10 @@ export default {
   },
   data() {
     return {
+      meta: this.$store.getters['items/meta'],
       markType: 'quote',
       showModal: false,
-      lastEditorContext: {},
-      meta: this.$store.getters['items/meta'],
-      showSpeakerSelectorModal: false
+      lastEditorContext: {}
     }
   },
   computed: {
