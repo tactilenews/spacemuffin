@@ -1,3 +1,4 @@
+
 import {
   addDays,
   setMinutes,
@@ -38,7 +39,7 @@ export const getters = {
     return state.json
   },
   speaker(state) {
-    return state.speaker || 'Max Sprechermann'
+    return state.speaker
   },
   recipientEmail(state) {
     return state.recipientEmail

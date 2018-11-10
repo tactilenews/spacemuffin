@@ -1,6 +1,24 @@
 <template>
   <div>
     <tactile-content>
+      <div class="meta">
+        <input
+          v-model="meta.title"
+          class="title"
+          type="text"
+        >
+        <tactile-button
+          icon="user"
+          @click="showSpeakerSelectorModal = true"
+        >
+          {{ speaker ? 'Dein Sprecher: ' + speaker.name : 'Sprecher wählen' }}
+        </tactile-button>
+        <modal-speaker
+          :show.sync="showSpeakerSelectorModal"
+          @selectSpeaker="onSelectSpeaker"
+        />
+      </div>
+
       <tactile-editor
         :doc="json"
         @update="onUpdate"
@@ -37,7 +55,8 @@
       :is="`modal-${markType}`"
       :show.sync="showModal"
       :marker-context="lastEditorContext"
-      @add-marker="onVoice" />
+      @add-marker="onAddMark"
+    />
   </div>
 </template>
 
@@ -46,7 +65,7 @@ import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
 import TactileEditor from '~/components/editor/TactileEditor'
-import ModalVoice from '~/components/modals/ModalVoice'
+import ModalSpeaker from '~/components/modals/ModalSpeaker'
 import ModalSound from '~/components/modals/ModalSound'
 import ModalQuote from '~/components/modals/ModalQuote'
 
@@ -56,7 +75,7 @@ export default {
     TactileActionsFooter,
     TactileButton,
     TactileEditor,
-    ModalVoice,
+    ModalSpeaker,
     ModalSound,
     ModalQuote
   },
@@ -67,13 +86,33 @@ export default {
   },
   data() {
     return {
-      markType: 'voice',
+      markType: 'quote',
       showModal: false,
-      lastEditorContext: {}
+      lastEditorContext: {},
+      meta: this.$store.getters['items/meta'],
+      showSpeakerSelectorModal: false
+    }
+  },
+  computed: {
+    speaker: {
+      get() {
+        return this.$store.getters['items/speaker']
+      },
+      set(speaker) {
+        return this.$store.commit('items/setSpeaker', speaker)
+      }
+    }
+  },
+  watch: {
+    meta: {
+      deep: true,
+      handler(meta) {
+        this.$store.commit('items/saveMeta', meta)
+      }
     }
   },
   methods: {
-    onVoice(meta) {
+    onAddMark(meta) {
       this.lastEditorContext.mark.command(meta)
     },
     saveDraft() {
@@ -88,7 +127,31 @@ export default {
       this.lastEditorContext = { mark, key, name, focus }
       this.markType = key
       this.showModal = true
+    },
+    onSelectSpeaker(speaker) {
+      this.speaker = speaker
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/styles/variables';
+
+.meta {
+  margin-bottom: $spacing-unit;
+}
+
+.title {
+  width: 100%;
+  margin-bottom: $spacing-small;
+  padding: 0;
+  font-size: 2 * $font-size;
+  line-height: $spacing-unit;
+  border: none;
+}
+
+.title:focus {
+  outline: none;
+}
+</style>
