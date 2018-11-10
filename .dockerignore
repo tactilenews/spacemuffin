@@ -8,3 +8,5 @@ Dockerfile
 docker-compose*.yml
 .env-secrets
 .env
+
+static/**/*.mp3
