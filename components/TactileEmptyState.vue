@@ -2,8 +2,8 @@
   <div>
     <div class="muffin">
       <img
-        src="~assets/img/muffin.svg"
-        alt="Pinkes tactile.news Maskottchen"
+        src="~assets/img/werkzeugtonie.png"
+        alt="pinker tactile tonie"
       >
     </div>
     <p><slot /></p>

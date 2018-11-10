@@ -1,7 +1,11 @@
 <template>
   <nav>
     <ul>
-      <li><nuxt-link to="/">Übersicht</nuxt-link></li>
+      <li><nuxt-link to="/guide">Schnellstart</nuxt-link></li>
+      <a
+        href="http://tactile.news"
+        target="_blank">Über tactile.news</a>
+      <li><nuxt-link to="/">Dashboard</nuxt-link></li>
     </ul>
   </nav>
 </template>
