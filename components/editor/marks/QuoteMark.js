@@ -37,7 +37,7 @@ export default class QuoteMark extends Mark {
 
   command({ type, attrs }) {
     if (attrs && attrs['data-file']) {
-      return insertSound(type, attrs, 'ZITAT')
+      return insertSound(type, attrs, ' [ZITAT] ')
     } else {
       return toggleMark(type, attrs)
     }

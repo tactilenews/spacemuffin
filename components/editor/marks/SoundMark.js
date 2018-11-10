@@ -37,7 +37,7 @@ export default class SoundMark extends Mark {
 
   command({ type, attrs }) {
     if (attrs && attrs['data-file']) {
-      return insertSound(type, attrs, 'SOUND')
+      return insertSound(type, attrs, ' [GERÄUSCH] ')
     } else {
       return toggleMark(type, attrs)
     }
