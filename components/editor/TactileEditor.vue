@@ -67,9 +67,6 @@ export default {
     onDialog({ mark, key, name, focus }) {
       focus() // focus the editor if not already done to get the needed context
       this.$emit('dialog', { mark, key, name, focus })
-    },
-    onUpdate(e) {
-      this.$emit('update', e)
     }
   }
 }

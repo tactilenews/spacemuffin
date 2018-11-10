@@ -1,5 +1,6 @@
 import { Mark } from 'tiptap'
-import { toggleMark, updateMark } from 'tiptap-commands'
+import { toggleMark, insertText } from 'tiptap-commands'
+import insertSound from '~/components/editor/commands/insertSound'
 
 export default class QuoteMark extends Mark {
   get name() {
@@ -37,7 +38,7 @@ export default class QuoteMark extends Mark {
   command({ type, attrs }) {
     console.log(type)
     if (attrs && attrs['data-file']) {
-      return updateMark(type, attrs)
+      return insertSound(type, attrs, ' [ZITAT] ')
     } else {
       return toggleMark(type, attrs)
     }
