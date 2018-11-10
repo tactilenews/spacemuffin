@@ -1,6 +1,6 @@
 import { updateMark } from 'tiptap-commands'
 
-export default function(type, attrs, text = 'SOUND') {
+export default function(type, attrs, text = ' [SOUND] ') {
   return (state, dispatch) => {
     const { $from, empty } = state.selection
     const { pos } = $from.pos
