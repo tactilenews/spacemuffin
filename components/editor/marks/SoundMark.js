@@ -1,5 +1,6 @@
 import { Mark } from 'tiptap'
 import { toggleMark, updateMark } from 'tiptap-commands'
+import insertSound from '~/components/editor/commands/insertSound'
 
 export default class SoundMark extends Mark {
   get name() {
@@ -36,7 +37,7 @@ export default class SoundMark extends Mark {
 
   command({ type, attrs }) {
     if (attrs && attrs['data-file']) {
-      return updateMark(type, attrs)
+      return insertSound(type, attrs, 'SOUND')
     } else {
       return toggleMark(type, attrs)
     }
