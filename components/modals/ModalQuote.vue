@@ -5,11 +5,11 @@
     @close="close"
     @confirm="confirm"
   >
-    <span slot="title">Zitat / O-Ton</span>
-    <p>Füge ein Original Zitat Audio (O-Ton) ein.</p>
+    <template slot="title">Zitat einfügen</template>
+    <p>Hier kannst du eine Stimme auswählen, die dein Zitat einspricht. Dadurch gestaltest du deinen Beitrag interessanter.</p>
     <tactile-sound-selector
-      v-model="selectedSound"
-      :sounds="sounds"
+      v-model="selectedVoice"
+      :sounds="voices"
     />
   </tactile-modal>
 </template>
@@ -29,24 +29,17 @@ export default {
     markerContext: { type: Object, default: null }
   },
   data() {
-    const data = {
-      selectedSound: {},
-      sounds: [
-        { name: 'Frauenstimme 1', url: '/quotes/woman-astrid.mp3' },
-        { name: 'Frauenstimme 2', url: '/quotes/woman-franci.mp3' },
-        { name: 'Männerstimme 1', url: '/quotes/man-robert.mp3' },
-        { name: 'Männerstimme 2', url: '/quotes/man-friedrich.mp3' },
-        { name: 'Jungestimme 1', url: '/quotes/boy-matthias.mp3' }
-      ]
+    const voices = this.$store.getters['sounds/voices']
+    return {
+      voices,
+      selectedVoice: voices[0]
     }
-    data.selectedSound = data.sounds[0]
-    return data
   },
   methods: {
     confirm(type) {
       this.$emit('add-marker', {
-        'data-label': this.selectedSound.name,
-        'data-file': this.selectedSound.url
+        'data-label': this.selectedVoice.name,
+        'data-file': this.selectedVoice.url
       })
     }
   }

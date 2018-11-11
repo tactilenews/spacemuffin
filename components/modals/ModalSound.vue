@@ -5,31 +5,41 @@
     @close="close"
     @confirm="confirm"
   >
-    <span slot="title">Hintergrundgeräusch</span>
-    <p>Füge ein Hintergrundgeräusch ein.</p>
+    <template slot="title">Geräusch einfügen</template>
+    <p>Hier kannst du ein Geräusch in deinen Beitrag einfügen.</p>
+    <tactile-sound-selector
+      v-model="selectedSound"
+      :sounds="sounds"
+    />
   </tactile-modal>
 </template>
 
 <script>
 import TactileModal from '~/components/TactileModal.vue'
 import ModalMixin from '~/components/modals/modalMixin.js'
+import TactileSoundSelector from '~/components/TactileSoundSelector.vue'
 
 export default {
   components: {
-    TactileModal
+    TactileModal,
+    TactileSoundSelector
   },
   mixins: [ModalMixin],
   props: {
     markerContext: { type: Object, default: null }
   },
+  data() {
+    const sounds = this.$store.getters['sounds/sounds']
+    return {
+      sounds,
+      selectedSound: sounds[0]
+    }
+  },
   methods: {
     confirm(type) {
-      let fileName = `${this.markerContext.key}-sound-${Math.round(
-        Math.random() * 100
-      )}.mp3`
-
       this.$emit('add-marker', {
-        'data-file': fileName
+        'data-label': this.selectedSound.name,
+        'data-file': this.selectedSound.url
       })
     }
   }

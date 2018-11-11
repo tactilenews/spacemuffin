@@ -1,6 +1,16 @@
 <template>
   <div>
     <tactile-content>
+      <div class="meta">
+        <input
+          v-model="meta.title"
+          class="title"
+          type="text"
+        >
+        <tactile-speaker-selector
+          v-model="speaker"
+        />
+      </div>
       <tactile-editor
         :doc="json"
         @update="onUpdate"
@@ -37,7 +47,8 @@
       :is="`modal-${markType}`"
       :show.sync="showModal"
       :marker-context="lastEditorContext"
-      @add-marker="onVoice" />
+      @add-marker="onAddMark"
+    />
   </div>
 </template>
 
@@ -46,9 +57,9 @@ import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
 import TactileEditor from '~/components/editor/TactileEditor'
-import ModalVoice from '~/components/modals/ModalVoice'
 import ModalSound from '~/components/modals/ModalSound'
 import ModalQuote from '~/components/modals/ModalQuote'
+import TactileSpeakerSelector from '~/components/TactileSpeakerSelector.vue'
 
 export default {
   components: {
@@ -56,9 +67,9 @@ export default {
     TactileActionsFooter,
     TactileButton,
     TactileEditor,
-    ModalVoice,
     ModalSound,
-    ModalQuote
+    ModalQuote,
+    TactileSpeakerSelector
   },
   asyncData({ store }) {
     return {
@@ -67,31 +78,71 @@ export default {
   },
   data() {
     return {
-      markType: 'voice',
+      meta: this.$store.getters['items/meta'],
+      markType: 'quote',
       showModal: false,
       lastEditorContext: {}
     }
   },
+  computed: {
+    speaker: {
+      get() {
+        return this.$store.getters['items/speaker']
+      },
+      set(speaker) {
+        return this.$store.commit('items/setSpeaker', speaker)
+      }
+    }
+  },
+  watch: {
+    meta: {
+      deep: true,
+      handler(meta) {
+        this.$store.commit('items/saveMeta', meta)
+      }
+    }
+  },
   methods: {
-    onVoice(meta) {
+    onAddMark(meta) {
       this.lastEditorContext.mark.command(meta)
     },
     saveDraft() {
       this.$store.commit('items/saveDraft')
       this.$router.push('/')
     },
-    onUpdate({ getJSON, getHTML }) {
-      this.$store.commit('items/doc', {
-        json: getJSON(),
-        html: getHTML()
-      })
+    onUpdate(editorState) {
+      this.$store.commit('items/doc', editorState)
     },
     onDialog({ mark, key, name, focus }) {
       let fileName
       this.lastEditorContext = { mark, key, name, focus }
       this.markType = key
       this.showModal = true
+    },
+    onSelectSpeaker(speaker) {
+      this.speaker = speaker
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/styles/variables';
+
+.meta {
+  margin-bottom: $spacing-unit;
+}
+
+.title {
+  width: 100%;
+  margin-bottom: $spacing-small;
+  padding: 0;
+  font-size: $font-size-huge;
+  line-height: $spacing-unit;
+  border: none;
+}
+
+.title:focus {
+  outline: none;
+}
+</style>
