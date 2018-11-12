@@ -2,132 +2,127 @@ export const state = () => ({
   speakers: [
     {
       name: 'Basta',
-      url: '/audio/speakers/basta.mp3'
+      url: 'https://static.tactile.news/audio/speakers/basta.mp3'
     },
     {
       name: 'Franci',
-      url: '/audio/speakers/franci.mp3'
+      url: 'https://static.tactile.news/audio/speakers/franci.mp3'
     },
     {
       name: 'Friedrich',
-      url: '/audio/speakers/friedrich.mp3'
+      url: 'https://static.tactile.news/audio/speakers/friedrich.mp3'
     },
     {
       name: 'Giosue Tolu',
-      url: '/audio/speakers/giosue-tolu.mp3'
+      url: 'https://static.tactile.news/audio/speakers/giosue-tolu.mp3'
     },
     {
       name: 'Katja',
-      url: '/audio/speakers/katja.mp3'
+      url: 'https://static.tactile.news/audio/speakers/katja.mp3'
     },
     {
       name: 'Martin',
-      url: '/audio/speakers/martin.mp3'
+      url: 'https://static.tactile.news/audio/speakers/martin.mp3'
     },
     {
       name: 'Matthias',
-      url: '/audio/speakers/matthias.mp3'
+      url: 'https://static.tactile.news/audio/speakers/matthias.mp3'
     },
     {
       name: 'Milla',
-      url: '/audio/speakers/milla.mp3'
+      url: 'https://static.tactile.news/audio/speakers/milla.mp3'
     },
     {
       name: 'Stefanie',
-      url: '/audio/speakers/stefanie.mp3'
+      url: 'https://static.tactile.news/audio/speakers/stefanie.mp3'
     }
   ],
   voices: [
     {
       name: 'Frau 1',
-      url:
-        '/audio/voices/woman-astrid.mp3'
+      url: 'https://static.tactile.news/audio/voices/woman-astrid.mp3'
     },
     {
       name: 'Frau 2',
-      url:
-        '/audio/voices/woman-franci.mp3'
+      url: 'https://static.tactile.news/audio/voices/woman-franci.mp3'
     },
     {
       name: 'Mann 1',
-      url:
-        '/audio/voices/man-friedrich.mp3'
+      url: 'https://static.tactile.news/audio/voices/man-friedrich.mp3'
     },
     {
       name: 'Mann 2',
-      url:
-        '/audio/voices/man-robert.mp3'
+      url: 'https://static.tactile.news/audio/voices/man-robert.mp3'
     },
     {
       name: 'Jungenstimme',
-      url:
-        '/audio/voices/boy-matthias.mp3'
+      url: 'https://static.tactile.news/audio/voices/boy-matthias.mp3'
     }
   ],
   sounds: [
     {
       name: 'Baby',
-      url: '/audio/sounds/baby.mp3'
+      url: 'https://static.tactile.news/audio/sounds/baby.mp3'
     },
     {
       name: 'Kinderlachen',
-      url: '/audio/sounds/kinderlachen.mp3'
+      url: 'https://static.tactile.news/audio/sounds/kinderlachen.mp3'
     },
     {
       name: 'Kindermusik',
-      url: '/audio/sounds/kindermusik.mp3'
+      url: 'https://static.tactile.news/audio/sounds/kindermusik.mp3'
     },
     {
       name: 'Knall',
-      url: '/audio/sounds/knall.mp3'
+      url: 'https://static.tactile.news/audio/sounds/knall.mp3'
     },
     {
       name: 'Percussion',
-      url: '/audio/sounds/percussion.mp3'
+      url: 'https://static.tactile.news/audio/sounds/percussion.mp3'
     },
     {
       name: 'Pferde',
-      url: '/audio/sounds/pferde.wav'
+      url: 'https://static.tactile.news/audio/sounds/pferde.wav'
     },
     {
       name: 'Platsch',
-      url: '/audio/sounds/platsch.mp3'
+      url: 'https://static.tactile.news/audio/sounds/platsch.mp3'
     },
     {
       name: 'Regen',
-      url: '/audio/sounds/regen.mp3'
+      url: 'https://static.tactile.news/audio/sounds/regen.mp3'
     },
     {
       name: 'Schritte auf Eis',
-      url: '/audio/sounds/schritte-auf-eis.mp3'
+      url: 'https://static.tactile.news/audio/sounds/schritte-auf-eis.mp3'
     },
     {
       name: 'Schwein',
-      url: '/audio/sounds/schwein.mp3'
+      url: 'https://static.tactile.news/audio/sounds/schwein.mp3'
     },
     {
       name: 'Schwimmbad',
-      url: '/audio/sounds/schwimmbad.mp3'
+      url: 'https://static.tactile.news/audio/sounds/schwimmbad.mp3'
     },
     {
       name: 'Spannende Musik',
-      url: '/audio/sounds/spannende-musik.mp3'
+      url: 'https://static.tactile.news/audio/sounds/spannende-musik.mp3'
     },
     {
       name: 'Spielende Kinder',
-      url: '/audio/sounds/spielende-kinder.mp3'
+      url: 'https://static.tactile.news/audio/sounds/spielende-kinder.mp3'
     },
     {
       name: 'Stalltür',
-      url: '/audio/sounds/stalltür.wav'
+      url: 'https://static.tactile.news/audio/sounds/stalltür.wav'
     },
     {
       name: 'Wind',
-      url: '/audio/sounds/wind.wav'
+      url: 'https://static.tactile.news/audio/sounds/wind.wav'
     },
     {
       name: 'Zeit vergeht',
-      url: '/audio/sounds/zeit-vergeht.mp3'
+      url: 'https://static.tactile.news/audio/sounds/zeit-vergeht.mp3'
     }
   ]
 })
