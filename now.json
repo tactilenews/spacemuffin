@@ -1,5 +1,6 @@
 {
+  "version": 1,
   "name": "spacemuffin",
-  "alias": "spacemuffin.now.sh",
-  "type": "docker"
+  "type": "docker",
+  "alias": "spacemuffin.now.sh"
 }
