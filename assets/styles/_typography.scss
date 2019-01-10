@@ -5,3 +5,7 @@ h1 {
 h2 {
   margin: $spacing-medium 0 $spacing-small;
 }
+
+p + p {
+  margin-top: $spacing-small;
+}

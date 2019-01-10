@@ -12,7 +12,6 @@ const initialState = () => ({
     email: 'astrid@tactile.news',
     office: 'Open Data Journal'
   },
-  author: '',
   title: '',
   format: '',
   tonie: '',
@@ -46,7 +45,6 @@ export const getters = {
   meta(state) {
     return {
       user: state.user,
-      author: state.author || 'Autor',
       title: state.title,
       format: state.format,
       tonie: state.tonie
