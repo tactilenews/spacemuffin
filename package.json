@@ -23,7 +23,6 @@
     "nuxt": "^2.3.4",
     "tiptap": "^0.20.1",
     "tiptap-extensions": "^0.22.2",
-    "v-calendar": "^0.9.7",
     "vue": "^2.5.21",
     "vuex-persistedstate": "^2.5.4"
   },
