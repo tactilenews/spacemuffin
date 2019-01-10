@@ -2,5 +2,8 @@
   "version": 1,
   "name": "spacemuffin",
   "type": "docker",
-  "alias": "spacemuffin.now.sh"
+  "alias": "spacemuffin.now.sh",
+  "github": {
+    "silent": true
+  }
 }
