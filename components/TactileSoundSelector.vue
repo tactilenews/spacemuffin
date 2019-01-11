@@ -87,18 +87,6 @@ li.is-active {
   font-weight: 600;
 }
 
-li.is-active .name::after {
-  content: '(ausgewählt)';
-  margin-left: 0.5rem;
-
-  font-size: $font-size-small;
-  line-height: normal;
-
-  font-weight: 400;
-  font-style: italic;
-  color: $color-text-light;
-}
-
 .actions {
   margin-left: auto;
   opacity: 0.5;
