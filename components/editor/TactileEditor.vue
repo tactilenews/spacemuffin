@@ -1,34 +1,45 @@
 <template>
-  <editor
-    :extensions="extensions"
-    :doc="doc"
-    class="editor"
-    @update="$emit('update', $event)"
-  >
-
-    <div
-      v-if="nodes && marks"
-      slot="menubar"
-      slot-scope="{ nodes, marks, focus }"
-      class="menubar"
+  <div>
+    <editor
+      ref="editor"
+      :extensions="extensions"
+      :doc="doc"
+      class="editor"
+      @update="$emit('update', $event)"
     >
       <tactile-editor-menu
+        v-if="marks"
+        slot="menubar"
+        slot-scope="{ marks }"
         :marks="marks"
-        :focus="focus"
-        @dialog="onDialog"
+        @toggleMark="toggleMark($event)"
       />
-    </div>
+      <div
+        slot="content"
+        slot-scope="props"
+        class="content"
+      />
+    </editor>
 
-    <div
-      slot="content"
-      slot-scope="props"
-      class="content"
+    <tactile-sound-selector-modal
+      ref="modalSound"
+      :sounds="sounds"
+      heading="Geräusch einfügen"
+      help-text="Hier kannst du ein Geräusch in deinen Beitrag einfügen."
+      action="einfügen"
+      @select="addMark('sound', $event)"
     />
-  </editor>
+    <tactile-sound-selector-modal
+      ref="modalQuote"
+      :sounds="voices"
+      heading="Zitat einfügen"
+      help-text="Hier kannst du eine Stimme auswählen, die dein Zitat einspricht. Dadurch gestaltest du deinen Beitrag interessanter."
+      @select="addMark('quote', $event)"
+    />
+  </div>
 </template>
 
 <script>
-import TactileEditorMenu from '~/components/editor/TactileEditorMenu.vue'
 import { Editor } from 'tiptap'
 import {
   HeadingNode,
@@ -36,13 +47,20 @@ import {
   PlaceholderExtension,
   HistoryExtension
 } from 'tiptap-extensions'
-import VoiceMark from '~/components/editor/marks/VoiceMark'
+
+import addMark from '~/components/editor/helpers/addMark'
+import removeMark from '~/components/editor/helpers/removeMark'
+
 import QuoteMark from '~/components/editor/marks/QuoteMark'
 import SoundMark from '~/components/editor/marks/SoundMark'
+
+import TactileEditorMenu from '~/components/editor/TactileEditorMenu.vue'
+import TactileSoundSelectorModal from '~/components/TactileSoundSelectorModal.vue'
 
 export default {
   components: {
     TactileEditorMenu,
+    TactileSoundSelectorModal,
     editor: Editor
   },
   props: {
@@ -50,31 +68,62 @@ export default {
   },
   data() {
     return {
+      sounds: this.$store.getters['sounds/sounds'],
+      voices: this.$store.getters['sounds/voices'],
       extensions: [
         new HeadingNode({ maxLevel: 2 }),
         new ListItemNode(),
-        new VoiceMark(),
         new QuoteMark(),
         new SoundMark(),
-        new PlaceholderExtension({
-          emptyNodeClass: 'is-empty'
-        }),
+        new PlaceholderExtension({ emptyNodeClass: 'is-empty' }),
         new HistoryExtension()
       ]
     }
   },
   methods: {
-    onDialog({ mark, key, name, focus }) {
-      focus() // focus the editor if not already done to get the needed context
-      this.$emit('dialog', { mark, key, name, focus })
+    toggleMark(type) {
+      const mark = this.$refs.editor.menuActions.marks[type]
+
+      if (mark.active()) {
+        return this.removeMark(type)
+      }
+
+      const modals = {
+        sound: this.$refs.modalSound,
+        quote: this.$refs.modalQuote
+      }
+
+      modals[type].open()
+    },
+    addMark(type, data) {
+      const command = this.$refs.editor.commands[type]
+      if (command) command(data)
+    },
+    removeMark(type) {
+      const command = this.$refs.editor.commands[type]
+      if (command) command()
     }
   }
 }
 </script>
 
+<style lang="scss" scoped>
+@import '~assets/styles/variables';
+
+.editor {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: $border-radius;
+  line-height: 1.75;
+}
+
+.editor:focus-within {
+  border: 1px solid rgba($color-brand, 0.5);
+}
+</style>
+
 <style lang="scss">
 @import '~assets/styles/variables';
-@import '~assets/styles/marker';
 
 .ProseMirror {
   padding: $spacing-small;
@@ -96,60 +145,29 @@ export default {
   font-style: italic;
 }
 
-.editor {
-  position: relative;
-  border: 1px solid #ddd;
-  border-radius: $border-radius;
-  line-height: 1.75;
-}
-
-.editor:focus-within {
-  border: 1px solid rgba($color-brand, 0.5);
-}
-
-.menubar {
-  margin: $border-radius 0;
-}
-
 .editor :matches(p, h1, h2, h3):not(:last-child) {
   padding-bottom: 0.5 * $spacing-unit;
 }
 
-.mark-voice,
 .mark-sound,
 .mark-quote {
   padding-left: 0.5em;
   padding-right: 0.5em;
-  margin-left: -0.25em;
-  margin-right: -0.25em;
   border-radius: 1rem;
 
   &::before {
     display: inline-block;
-    content: '[' attr(data-label) '] ';
+    content: '[' attr(data-name) '] ';
     opacity: 0.5;
-    font-size: 0.5em;
     color: $color-text;
   }
 }
 
-.mark-voice {
-  background-color: $color-marker-voice;
-  font-style: italic;
-  color: rgba($color-text, 0.7);
-  text-decoration: underline double;
-  text-underline-position: under;
-}
-
 .mark-sound {
-  background-color: $color-marker-sound;
-  text-decoration: underline dashed;
-  text-underline-position: under;
+  background-color: rgba($color-marker-sound, 0.5);
 }
 
 .mark-quote {
-  background-color: $color-marker-quote;
-  text-decoration: underline dotted;
-  text-underline-position: under;
+  background-color: rgba($color-marker-quote, 0.5);
 }
 </style>

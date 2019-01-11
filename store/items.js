@@ -16,7 +16,7 @@ const initialState = () => ({
   title: '',
   format: '',
   tonie: '',
-  speaker: '',
+  speaker: null,
   comment: '',
   recipientEmail: '',
   status: null,

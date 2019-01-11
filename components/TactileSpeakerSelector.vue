@@ -2,38 +2,44 @@
   <div>
     <tactile-button
       icon="user"
-      @click="showSpeakerSelectorModal = true"
+      @click="$refs.modal.open()"
     >
-      {{ selectedSpeaker ? 'Dein Sprecher: ' + selectedSpeaker.name : 'Sprecher wählen' }}
+      {{ selected ? 'Dein Sprecher: ' + selected.name : 'Sprecher wählen' }}
     </tactile-button>
-    <modal-speaker
-      :show.sync="showSpeakerSelectorModal"
-      @selectSpeaker="$emit('selectSpeaker', $event)"
+    <tactile-sound-selector-modal
+      ref="modal"
+      :sounds="speakers"
+      :selected="selected"
+      v-model="temporarilySelected"
+      heading="Sprecher wählen"
+      help-text="Welcher Sprechers soll deinen Text vertonen?"
+      @select="$emit('select', temporarilySelected)"
     />
   </div>
 </template>
 
 <script>
 import TactileButton from '~/components/TactileButton.vue'
-import ModalSpeaker from '~/components/modals/ModalSpeaker.vue'
+import TactileSoundSelectorModal from '~/components/TactileSoundSelectorModal.vue'
 export default {
   components: {
     TactileButton,
-    ModalSpeaker
+    TactileSoundSelectorModal
   },
   model: {
-    prop: 'selectedSpeaker',
-    event: 'selectSpeaker'
+    prop: 'selected',
+    event: 'select'
   },
   props: {
-    selectedSpeaker: {
+    selected: {
       type: Object,
       default: null
     }
   },
   data() {
     return {
-      showSpeakerSelectorModal: false
+      speakers: this.$store.getters['sounds/speakers'],
+      temporarilySelected: this.selected
     }
   }
 }
