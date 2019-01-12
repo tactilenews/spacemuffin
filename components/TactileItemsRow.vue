@@ -4,10 +4,13 @@
     <td>{{ item.meta.format.split(' ')[1] }}</td>
     <td>{{ item.meta.tonie }}</td>
     <td>{{ item.speaker && item.speaker.name }}</td>
-    <td>
+    <td :colspan="item.status === 'ordered' ? 2 : 1">
       <tactile-status-badge :status="item.status" />
     </td>
-    <td class="actions">
+    <td
+      v-if="item.status !== 'ordered'"
+      class="actions"
+    >
       <tactile-items-actions
         :status="item.status"
         @edit="$emit('edit')"
