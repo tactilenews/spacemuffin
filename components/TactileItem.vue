@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="meta">
       <h2> {{ meta.title }}</h2>
-      <p> {{ meta.format }} <em v-if="meta.author"> von {{ meta.author }} </em> </p>
+      <p> {{ meta.format }} </p>
     </div>
     <div
       v-if="status === 'draft'"
