@@ -5,8 +5,7 @@
       <div class="data">
         <section class="summary">
           <p><b>{{ speaker.name }}</b> freut sich schon darauf, dein Manuskript einzusprechen.</p>
-          <p>Es ist <b>{{ meta.format }}</b> mit dem Titel <b>{{ meta.title }}</b> von <b>{{ meta.author }}</b> für die Tonie-Figur <b>{{ meta.tonie }}</b>. In <b>{{ counts.chars }} Zeichen</b> und <b>{{ counts.words }} Wörtern</b> hast du <b>{{ counts.quotes }} O-Töne</b> und <b>{{ counts.sounds }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
-          <br>
+          <p>Es ist <b>{{ meta.format }}</b> mit dem Titel „<b>{{ meta.title }}</b>” für die Tonie-Figur <b>{{ meta.tonie }}</b>. In <b>{{ counts.chars }} Zeichen</b> und <b>{{ counts.words }} Wörtern</b> hast du <b>{{ counts.quotes }} O-Töne</b> und <b>{{ counts.sounds }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
           <p>Wir senden dir den fertigen Beitrag per E-Mail.</p>
         </section>
         <section>
@@ -196,6 +195,6 @@ section {
 
 textarea {
   width: 100%;
-  min-height: $spacing-unit * 5;
+  min-height: 2 * $spacing-tiny + 5 * $line-height;
 }
 </style>

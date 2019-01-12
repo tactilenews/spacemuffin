@@ -12,3 +12,11 @@ h2, .beta {
   font-size: $font-size-large;
   margin-bottom: $spacing-small;
 }
+
+p + p {
+  margin-top: $spacing-small;
+}
+
+h3 {
+  font-size: 1rem;
+}
