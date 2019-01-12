@@ -118,7 +118,6 @@ export const mutations = {
     }
   },
   saveMeta(state, meta) {
-    state.author = meta.author
     state.title = meta.title
     state.format = meta.format
     state.tonie = meta.tonie
