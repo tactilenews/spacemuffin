@@ -12,7 +12,7 @@ RUN apk --no-cache add git
 
 COPY package.json .
 
-RUN yarn install
+RUN npm install
 
 COPY . .
 RUN npm run build
