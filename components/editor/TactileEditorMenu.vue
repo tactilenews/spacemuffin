@@ -1,12 +1,14 @@
 <template>
   <div class="menubar">
-    <small>Hilfetext</small>
+    <small>{{ helpText }}</small>
     <div class="buttons">
       <tactile-button
         v-for="(data, type) in meta"
         :key="type"
         :icon="data.icon"
         :class="[`mark-button-${type}`, marks[type].active() && 'is-active']"
+        @mouseover="helpText = data.helpText"
+        @mouseout="helpText = null"
         @click="$emit('toggleMark', type)"
       >
         {{ data.label }}
@@ -41,7 +43,8 @@ export default {
   },
   data() {
     return {
-      meta
+      meta,
+      helpText: null
     }
   }
 }
