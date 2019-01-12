@@ -91,16 +91,13 @@ import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
 import TactileInput from '~/components/TactileInput.vue'
-import { setupCalendar, DatePicker } from 'v-calendar'
-import 'v-calendar/lib/v-calendar.min.css'
 
 export default {
   components: {
     TactileContent,
     TactileActionsFooter,
     TactileButton,
-    TactileInput,
-    DatePicker
+    TactileInput
   },
   data() {
     return {
