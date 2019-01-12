@@ -44,7 +44,7 @@ export default {
     ...mapGetters({
       speaker: 'items/speaker',
       recipientEmail: 'items/recipientEmail',
-      days: 'items/daysToDeadline'
+      timerange: 'items/timerange'
     })
   }
 }
