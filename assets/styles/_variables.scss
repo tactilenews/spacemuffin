@@ -16,14 +16,14 @@ $font-size: 18px;
 $font-size-medium: $font-size;
 $font-size-huge: 2 * $font-size;
 $font-size-large: 1.25 * $font-size;
-$font-size-small: 0.75 * $font-size;
+$font-size-small: 0.85 * $font-size;
 
 $border-radius: 3px;
 
 /**
  * GRID
  */
-$grid-max-width: 960px;
+$grid-max-width: 1000px;
 
 /**
  * COLORS
@@ -32,3 +32,10 @@ $color-text: #333;
 $color-bg: #eee;
 $color-brand: #d9007d;
 $color-white: #fff;
+
+
+$color-blue-light: #e5f3ff;
+$color-blue-dark: #054177;
+
+$color-orange-light: #ffeeda;
+$color-orange-dark: #af5c00;

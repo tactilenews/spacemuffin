@@ -1,9 +1,7 @@
 <template>
   <div>
     <tactile-content>
-      <div class="header">
-        <h1>Fast Geschafft!</h1>
-      </div>
+      <h1 slot="header">Fast Geschafft!</h1>
       <div class="data">
         <section class="summary">
           <p><b>{{ speaker.name }}</b> freut sich schon darauf, dein Manuskript einzusprechen.</p>
@@ -190,10 +188,6 @@ export default {
 section {
   width: 50%;
   padding: 0.5 * $spacing-unit;
-}
-
-.summary {
-  margin-top: $spacing-medium;
 }
 
 .list {

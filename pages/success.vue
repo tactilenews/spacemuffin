@@ -1,7 +1,7 @@
 <template>
   <div>
     <tactile-content class="centered">
-      <h1>Herzlichen Glückwunsch!</h1>
+      <h1 slot="header">Herzlichen Glückwunsch!</h1>
       <p>Dein Beitrag wurde an <b>{{ speaker }}</b> versandt. In <b>{{ days }} Tagen</b> ist er fertig produziert. Du bekommst ihn dann per E-Mail zugeschickt.
       <span v-if="recipientEmail"> Wir schicken die Audio-Datei an <b>{{ recipientEmail }}</b>.</span></p>
 
