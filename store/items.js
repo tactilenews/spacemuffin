@@ -65,9 +65,6 @@ export const getters = {
   deadline(state, getters) {
     return addDays(new Date(), getters.timerange)
   },
-  daysToDeadline(state) {
-    return differenceInDays(state.deadline, new Date())
-  },
   costs(state, getters) {
     const expressFee = 50
     const costPerChar = 0.04
