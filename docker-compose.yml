@@ -11,4 +11,4 @@ services:
     volumes:
       - .:/spacemuffin
       - /spacemuffin/node_modules
-    command: yarn run dev
+    command: npm run dev
