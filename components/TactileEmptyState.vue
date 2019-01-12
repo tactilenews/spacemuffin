@@ -3,7 +3,7 @@
     <div class="muffin">
       <img
         src="~assets/img/werkzeugtonie.png"
-        alt="pinker tactile tonie"
+        alt="Pinkes tactile.news Maskottchen mit Schraubenschlüssel in der Hand"
       >
     </div>
     <p><slot /></p>
