@@ -41,7 +41,10 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/styles/variables';
 table {
+  display: block;
   width: 100%;
+  white-space: nowrap;
+  overflow-y: scroll;
   border-collapse: collapse;
 }
 
