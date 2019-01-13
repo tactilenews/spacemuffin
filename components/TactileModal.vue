@@ -69,10 +69,10 @@ export default {
   },
   mounted() {
     this.handleKey.bind(this)
-    addEventListener('keyup', this.handleKey)
+    window.addEventListener('keyup', this.handleKey)
   },
   beforeDestroy() {
-    removeEventListener('keyup', this.handleKey)
+    window.removeEventListener('keyup', this.handleKey)
   },
   methods: {
     open() {
