@@ -84,9 +84,6 @@
 import { mapGetters, mapMutations } from 'vuex'
 import { format, addDays, startOfDay } from 'date-fns'
 
-import postEmailApi from '../apis/post-email'
-import postOrderEmailApi from '../apis/post-order-email'
-
 import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
@@ -154,16 +151,18 @@ export default {
     sendMail() {
       const data = {
         deadline: this.formattedDate,
-        tonesCount: this.tonesCount,
-        soundsCount: this.soundsCount,
         user: this.meta.user,
         title: this.meta.title,
         format: this.meta.format,
-        speaker: this.meta.speaker
+        speaker: this.speaker.name,
+        comment: this.comment
       }
 
-      postEmailApi(data)
-      postOrderEmailApi(data)
+      fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
 
       this.$router.push('success')
     },
