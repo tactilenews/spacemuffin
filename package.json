@@ -18,7 +18,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.2",
     "cross-env": "^5.2.0",
     "date-fns": "^2.0.0-alpha",
-    "normalize.css": "^8.0.0",
+    "normalize.css": "^8.0.1",
     "nuxt": "^2.3.4",
     "tiptap": "^0.20.1",
     "tiptap-extensions": "^0.22.2",
