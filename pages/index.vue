@@ -1,19 +1,24 @@
 <template>
   <tactile-content>
-    <tactile-item
-      v-if="status"
-      :meta="meta"
-      :status="status"
-      to="create"
-      @edit="editItem"
-      @delete="clearStorage"
-    />
+
+    <template v-if="status">
+      <h1 slot="header">Deine Beiträge</h1>
+      <tactile-items
+        v-if="status"
+        :items="[{ meta, status, speaker }]"
+        @edit="editItem"
+        @delete="clearStorage"
+      />
+    </template>
+
     <tactile-empty-state
       v-else
-      to="/create">
+      to="/create"
+    >
       Du hast noch keine Beiträge angelegt. Willst du jetzt anfangen?
       <template slot="action">Beitrag erstellen</template>
     </tactile-empty-state>
+
   </tactile-content>
 </template>
 
@@ -21,18 +26,20 @@
 import { mapGetters } from 'vuex'
 import TactileContent from '~/components/TactileContent.vue'
 import TactileEmptyState from '~/components/TactileEmptyState.vue'
-import TactileItem from '~/components/TactileItem'
+import TactileItems from '~/components/TactileItems'
 
 export default {
   components: {
     TactileContent,
     TactileEmptyState,
-    TactileItem
+    TactileItems
   },
   computed: {
     ...mapGetters({
       status: 'items/status',
-      meta: 'items/meta'
+      meta: 'items/meta',
+      speaker: 'items/speaker',
+      status: 'items/status'
     })
   },
   methods: {

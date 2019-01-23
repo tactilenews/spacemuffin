@@ -1,11 +1,10 @@
 <template>
   <div>
     <tactile-content>
-
-      <div class="meta">
+      <div slot="header">
         <input
           v-model="meta.title"
-          class="title"
+          class="title alpha"
           type="text"
           placeholder="Titel eingeben…"
         >
@@ -107,16 +106,9 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/styles/variables';
 
-.meta {
-  margin-bottom: $spacing-unit;
-}
-
 .title {
   width: 100%;
-  margin-bottom: $spacing-small;
   padding: 0;
-  font-size: $font-size-huge;
-  line-height: $spacing-unit;
   border: none;
 }
 

@@ -3,7 +3,7 @@
     v-if="to"
     :to="to"
     :tag="tag"
-    :class="{ button: true, primary, secondary: !primary, large }"
+    :class="{ button: true, primary, secondary: !primary, large, link }"
     v-on="$listeners"
   >
     <tactile-icon
@@ -15,7 +15,7 @@
   </nuxt-link>
   <button
     v-else
-    :class="{ button: true, primary, secondary: !primary, large }"
+    :class="{ button: true, primary, secondary: !primary, large, link }"
     v-on="$listeners"
   >
     <tactile-icon
@@ -47,6 +47,10 @@ export default {
       default: false
     },
     large: {
+      type: Boolean,
+      default: false
+    },
+    link: {
       type: Boolean,
       default: false
     },
@@ -102,6 +106,21 @@ export default {
   padding: $spacing-small $spacing-unit;
   font-size: 1.25rem;
   font-size: $font-size-large;
+}
+
+.link,
+.link:hover {
+  padding-left: 0;
+  padding-right: 0;
+  background: none;
+  border-color: transparent;
+  color: $color-text;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+.link:hover {
+  opacity: 1;
 }
 
 .icon {
