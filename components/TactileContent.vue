@@ -1,5 +1,8 @@
 <template>
   <main>
+    <header v-if="$slots.header">
+      <slot name="header" />
+    </header>
     <slot />
   </main>
 </template>
@@ -8,6 +11,10 @@
 @import '~assets/styles/variables';
 
 main {
-  padding: 1.5 * $spacing-unit;
+  padding: $spacing-unit;
+}
+
+header {
+  padding: $spacing-small 0;
 }
 </style>
