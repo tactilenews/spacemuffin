@@ -1,14 +1,14 @@
 const pkg = require('./package')
 const path = require('path')
+const bodyParser = require('body-parser')
 
 module.exports = {
   mode: 'spa',
 
-  env: {
-    sendgrid: {
-      key: process.env.SENDGRID_KEY
-    }
-  },
+  serverMiddleware: [
+    { path: '/api', handler: bodyParser.json() },
+    { path: '/api', handler: '~/api/index.js' }
+  ],
 
   transition: {
     name: 'slide-up',
