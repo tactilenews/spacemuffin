@@ -43,20 +43,6 @@ module.exports = {
   */
   plugins: [{ src: '~/plugins/localStorage.js', ssr: false }],
 
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
-  ],
-  /*
-  ** Axios module configuration
-  */
-  axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-  },
-
   router: {
     linkActiveClass: 'router-link-active',
     linkExactActiveClass: 'router-link-exact-active'

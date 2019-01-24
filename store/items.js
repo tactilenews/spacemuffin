@@ -12,11 +12,10 @@ const initialState = () => ({
     email: 'astrid@tactile.news',
     office: 'Open Data Journal'
   },
-  author: '',
   title: '',
   format: '',
   tonie: '',
-  speaker: '',
+  speaker: null,
   comment: '',
   recipientEmail: '',
   status: null,
@@ -46,7 +45,6 @@ export const getters = {
   meta(state) {
     return {
       user: state.user,
-      author: state.author || 'Autor',
       title: state.title,
       format: state.format,
       tonie: state.tonie
@@ -66,9 +64,6 @@ export const getters = {
   },
   deadline(state, getters) {
     return addDays(new Date(), getters.timerange)
-  },
-  daysToDeadline(state) {
-    return differenceInDays(state.deadline, new Date())
   },
   costs(state, getters) {
     const expressFee = 50
@@ -120,7 +115,6 @@ export const mutations = {
     }
   },
   saveMeta(state, meta) {
-    state.author = meta.author
     state.title = meta.title
     state.format = meta.format
     state.tonie = meta.tonie

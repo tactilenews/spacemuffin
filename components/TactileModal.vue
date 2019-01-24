@@ -1,72 +1,57 @@
 <template>
-  <div>
-    <transition name="fade">
-      <div
-        v-if="show"
-        ref="backdrop"
-        class="modal-backdrop"/>
-    </transition>
+  <div
+    v-if="isOpen"
+    class="modal-wrapper"
+    role="dialog"
+    @click="close()"
+  >
+
     <div
-      v-if="show"
-      ref="modal"
-      key="modal-key"
       class="modal"
-      tableindex="-1"
-      role="dialog"
-      @click="backdropClickHandler">
-      <div class="modal-header">
-        <h2>
-          <slot name="title" />
-        </h2>
-        <button
-          class="close"
-          aria-hidden="true"
-          @click="cancel('close')"/>
-      </div>
-      <div
-        ref="modalBody"
-        class="modal-body">
+      @click.stop
+    >
+
+      <header class="modal__header">
+        <slot name="header" />
+      </header>
+
+      <div class="modal__body">
         <slot />
       </div>
-      <div class="modal-footer">
-        <slot
-          :cancel="cancel"
-          :confirm="confirm"
-          name="footer"
+
+      <TactileActionsFooter
+        :is-compact="true"
+        class="modal__footer"
+      >
+        <tactile-button
+          slot="prev"
+          @click="close()"
         >
-          <tactile-button
-            class="button-cancel"
-            icon="times"
-            @click="cancel('cancel')"
-          >
-            Abbrechen
-          </tactile-button>
-          <tactile-button
-            :primary="true"
-            class="button-confirm"
-            icon="check"
-            icon-position="right"
-            @click="confirm('confirm')"
-          >
-            Einfügen
-          </tactile-button>
-        </slot>
-      </div>
+          {{ cancelLabel }}
+        </tactile-button>
+        <tactile-button
+          slot="next"
+          :primary="true"
+          icon="check"
+          @click="confirm()"
+        >
+          {{ confirmLabel }}
+        </tactile-button>
+      </TactileActionsFooter>
+
     </div>
   </div>
 </template>
 
 <script>
-import ModalMixin from '~/components/modals/modalMixin.js'
-import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
+import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 
 export default {
   components: {
-    TactileActionsFooter,
-    TactileButton
+    TactileButton,
+    TactileActionsFooter
   },
-  mixins: [ModalMixin],
   props: {
     cancelLabel: {
       type: String,
@@ -74,38 +59,37 @@ export default {
     },
     confirmLabel: {
       type: String,
-      default: 'Einfügen'
+      default: 'Ok'
     }
   },
-  watch: {
-    show: {
-      immediate: true,
-      handler(show) {
-        if (show) {
-          this.$emit('opened')
-        }
-      }
+  data() {
+    return {
+      isOpen: false
     }
   },
   mounted() {
-    // handle esc keyboard interaction to close modal
-    const keydownListener = document.addEventListener('keydown', e => {
-      if (this.show && e.keyCode === 27) {
-        this.cancel('backdrop')
-      }
-    })
-    this.$once('hook:beforeDestroy', () => {
-      document.removeEventListener('keydown', keydownListener)
-    })
-
-    if (this.show) {
-      this.$emit('opened')
-    }
+    this.handleKey.bind(this)
+    window.addEventListener('keyup', this.handleKey)
+  },
+  beforeDestroy() {
+    window.removeEventListener('keyup', this.handleKey)
   },
   methods: {
-    backdropClickHandler(e) {
-      if (e.target === this.$refs.modal) {
-        this.cancel('backdrop')
+    open() {
+      this.isOpen = true
+      document.body.style.overflow = 'hidden'
+    },
+    close() {
+      this.isOpen = false
+      document.body.style.overflow = null
+    },
+    confirm() {
+      this.$emit('confirm')
+      this.close()
+    },
+    handleKey(event) {
+      if (event.key === 'Escape') {
+        this.close()
       }
     }
   }
@@ -115,43 +99,57 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/styles/variables';
 
-.modal {
+.modal-wrapper {
   position: fixed;
-  z-index: 102;
-  left: 50%;
-  top: 50%;
-  transform: translate3d(-50%, -50%, 0);
-
-  display: flex;
-  flex-direction: column;
-  width: 600px;
-  max-width: 100%;
-  max-height: 90vh;
-
-  background: white;
-  border-radius: $border-radius;
-  padding: 0 $spacing-unit;
-}
-
-.modal-body {
-  flex: 1;
-  overflow-y: auto;
-}
-
-.modal-backdrop {
-  position: fixed;
+  z-index: 999;
   top: 0;
   left: 0;
+  overflow: scroll;
+
+  display: flex;
   width: 100%;
   height: 100%;
-  z-index: 101;
 
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba($color-gray-light, 0.9);
 }
 
-.modal-footer {
-  display: flex;
-  padding: $spacing-small 0;
-  flex-shrink: 0;
+.modal {
+  width: 100%;
+  min-height: 100%;
+  max-width: 32rem;
+  margin: auto;
+
+  background-color: $color-white;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2), 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.modal__body {
+  padding: $spacing-small $spacing-unit;
+}
+
+.modal__header {
+  padding: $spacing-unit $spacing-unit 0;
+}
+
+.modal__footer {
+  position: sticky;
+  bottom: 0;
+  border-radius: 0 0 $border-radius $border-radius;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@media screen and (min-width: 560px) {
+  .modal-wrapper {
+    padding: $spacing-unit;
+  }
+
+  .modal {
+    min-height: 0;
+    border-radius: $border-radius;
+  }
+
+  .modal__footer {
+    bottom: -1 * $spacing-unit;
+  }
 }
 </style>
