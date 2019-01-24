@@ -5,5 +5,8 @@
   "alias": "spacemuffin.now.sh",
   "github": {
     "silent": true
+  },
+  "env": {
+    "SENDGRID_KEY": "@sendgrid-key"
   }
 }
