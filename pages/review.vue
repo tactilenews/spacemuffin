@@ -4,7 +4,7 @@
       <h1 slot="header">Fast Geschafft!</h1>
       <div class="data">
         <section class="summary">
-          <p><b>{{ speaker.name }}</b> freut sich schon darauf, dein Manuskript einzusprechen.</p>
+          <p><b>{{ speaker ? speaker.name : 'Dein Sprecher' }}</b> freut sich schon darauf, dein Manuskript einzusprechen.</p>
           <p>Es ist <b>{{ meta.format }}</b> mit dem Titel „<b>{{ meta.title }}</b>” für die Tonie-Figur <b>{{ meta.tonie }}</b>. In <b>{{ counts.chars }} Zeichen</b> und <b>{{ counts.words }} Wörtern</b> hast du <b>{{ counts.quotes }} O-Töne</b> und <b>{{ counts.sounds }} Geräusche</b> untergebracht. Wir schätzen die gesprochene Länge auf <b>{{ minutes }} Minuten</b>. Das wird sich bestimmt toll anhören!</p>
           <p>Wir senden dir den fertigen Beitrag per E-Mail.</p>
         </section>
