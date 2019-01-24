@@ -5,24 +5,22 @@
         v-for="sound in sounds"
         :key="sound.name"
         :class="{ 'is-active': sound.name === selected.name }"
+        @click="$emit('select', sound)"
 
       >
         <div class="name">
           {{ sound.name }}
         </div>
 
-        <div class="actions">
+        <div
+          class="actions"
+          @click.stop
+        >
           <tactile-audio-player
             ref="players"
             :source="sound.url"
             @play="onPlay"
           />
-          <tactile-circle-button
-            icon="check"
-            @click="$emit('select', sound)"
-          >
-            Sound verwenden
-          </tactile-circle-button>
         </div>
       </li>
     </ul>
@@ -73,19 +71,29 @@ export default {
 li {
   display: flex;
   align-items: center;
+  margin: $spacing-tiny 0;
+  padding: $spacing-tiny $spacing-small;
+
   list-style: none;
-  padding: $spacing-small;
+  border-radius: $border-radius;
 }
 
-li + li {
-  border-top: 1px solid #eee;
+li:hover,
+li.is-active {
+  background-color: $color-gray-light;
 }
 
-.is-active {
-  background-color: #eee;
+li.is-active {
+  font-weight: 600;
 }
 
 .actions {
   margin-left: auto;
+  opacity: 0.5;
+}
+
+li:hover .actions,
+li.is-active .actions {
+  opacity: 1;
 }
 </style>

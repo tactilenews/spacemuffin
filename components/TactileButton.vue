@@ -4,7 +4,7 @@
     :to="to"
     :tag="tag"
     :class="{ button: true, primary, secondary: !primary, large, link }"
-    @click.native="$emit('click', $event)"
+    v-on="$listeners"
   >
     <tactile-icon
       v-if="icon"
@@ -16,7 +16,7 @@
   <button
     v-else
     :class="{ button: true, primary, secondary: !primary, large, link }"
-    @click="$emit('click', $event)"
+    v-on="$listeners"
   >
     <tactile-icon
       v-if="icon"

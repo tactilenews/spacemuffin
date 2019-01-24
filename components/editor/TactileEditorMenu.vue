@@ -1,173 +1,105 @@
 <template>
-  <div class="wrapper">
-    <small>{{ hoveredDescription }}</small>
+  <div class="menubar">
+    <small>{{ helpText }}</small>
     <div class="buttons">
-      <button
-        v-for="(meta, key) in markMeta"
-        :key="key"
-        :disabled="isDisabled(marks[key])"
-        :class="[
-          `mark-button-${key}`,
-          isActive(marks[key]) && 'is-active'
-        ]"
-        :title="meta.description"
-        @mouseover="hoveredDescription = meta.description"
-        @mouseout="hoveredDescription = null"
-        @click="onButtonClick(marks[key], meta.label, key)"
+      <tactile-button
+        v-for="(data, type) in meta"
+        :key="type"
+        :icon="data.icon"
+        :class="[`mark-button-${type}`, marks[type].active() && 'is-active']"
+        @mouseover="helpText = data.helpText"
+        @mouseout="helpText = null"
+        @click="$emit('toggleMark', type)"
       >
-        <tactile-icon
-          :icon="meta.icon"
-          class="icon"
-        />
-        {{ meta.label }}
-      </button>
+        {{ data.label }}
+      </tactile-button>
     </div>
+
   </div>
 </template>
 
 <script>
-import TactileIcon from '~/components/TactileIcon.vue'
+import TactileButton from '~/components/TactileButton.vue'
+
+const meta = {
+  sound: {
+    label: 'Geräusch',
+    icon: 'volume-up',
+    helpText: 'Lege ein Geräusch unter den markierten Text.'
+  },
+  quote: {
+    label: 'Zitat',
+    icon: 'microphone',
+    helpText: 'Lege einen Zitat (O-Ton) über den markierten Text.'
+  }
+}
 
 export default {
   components: {
-    TactileIcon
+    TactileButton
   },
   props: {
-    marks: { type: Object, default: () => {} },
-    focus: { type: Function, default: () => {} }
+    marks: { type: Object, default: () => {} }
   },
   data() {
     return {
-      markMeta: {
-        sound: {
-          label: 'Geräusch',
-          icon: 'volume-up',
-          description: 'Lege ein Geräusch unter den markierten Text.'
-        },
-        quote: {
-          label: 'Zitat',
-          icon: 'microphone',
-          description: 'Lege einen Zitat (O-Ton) über den markierten Text.'
-        }
-      },
-      hoveredDescription: null
-    }
-  },
-  methods: {
-    isActive(mark) {
-      return mark.active()
-    },
-    isDisabled(mark) {
-      let disabled = false
-      return disabled
-    },
-    onButtonClick(mark, name, key) {
-      if (!mark.active()) {
-        this.$emit('dialog', { mark, name, key, focus: this.focus })
-      } else {
-        mark.command() // remove mark
-        this.$emit('removed', { mark, name, key })
-      }
+      meta,
+      helpText: null
     }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '~assets/styles/variables';
-@import '~assets/styles/marker';
 
 .menubar {
   position: sticky;
   top: 0;
   z-index: 99;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: $border-radius 0;
   padding: $spacing-small;
 
   background: $color-white;
   border-bottom: 1px solid #ddd;
+}
 
-  .wrapper {
-    display: flex;
-    align-items: center;
-    width: 100%;
+small {
+  color: $color-text-light;
+}
+
+.icon {
+  font-size: 0.75em;
+  margin-right: 0.5em;
+}
+
+.mark-button-sound,
+.mark-button-quote,
+.mark-button-sound:hover,
+.mark-button-quote:hover {
+  border: none;
+  color: $color-text;
+}
+
+.mark-button-sound {
+  background-color: rgba($color-marker-sound, 0.25);
+
+  &:hover,
+  &.is-active {
+    background-color: rgba($color-marker-sound, 0.75);
   }
+}
 
-  small {
-    flex-grow: 1;
-    margin-right: auto;
-    color: $color-text;
-    opacity: 0.8;
-  }
+.mark-button-quote {
+  background-color: rgba($color-marker-quote, 0.25);
 
-  button {
-    $padding-vertical: $spacing-tiny;
-    $padding-horizontal: 1 + $spacing-tiny;
-
-    display: inline-flex;
-    background: transparent;
-    border: 0;
-    color: $color-text;
-    padding: $padding-vertical $padding-horizontal;
-    margin-right: 0.2 * $spacing-small;
-    border-radius: $border-radius;
-    cursor: pointer;
-
-    &:hover {
-      background-color: rgba($color-text, 0.05);
-    }
-
-    &.is-active {
-      background-color: rgba($color-text, 0.1);
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .icon {
-      font-size: 0.7em;
-      margin-top: 0.5em;
-      margin-right: 0.5em;
-      color: $color-text;
-    }
-  }
-
-  .mark-button-voice {
-    text-decoration: underline double;
-    background-color: rgba($color-marker-voice, 0.1);
-    text-underline-position: under;
-
-    &:hover {
-      background-color: rgba($color-marker-voice, 0.3);
-    }
-    &.is-active {
-      background-color: rgba($color-marker-voice, 0.7);
-    }
-  }
-  .mark-button-sound {
-    text-decoration: underline dashed;
-    background-color: rgba($color-marker-sound, 0.1);
-    text-underline-position: under;
-
-    &:hover {
-      background-color: rgba($color-marker-sound, 0.3);
-    }
-    &.is-active {
-      background-color: rgba($color-marker-sound, 0.7);
-    }
-  }
-  .mark-button-quote {
-    text-decoration: underline dotted;
-    background-color: rgba($color-marker-quote, 0.1);
-    text-underline-position: under;
-
-    &:hover {
-      background-color: rgba($color-marker-quote, 0.3);
-    }
-    &.is-active {
-      background-color: rgba($color-marker-quote, 0.7);
-    }
+  &:hover,
+  &.is-active {
+    background-color: rgba($color-marker-quote, 0.75);
   }
 }
 </style>

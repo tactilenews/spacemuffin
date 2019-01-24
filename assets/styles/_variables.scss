@@ -18,7 +18,7 @@ $font-size-huge: 2 * $font-size;
 $font-size-large: 1.25 * $font-size;
 $font-size-small: 0.85 * $font-size;
 
-$border-radius: 3px;
+$border-radius: 4px;
 
 /**
  * GRID
@@ -28,15 +28,25 @@ $grid-max-width: 1000px;
 /**
  * COLORS
  */
-$color-text: #333;
-$color-text-light: #666;
-$color-bg: #eee;
-$color-brand: #d9007d;
+$color-black: #333;
 $color-white: #fff;
+
+$color-gray: #5f6c75;
+$color-gray-light: #f0f3f5;
+
+$color-pink: #d9007d;
 
 $color-blue-light: #e5f3ff;
 $color-blue-dark: #054177;
 
 $color-orange-light: #ffeeda;
 $color-orange-dark: #af5c00;
-$color-gray: #eee;
+
+$color-brand: $color-pink;
+$color-bg: $color-gray-light;
+
+$color-text: $color-black;
+$color-text-light: $color-gray;
+
+$color-marker-sound: #08bcbf;
+$color-marker-quote: #f2b134

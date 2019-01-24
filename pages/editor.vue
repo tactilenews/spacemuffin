@@ -6,17 +6,18 @@
           v-model="meta.title"
           class="title alpha"
           type="text"
+          placeholder="Titel eingeben…"
         >
-        <tactile-speaker-selector
-          v-model="speaker"
-        />
+        <tactile-speaker-selector v-model="speaker" />
       </div>
+
       <tactile-editor
         :doc="json"
         @update="onUpdate"
-        @dialog="onDialog"
       />
+
     </tactile-content>
+
     <tactile-actions-footer>
       <tactile-button
         slot="prev"
@@ -42,13 +43,6 @@
       </template>
     </tactile-actions-footer>
 
-    <!-- load current modal component based on the selected mark type `modal-quote, modal-sound, modal-voice` -->
-    <component
-      :is="`modal-${markType}`"
-      :show.sync="showModal"
-      :marker-context="lastEditorContext"
-      @add-marker="onAddMark"
-    />
   </div>
 </template>
 
@@ -57,8 +51,6 @@ import TactileContent from '~/components/TactileContent.vue'
 import TactileActionsFooter from '~/components/TactileActionsFooter.vue'
 import TactileButton from '~/components/TactileButton.vue'
 import TactileEditor from '~/components/editor/TactileEditor'
-import ModalSound from '~/components/modals/ModalSound'
-import ModalQuote from '~/components/modals/ModalQuote'
 import TactileSpeakerSelector from '~/components/TactileSpeakerSelector.vue'
 
 export default {
@@ -67,8 +59,6 @@ export default {
     TactileActionsFooter,
     TactileButton,
     TactileEditor,
-    ModalSound,
-    ModalQuote,
     TactileSpeakerSelector
   },
   asyncData({ store }) {
@@ -80,7 +70,6 @@ export default {
     return {
       meta: this.$store.getters['items/meta'],
       markType: 'quote',
-      showModal: false,
       lastEditorContext: {}
     }
   },
@@ -103,24 +92,12 @@ export default {
     }
   },
   methods: {
-    onAddMark(meta) {
-      this.lastEditorContext.mark.command(meta)
-    },
     saveDraft() {
       this.$store.commit('items/saveDraft')
       this.$router.push('/')
     },
     onUpdate(editorState) {
       this.$store.commit('items/doc', editorState)
-    },
-    onDialog({ mark, key, name, focus }) {
-      let fileName
-      this.lastEditorContext = { mark, key, name, focus }
-      this.markType = key
-      this.showModal = true
-    },
-    onSelectSpeaker(speaker) {
-      this.speaker = speaker
     }
   }
 }
