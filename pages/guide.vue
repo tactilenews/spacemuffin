@@ -3,7 +3,7 @@
 
     <div class="section">
       <h2>Dein Schnellstart mit Spacemuffin</h2>
-      <p>Spacemuffin ist dieser kleiner Helfer hier. Er sorgt dafür, dass deine Texte auf der Toniebox landen und sich dort gut anhören. Spacemuffin lässt sich einfach benutzen:</p>
+      <p>Spacemuffin ist dieser kleine Helfer hier. Er sorgt dafür, dass deine Texte auf der Toniebox landen und sich dort gut anhören. Spacemuffin lässt sich einfach benutzen:</p>
     </div>
 
     <div class="section">
@@ -28,7 +28,7 @@
 
     <div class="section">
       <h3>Fast geschafft!</h3>
-      <p>Du bist fertig? Dann drücke "Auftag überprüfen". Hier bekommst du eine Bestellübersicht, kannst den liefertermin bestimmen und siehst den Preis. Unseren Sprechern kannst du hier auch noch weitere Wünsche zur Vertonung aufschreiben, zum Beispiel, ob du den Text in einer besonderen Stimmung vertont haben möchtest. Jetzt kannst du uns mit der Produktion beauftragen. Das Studio steht bereit.</p>
+      <p>Du bist fertig? Dann drücke "Auftag überprüfen". Hier bekommst du eine Bestellübersicht, kannst den Liefertermin bestimmen und siehst den Preis. Unseren Sprechern kannst du hier auch noch weitere Wünsche zur Vertonung aufschreiben, zum Beispiel, ob du den Text in einer besonderen Stimmung vertont haben möchtest. Jetzt kannst du uns mit der Produktion beauftragen. Das Studio steht bereit.</p>
     </div>
 
     <div class="section">
