@@ -9,7 +9,8 @@ install:
 script:
   - npm run build
 
-after_script:
-  # Run the deployment script only for new commits
-  # on the master branch.
-  - test $TRAVIS_BRANCH = "master" && ./deploy/deploy.sh
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh
+  on:
+    branch: master
