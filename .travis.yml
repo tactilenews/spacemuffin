@@ -22,7 +22,7 @@ after_script:
 
   - # Stop Nuxt.js service, the web app will be unavailable for the
     # duration of the deployment.
-    ssh $TARGET_USER@$TARGET_HOST 'supervisorctl stop spacemuffin-daemon'
+    ssh -i $HOME/.ssh/deploy_rsa $TARGET_USER@$TARGET_HOST 'supervisorctl stop spacemuffin-daemon'
 
   - # Upload changes to Uberspace using `rsync`
     rsync
@@ -32,4 +32,4 @@ after_script:
       $TARGET_USER@$TARGET_HOST:/var/www/virtual/$TARGET_USER/app
 
   - # Start the Nuxt.js service so that the web app is available again
-    ssh $TARGET_USER@TARGET_HOST 'supervisorctl start spacemuffin-daemon'
+    ssh -i $HOME/.ssh/deploy_rsa $TARGET_USER@TARGET_HOST 'supervisorctl start spacemuffin-daemon'
