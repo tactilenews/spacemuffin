@@ -17,7 +17,7 @@ ssh \
 
 # Upload changes to Uberspace using `rsync`
 rsync \
-  -hacz --delete --info=name1,stats2 \
+  -hacz --delete --checksum --info=name1,stats2 \
   -e "ssh -i $HOME/.ssh/deploy_rsa" \
   ./{.nuxt,api,dist,node_modules,static,nuxt.config.js,package.json} \
   $TARGET_USER@$TARGET_HOST:/var/www/virtual/$TARGET_USER/app
