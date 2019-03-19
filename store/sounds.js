@@ -6,7 +6,7 @@ export const state = () => ({
     },
     {
       name: 'Clarissa da Silva',
-      url: 'https://static.tactile.news/audio/speaker/clarissa-da-silva.mp3'
+      url: 'https://static.tactile.news/audio/speakers/clarissa-da-silva.mp3'
     },
     {
       name: 'Franci',
@@ -61,6 +61,10 @@ export const state = () => ({
     {
       name: 'Mann 2',
       url: 'https://static.tactile.news/audio/voices/man-robert.mp3'
+    },
+    {
+      name: 'Mädchenstimme',
+      url: 'https://static.tactile.news/audio/voices/girl-dorothea.mp3'
     },
     {
       name: 'Jungenstimme',
