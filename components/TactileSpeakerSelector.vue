@@ -12,7 +12,7 @@
       :selected="selected"
       v-model="temporarilySelected"
       heading="Sprecher wählen"
-      help-text="Welcher Sprechers soll deinen Text vertonen?"
+      help-text="Wer soll deinen Text vertonen?"
       @select="$emit('select', temporarilySelected)"
     />
   </div>
